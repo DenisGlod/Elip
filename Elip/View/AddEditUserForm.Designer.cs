@@ -44,7 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BSave = new System.Windows.Forms.Button();
             this.CBRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -169,17 +169,18 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Id Группы";
             // 
-            // button1
+            // BSave
             // 
-            this.button1.Image = global::Elip.Properties.Resources.tick;
-            this.button1.Location = new System.Drawing.Point(69, 241);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Сохранить";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BSave.Image = global::Elip.Properties.Resources.tick;
+            this.BSave.Location = new System.Drawing.Point(66, 242);
+            this.BSave.Name = "BSave";
+            this.BSave.Size = new System.Drawing.Size(101, 23);
+            this.BSave.TabIndex = 16;
+            this.BSave.Text = "Сохранить";
+            this.BSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BSave.UseVisualStyleBackColor = true;
+            this.BSave.Click += new System.EventHandler(this.BSave_Click);
             // 
             // CBRole
             // 
@@ -198,9 +199,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(228, 276);
+            this.ClientSize = new System.Drawing.Size(228, 278);
             this.Controls.Add(this.CBRole);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BSave);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -244,7 +245,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BSave;
         private System.Windows.Forms.ComboBox CBRole;
     }
 }

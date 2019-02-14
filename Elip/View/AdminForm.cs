@@ -18,7 +18,7 @@ namespace Elip.View
             InitUserTable();
         }
 
-        private void InitUserTable()
+        public void InitUserTable()
         {
             using (var dbContext = new ElipContext())
             {
@@ -26,6 +26,7 @@ namespace Elip.View
                 DGVUserTable.DataSource = null;
                 DGVUserTable.DataSource = dbContext.Users.Local.ToBindingList();
                 DGVUserTable.Columns["Group"].Visible = false;
+                DGVUserTable.Columns["DataInGroups"].Visible = false;
             }
         }
 
@@ -49,6 +50,7 @@ namespace Elip.View
                 DGVDataTable.DataSource = null;
                 DGVDataTable.DataSource = dbContext.DataInGroups.Local.ToBindingList();
                 DGVDataTable.Columns["Group"].Visible = false;
+                DGVDataTable.Columns["User"].Visible = false;
             }
         }
 
@@ -86,7 +88,7 @@ namespace Elip.View
                 switch (TabControl.SelectedIndex)
                 {
                     case 0:
-                        new AddEditUserForm(null, true).ShowDialog();
+                        new AddEditUserForm(this, null, true).Show();
                         break;
                     case 1:
                         break;
@@ -104,7 +106,7 @@ namespace Elip.View
                 {
                     case 0:
                         var user = dbContext.Users.Find((int)DGVUserTable.SelectedCells[0].Value);
-                        new AddEditUserForm(user, false).ShowDialog();
+                        new AddEditUserForm(this, user, false).Show();
                         break;
                     case 1:
                         break;
