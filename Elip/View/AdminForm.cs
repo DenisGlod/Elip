@@ -28,6 +28,17 @@ namespace Elip.View
             }
         }
 
+        private void InitGroupTable()
+        {
+            using (var dbContext = new ElipContext())
+            {
+                dbContext.Groups.Load();
+                DGVGroupTable.DataSource = null;
+                DGVGroupTable.DataSource = dbContext.Groups.Local.ToBindingList();
+                DGVGroupTable.Columns["Users"].Visible = false;
+                DGVGroupTable.Columns["DataInGroups"].Visible = false;
+            }
+        }
         private void InitHeaderLabel()
         {
             LUserInfo.Text = new StringBuilder().Append(user.LastName).Append(" ").Append(user.FirstName).Append(" ").Append(user.MiddleName).Append(" | Роль: ").Append(user.Role).ToString();
@@ -45,7 +56,9 @@ namespace Elip.View
                 case 0:
                     InitUserTable();
                     break;
-
+                case 1:
+                    InitGroupTable();
+                    break;
             }
 
         }

@@ -23,21 +23,42 @@ namespace Elip.View
                 else
                 {
                     dbContext.Database.Create();
-                    var admin = new User { Login = "Admin", Password = "1234", LastName = "Перов", FirstName = "Иван", MiddleName = "Иванович", Role = "Администратор" };
+
+                    var rnd = new Random();
+                    for (int i = 0; i < 6; i++)
+                    {
+                        var group = new Group { NumberGroup = rnd.Next(1000, 5000).ToString() };
+                        dbContext.Groups.Add(group);
+                    }
+                    dbContext.SaveChanges();
+
+                    var admin = new User
+                    {
+                        Login = "Admin",
+                        Password = "1234",
+                        LastName = "Перов",
+                        FirstName = "Иван",
+                        MiddleName = "Иванович",
+                        Role = "Администратор"
+                    };
                     dbContext.Users.Add(admin);
                     for (int i = 0; i < 8; i++)
                     {
-                        var user = new User { Login = "user" + i, Password = "user" + i, LastName = "user" + i, FirstName = "user" + i, MiddleName = "user" + i, Role = "Пользователь" };
+                        var user = new User
+                        {
+                            Login = "user" + i,
+                            Password = "user" + i,
+                            LastName = "user" + i,
+                            FirstName = "user" + i,
+                            MiddleName = "user" + i,
+                            Role = "Пользователь",
+                            GroupId = rnd.Next(1, 6)
+                        };
                         dbContext.Users.Add(user);
                     }
                     dbContext.SaveChanges();
 
-                    for (int i = 0; i < 6; i++)
-                    {
-                        var group = new Group { NumberGroup = new Random().Next(1000, 5000).ToString() };
-                        dbContext.Groups.Add(group);
-                    }
-                    dbContext.SaveChanges();
+
                     MessageBox.Show("База данных создана", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

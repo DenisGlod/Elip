@@ -115,6 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <Content Include="Template\lab.xml" />
+    <Content Include="Template\test.xml" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\settings.png" />

@@ -43,35 +43,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 145);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(53, 146);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Логин";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 181);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(43, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пароль";
             // 
             // TBLogin
             // 
-            this.TBLogin.Location = new System.Drawing.Point(91, 142);
+            this.TBLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TBLogin.Location = new System.Drawing.Point(100, 143);
             this.TBLogin.Name = "TBLogin";
-            this.TBLogin.Size = new System.Drawing.Size(144, 20);
+            this.TBLogin.Size = new System.Drawing.Size(144, 22);
             this.TBLogin.TabIndex = 1;
             this.TBLogin.Text = "Admin";
             // 
             // TBPassword
             // 
-            this.TBPassword.Location = new System.Drawing.Point(91, 178);
+            this.TBPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TBPassword.Location = new System.Drawing.Point(100, 179);
             this.TBPassword.Name = "TBPassword";
             this.TBPassword.PasswordChar = '*';
-            this.TBPassword.Size = new System.Drawing.Size(144, 20);
+            this.TBPassword.Size = new System.Drawing.Size(144, 22);
             this.TBPassword.TabIndex = 2;
             this.TBPassword.Text = "1234";
             // 
@@ -79,7 +83,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(98, 114);
+            this.label3.Location = new System.Drawing.Point(100, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 16);
             this.label3.TabIndex = 7;
@@ -88,7 +92,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Elip.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(101, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(102, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(96, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -107,12 +111,14 @@
             // 
             // BLogin
             // 
+            this.BLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BLogin.Image = global::Elip.Properties.Resources.login;
-            this.BLogin.Location = new System.Drawing.Point(101, 216);
+            this.BLogin.Location = new System.Drawing.Point(83, 223);
             this.BLogin.Name = "BLogin";
-            this.BLogin.Size = new System.Drawing.Size(109, 31);
+            this.BLogin.Size = new System.Drawing.Size(140, 31);
             this.BLogin.TabIndex = 3;
             this.BLogin.Text = "Авторизация";
+            this.BLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BLogin.UseVisualStyleBackColor = true;
             this.BLogin.Click += new System.EventHandler(this.BLogin_Click);
