@@ -1,6 +1,7 @@
 ﻿using Elip.Model;
 using Elip.Model.Entity;
 using System.Data.Entity;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -76,6 +77,78 @@ namespace Elip.View
                     break;
             }
 
+        }
+
+        private void BAdd_Click(object sender, System.EventArgs e)
+        {
+            using (var dbContext = new ElipContext())
+            {
+                switch (TabControl.SelectedIndex)
+                {
+                    case 0:
+                        new AddEditUserForm(null, true).ShowDialog();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+        }
+
+        private void BEdit_Click(object sender, System.EventArgs e)
+        {
+            using (var dbContext = new ElipContext())
+            {
+                switch (TabControl.SelectedIndex)
+                {
+                    case 0:
+                        var user = dbContext.Users.Find((int)DGVUserTable.SelectedCells[0].Value);
+                        new AddEditUserForm(user, false).ShowDialog();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+        }
+
+        private void BDelete_Click(object sender, System.EventArgs e)
+        {
+            var result = MessageBox.Show("Подтвердить удаление?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.OK)
+            {
+                using (var dbContext = new ElipContext())
+                {
+                    switch (TabControl.SelectedIndex)
+                    {
+                        case 0:
+                            foreach (DataGridViewRow row in DGVUserTable.SelectedRows)
+                            {
+                                var delUser = dbContext.Users.Find((int)row.Cells[0].Value);
+                                dbContext.Users.Remove(delUser);
+                                dbContext.SaveChanges();
+                            }
+                            InitUserTable();
+                            break;
+                        case 1:
+                            foreach (DataGridViewRow row in DGVGroupTable.SelectedRows)
+                            {
+                                var delGroup = dbContext.Groups.Find((int)row.Cells[0].Value);
+                                delGroup.Users.ToList().ForEach(u => u.GroupId = null);
+                                delGroup.DataInGroups.ToList().ForEach(g => g.GroupId = null);
+                                dbContext.SaveChanges();
+                                dbContext.Groups.Remove(delGroup);
+                                dbContext.SaveChanges();
+                            }
+                            InitGroupTable();
+                            break;
+                        case 2:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

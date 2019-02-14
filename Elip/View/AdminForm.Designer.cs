@@ -32,9 +32,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.LUserInfo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BDeleteUser = new System.Windows.Forms.Button();
-            this.BEditUser = new System.Windows.Forms.Button();
-            this.BAddUser = new System.Windows.Forms.Button();
+            this.BDelete = new System.Windows.Forms.Button();
+            this.BEdit = new System.Windows.Forms.Button();
+            this.BAdd = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.DGVDataTable = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -76,52 +76,55 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.BDeleteUser);
-            this.panel2.Controls.Add(this.BEditUser);
-            this.panel2.Controls.Add(this.BAddUser);
+            this.panel2.Controls.Add(this.BDelete);
+            this.panel2.Controls.Add(this.BEdit);
+            this.panel2.Controls.Add(this.BAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 439);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(821, 40);
             this.panel2.TabIndex = 4;
             // 
-            // BDeleteUser
+            // BDelete
             // 
-            this.BDeleteUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BDeleteUser.Image = global::Elip.Properties.Resources.trash;
-            this.BDeleteUser.Location = new System.Drawing.Point(664, 5);
-            this.BDeleteUser.Name = "BDeleteUser";
-            this.BDeleteUser.Size = new System.Drawing.Size(125, 32);
-            this.BDeleteUser.TabIndex = 2;
-            this.BDeleteUser.Text = "Удалить";
-            this.BDeleteUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BDeleteUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BDeleteUser.UseVisualStyleBackColor = true;
+            this.BDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BDelete.Image = global::Elip.Properties.Resources.trash;
+            this.BDelete.Location = new System.Drawing.Point(664, 5);
+            this.BDelete.Name = "BDelete";
+            this.BDelete.Size = new System.Drawing.Size(125, 32);
+            this.BDelete.TabIndex = 2;
+            this.BDelete.Text = "Удалить";
+            this.BDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BDelete.UseVisualStyleBackColor = true;
+            this.BDelete.Click += new System.EventHandler(this.BDelete_Click);
             // 
-            // BEditUser
+            // BEdit
             // 
-            this.BEditUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.BEditUser.Image = global::Elip.Properties.Resources.pencil;
-            this.BEditUser.Location = new System.Drawing.Point(337, 5);
-            this.BEditUser.Name = "BEditUser";
-            this.BEditUser.Size = new System.Drawing.Size(141, 32);
-            this.BEditUser.TabIndex = 1;
-            this.BEditUser.Text = "Редактировать";
-            this.BEditUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BEditUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BEditUser.UseVisualStyleBackColor = true;
+            this.BEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.BEdit.Image = global::Elip.Properties.Resources.pencil;
+            this.BEdit.Location = new System.Drawing.Point(337, 5);
+            this.BEdit.Name = "BEdit";
+            this.BEdit.Size = new System.Drawing.Size(141, 32);
+            this.BEdit.TabIndex = 1;
+            this.BEdit.Text = "Редактировать";
+            this.BEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BEdit.UseVisualStyleBackColor = true;
+            this.BEdit.Click += new System.EventHandler(this.BEdit_Click);
             // 
-            // BAddUser
+            // BAdd
             // 
-            this.BAddUser.Image = global::Elip.Properties.Resources.plus;
-            this.BAddUser.Location = new System.Drawing.Point(27, 5);
-            this.BAddUser.Name = "BAddUser";
-            this.BAddUser.Size = new System.Drawing.Size(118, 32);
-            this.BAddUser.TabIndex = 0;
-            this.BAddUser.Text = "Добавить";
-            this.BAddUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BAddUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BAddUser.UseVisualStyleBackColor = true;
+            this.BAdd.Image = global::Elip.Properties.Resources.plus;
+            this.BAdd.Location = new System.Drawing.Point(27, 5);
+            this.BAdd.Name = "BAdd";
+            this.BAdd.Size = new System.Drawing.Size(118, 32);
+            this.BAdd.TabIndex = 0;
+            this.BAdd.Text = "Добавить";
+            this.BAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BAdd.UseVisualStyleBackColor = true;
+            this.BAdd.Click += new System.EventHandler(this.BAdd_Click);
             // 
             // tabPage3
             // 
@@ -243,9 +246,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label LUserInfo;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button BDeleteUser;
-        private System.Windows.Forms.Button BEditUser;
-        private System.Windows.Forms.Button BAddUser;
+        private System.Windows.Forms.Button BDelete;
+        private System.Windows.Forms.Button BEdit;
+        private System.Windows.Forms.Button BAdd;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView DGVDataTable;
         private System.Windows.Forms.TabPage tabPage2;
