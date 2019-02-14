@@ -15,10 +15,5 @@ namespace Elip.Model.Entity
 
         public ICollection<DataInGroup> DataInGroups { get; set; }
 
-        public Group()
-        {
-            Users = new List<User>();
-            DataInGroups = new List<DataInGroup>();
-        }
     }
 }

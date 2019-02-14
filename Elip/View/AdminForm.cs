@@ -136,8 +136,11 @@ namespace Elip.View
                             foreach (DataGridViewRow row in DGVGroupTable.SelectedRows)
                             {
                                 var delGroup = dbContext.Groups.Find((int)row.Cells[0].Value);
-                                delGroup.Users.ToList().ForEach(u => u.GroupId = null);
-                                delGroup.DataInGroups.ToList().ForEach(g => g.GroupId = null);
+                                dbContext.Entry(delGroup).Collection("Users").Load();
+                                delGroup.Users.ToList().ForEach(u => { u.Group = null; u.GroupId = null; });
+                                dbContext.SaveChanges();
+                                dbContext.Entry(delGroup).Collection("DataInGroups").Load();
+                                delGroup.DataInGroups.ToList().ForEach(dg => { dg.Group = null; dg.GroupId = null; });
                                 dbContext.SaveChanges();
                                 dbContext.Groups.Remove(delGroup);
                                 dbContext.SaveChanges();
@@ -145,6 +148,13 @@ namespace Elip.View
                             InitGroupTable();
                             break;
                         case 2:
+                            foreach (DataGridViewRow row in DGVDataTable.SelectedRows)
+                            {
+                                var delData = dbContext.DataInGroups.Find((int)row.Cells[0].Value);
+                                dbContext.DataInGroups.Remove(delData);
+                                dbContext.SaveChanges();
+                            }
+                            InitDataInGroupTable();
                             break;
                     }
                 }
