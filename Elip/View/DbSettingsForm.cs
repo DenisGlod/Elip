@@ -2,6 +2,7 @@
 using Elip.Model.Entity;
 using System;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Elip.View
 {
@@ -58,6 +59,33 @@ namespace Elip.View
                     }
                     dbContext.SaveChanges();
 
+                    for (int i = 1; i < 11; i++)
+                    {
+                        var xDoc = new XmlDocument();
+                        xDoc.LoadXml(Properties.Resources.lab);
+                        var root = xDoc.DocumentElement;
+                        var lab = root.GetElementsByTagName("lab").Item(0);
+                        lab.Attributes.GetNamedItem("number").Value = i.ToString();
+                        lab.Attributes.GetNamedItem("text").Value = "Название лабораторной";
+                        var task = lab.FirstChild;
+                        lab.RemoveChild(lab.FirstChild);
+                        for (int j = 1; j < 6; j++)
+                        {
+                            var tempTask = task.Clone();
+                            tempTask.Attributes.GetNamedItem("number").Value = j.ToString();
+                            tempTask.Attributes.GetNamedItem("text").Value = "Текст задачи";
+                            lab.AppendChild(tempTask);
+                        }
+                        var data = new DataInGroup
+                        {
+                            Text = "Лабораторная №" + i,
+                            Data = xDoc.OuterXml,
+                            DataType = DataType.Lab.ToString(),
+                            GroupId = rnd.Next(1, 6)
+                        };
+                        dbContext.DataInGroups.Add(data);
+                    }
+                    dbContext.SaveChanges();
 
                     MessageBox.Show("База данных создана", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

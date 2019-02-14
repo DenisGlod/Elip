@@ -39,6 +39,18 @@ namespace Elip.View
                 DGVGroupTable.Columns["DataInGroups"].Visible = false;
             }
         }
+
+        private void InitDataInGroupTable()
+        {
+            using (var dbContext = new ElipContext())
+            {
+                dbContext.DataInGroups.Load();
+                DGVDataTable.DataSource = null;
+                DGVDataTable.DataSource = dbContext.DataInGroups.Local.ToBindingList();
+                DGVDataTable.Columns["Group"].Visible = false;
+            }
+        }
+
         private void InitHeaderLabel()
         {
             LUserInfo.Text = new StringBuilder().Append(user.LastName).Append(" ").Append(user.FirstName).Append(" ").Append(user.MiddleName).Append(" | Роль: ").Append(user.Role).ToString();
@@ -58,6 +70,9 @@ namespace Elip.View
                     break;
                 case 1:
                     InitGroupTable();
+                    break;
+                case 2:
+                    InitDataInGroupTable();
                     break;
             }
 

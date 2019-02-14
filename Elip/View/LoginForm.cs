@@ -3,6 +3,7 @@ using Elip.View;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Elip
 {
@@ -45,6 +46,11 @@ namespace Elip
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

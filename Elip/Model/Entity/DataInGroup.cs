@@ -8,6 +8,9 @@ namespace Elip.Model.Entity
         public int Id { get; set; }
 
         [Required]
+        public string Text { get; set; }
+
+        [Required]
         public string Data { get; set; }
 
         [Required]
