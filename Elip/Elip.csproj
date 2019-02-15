@@ -77,6 +77,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Entity\DataType.cs" />
+    <Compile Include="View\AddEditDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddEditDataForm.Designer.cs">
+      <DependentUpon>AddEditDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddEditGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddEditGroupForm.Designer.cs">
+      <DependentUpon>AddEditGroupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddEditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +119,12 @@
     <Compile Include="Model\Entity\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\AddEditDataForm.resx">
+      <DependentUpon>AddEditDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddEditGroupForm.resx">
+      <DependentUpon>AddEditGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddEditUserForm.resx">
       <DependentUpon>AddEditUserForm.cs</DependentUpon>
     </EmbeddedResource>

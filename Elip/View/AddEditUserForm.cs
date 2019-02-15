@@ -1,5 +1,6 @@
 ﻿using Elip.Model;
 using Elip.Model.Entity;
+using System.Data.Entity;
 using System.Windows.Forms;
 
 namespace Elip.View
@@ -63,14 +64,56 @@ namespace Elip.View
                     dbContext.Users.Add(user);
                     dbContext.SaveChanges();
                 }
-                Hide();
-                MessageBox.Show("Сохранено!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                adminForm.InitUserTable();
             }
             else
             {
+                user.Id = int.Parse(TBId.Text);
+                if (!TBIdGroup.Text.Trim().Equals(""))
+                {
+                    user.GroupId = int.Parse(TBIdGroup.Text);
+                }
+                else
+                {
+                    user.GroupId = null;
+                    user.Group = null;
+                }
 
+                user.Login = TBLogin.Text;
+                user.Password = TBPassword.Text;
+                user.LastName = TBLastName.Text;
+                user.FirstName = TBFirstName.Text;
+                user.MiddleName = TBMiddleName.Text;
+                user.Role = CBRole.SelectedItem.ToString();
+                using (var dbContext = new ElipContext())
+                {
+                    dbContext.Entry(user).State = EntityState.Modified;
+                    dbContext.SaveChanges();
+                }
+            }
+            Hide();
+            MessageBox.Show("Сохранено!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            adminForm.InitUserTable();
+        }
+
+        private void TBIdGroup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateKey(e);
+        }
+
+        private void TBId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateKey(e);
+        }
+
+        private void ValidateKey(KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
             }
         }
+
+
     }
 }

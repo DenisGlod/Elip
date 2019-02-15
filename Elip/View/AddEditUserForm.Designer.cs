@@ -54,6 +54,7 @@
             this.TBId.Name = "TBId";
             this.TBId.Size = new System.Drawing.Size(121, 20);
             this.TBId.TabIndex = 0;
+            this.TBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBId_KeyPress);
             // 
             // TBLogin
             // 
@@ -96,6 +97,7 @@
             this.TBIdGroup.Name = "TBIdGroup";
             this.TBIdGroup.Size = new System.Drawing.Size(121, 20);
             this.TBIdGroup.TabIndex = 7;
+            this.TBIdGroup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBIdGroup_KeyPress);
             // 
             // label1
             // 
