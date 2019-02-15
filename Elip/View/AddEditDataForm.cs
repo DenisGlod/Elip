@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Elip.View
 {
     public partial class AddEditDataForm : Form
     {
-        public AddEditDataForm()
+        public AddEditDataForm(AdminForm form, object data, bool flag)
         {
             InitializeComponent();
         }

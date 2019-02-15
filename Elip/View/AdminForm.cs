@@ -83,18 +83,17 @@ namespace Elip.View
 
         private void BAdd_Click(object sender, System.EventArgs e)
         {
-            using (var dbContext = new ElipContext())
+            switch (TabControl.SelectedIndex)
             {
-                switch (TabControl.SelectedIndex)
-                {
-                    case 0:
-                        new AddEditUserForm(this, null, true).Show();
-                        break;
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                }
+                case 0:
+                    new AddEditUserForm(this, null, true).Show();
+                    break;
+                case 1:
+                    new AddEditGroupForm(this, null, true).Show();
+                    break;
+                case 2:
+                    new AddEditDataForm(this, null, true).Show();
+                    break;
             }
         }
 
@@ -109,8 +108,12 @@ namespace Elip.View
                         new AddEditUserForm(this, user, false).Show();
                         break;
                     case 1:
+                        var group = dbContext.Groups.Find((int)DGVGroupTable.SelectedCells[0].Value);
+                        new AddEditGroupForm(this, group, false).Show();
                         break;
                     case 2:
+                        var data = dbContext.DataInGroups.Find((int)DGVDataTable.SelectedCells[0].Value);
+                        new AddEditDataForm(this, data, false).Show();
                         break;
                 }
             }
