@@ -30,7 +30,7 @@ namespace Elip.View
             }
         }
 
-        private void InitGroupTable()
+        public void InitGroupTable()
         {
             using (var dbContext = new ElipContext())
             {
