@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ElipAdmin.Model.Entity
 {
-    class Group
+    public class Group
     {
         [Key]
         public int Id { get; set; }

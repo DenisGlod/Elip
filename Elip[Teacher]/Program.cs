@@ -13,7 +13,7 @@ namespace ElipTeacher
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TeacherFrom());
+            Application.Run(new LoginForm());
         }
     }
 }

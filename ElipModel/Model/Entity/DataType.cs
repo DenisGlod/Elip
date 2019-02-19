@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElipAdmin.Model.Entity
 {
-    enum DataType
+    public enum DataType
     {
         Lab,
         Test

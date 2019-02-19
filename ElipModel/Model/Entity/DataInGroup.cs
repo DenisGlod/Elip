@@ -2,7 +2,7 @@
 
 namespace ElipAdmin.Model.Entity
 {
-    class DataInGroup
+    public class DataInGroup
     {
         [Key]
         public int Id { get; set; }

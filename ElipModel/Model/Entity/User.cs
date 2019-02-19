@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElipAdmin.Model.Entity
 {
-    class User
+    public class User
     {
         [Key]
         public int Id { get; set; }

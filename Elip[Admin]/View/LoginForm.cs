@@ -3,7 +3,6 @@ using ElipAdmin.View;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace ElipAdmin
 {
@@ -21,7 +20,7 @@ namespace ElipAdmin
 
         private void BLogin_Click(object sender, EventArgs e)
         {
-            using (var dbContext = new ElipContext())
+            using (ElipContext dbContext = new ElipContext())
             {
                 if (!dbContext.Database.Exists())
                 {
@@ -48,9 +47,5 @@ namespace ElipAdmin
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

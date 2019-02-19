@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace ElipAdmin.Model
 {
-    class ElipContext : DbContext
+    public class ElipContext : DbContext
     {
         public ElipContext() : base("DbConnection") { }
 

@@ -76,7 +76,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Entity\DataType.cs" />
     <Compile Include="View\AddEditDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,10 +112,6 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ElipContext.cs" />
-    <Compile Include="Model\Entity\DataInGroup.cs" />
-    <Compile Include="Model\Entity\Group.cs" />
-    <Compile Include="Model\Entity\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\AddEditDataForm.resx">
@@ -190,6 +185,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ElipModel\ElipModel.csproj">
+      <Project>{f5652d38-c70c-4a69-ad86-a0145191feba}</Project>
+      <Name>ElipModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

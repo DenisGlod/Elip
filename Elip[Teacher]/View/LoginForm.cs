@@ -1,4 +1,5 @@
 ﻿using System;
+using ElipAdmin.Model.Entity;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,15 @@ using System.Windows.Forms;
 
 namespace ElipTeacher
 {
-    public partial class TeacherFrom : Form
+    public partial class LoginForm : Form
     {
-        public TeacherFrom()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
