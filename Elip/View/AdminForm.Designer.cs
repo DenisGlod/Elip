@@ -1,4 +1,4 @@
-﻿namespace Elip.View
+﻿namespace ElipAdmin.View
 {
     partial class AdminForm
     {
@@ -88,7 +88,7 @@
             // BDelete
             // 
             this.BDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BDelete.Image = global::Elip.Properties.Resources.trash;
+            this.BDelete.Image = global::ElipAdmin.Properties.Resources.trash;
             this.BDelete.Location = new System.Drawing.Point(664, 5);
             this.BDelete.Name = "BDelete";
             this.BDelete.Size = new System.Drawing.Size(125, 32);
@@ -102,7 +102,7 @@
             // BEdit
             // 
             this.BEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.BEdit.Image = global::Elip.Properties.Resources.pencil;
+            this.BEdit.Image = global::ElipAdmin.Properties.Resources.pencil;
             this.BEdit.Location = new System.Drawing.Point(337, 5);
             this.BEdit.Name = "BEdit";
             this.BEdit.Size = new System.Drawing.Size(141, 32);
@@ -115,7 +115,7 @@
             // 
             // BAdd
             // 
-            this.BAdd.Image = global::Elip.Properties.Resources.plus;
+            this.BAdd.Image = global::ElipAdmin.Properties.Resources.plus;
             this.BAdd.Location = new System.Drawing.Point(27, 5);
             this.BAdd.Name = "BAdd";
             this.BAdd.Size = new System.Drawing.Size(118, 32);

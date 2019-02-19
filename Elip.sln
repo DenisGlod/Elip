@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elip", "Elip\Elip.csproj", "{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elip[Admin]", "Elip\Elip[Admin].csproj", "{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elip[Teacher]", "Elip[Teacher]\Elip[Teacher].csproj", "{B51D7E80-F1D7-470E-A4CF-0E1396EBC621}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E42BDB9-92B8-426E-A81A-44318B0C9CD1} = {1E42BDB9-92B8-426E-A81A-44318B0C9CD1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51D7E80-F1D7-470E-A4CF-0E1396EBC621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51D7E80-F1D7-470E-A4CF-0E1396EBC621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51D7E80-F1D7-470E-A4CF-0E1396EBC621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51D7E80-F1D7-470E-A4CF-0E1396EBC621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

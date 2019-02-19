@@ -1,8 +1,9 @@
-﻿using Elip.Model;
-using Elip.Model.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
+using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace Elip.View
+namespace ElipAdmin.View
 {
     public partial class AddEditDataForm : Form
     {
@@ -44,10 +45,9 @@ namespace Elip.View
                 {
                     Text = TBText.Text,
                     Data = RTBData.Text,
-                    DataType = CBDataType.SelectedItem.ToString(),
-                    GroupId = int.Parse(TBGroupId.Text),
-                    UserId = int.Parse(TBUserId.Text),
+                    DataType = CBDataType.SelectedItem.ToString()
                 };
+                ValidateUserAndGroupId(saveData);
                 using (var dbContext = new ElipContext())
                 {
                     dbContext.DataInGroups.Add(saveData);
@@ -56,16 +56,47 @@ namespace Elip.View
             }
             else
             {
-                /*group.NumberGroup = TBGroup.Text;
+                data.Text = TBText.Text;
+                data.Data = RTBData.Text;
+                data.DataType = CBDataType.SelectedItem.ToString();
+                ValidateUserAndGroupId(data);
                 using (var dbContext = new ElipContext())
                 {
-                    dbContext.Entry(group).State = EntityState.Modified;
+                    dbContext.Entry(data).State = EntityState.Modified;
                     dbContext.SaveChanges();
-                }*/
+                }
             }
             Hide();
             MessageBox.Show("Сохранено!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            adminForm.InitGroupTable();
+            adminForm.InitDataInGroupTable();
         }
+
+        private void ValidateUserAndGroupId(DataInGroup data)
+        {
+            if (TBGroupId.Text.Trim().Equals(""))
+            {
+                data.GroupId = null;
+            }
+            else
+            if (TBUserId.Text.Trim().Equals(""))
+            {
+                data.UserId = null;
+            }
+            else
+            {
+                data.GroupId = int.Parse(TBGroupId.Text);
+                data.UserId = int.Parse(TBUserId.Text);
+            }
+        }
+
+        private void ValidateKey(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!char.IsDigit(number) && number != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

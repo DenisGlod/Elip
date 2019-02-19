@@ -1,9 +1,9 @@
-﻿using Elip.Model;
-using Elip.Model.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
 using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace Elip.View
+namespace ElipAdmin.View
 {
     public partial class AddEditGroupForm : Form
     {

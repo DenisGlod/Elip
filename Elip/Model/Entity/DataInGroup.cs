@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Elip.Model.Entity
+namespace ElipAdmin.Model.Entity
 {
     class DataInGroup
     {

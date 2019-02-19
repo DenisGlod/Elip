@@ -1,11 +1,11 @@
-﻿using Elip.Model;
-using Elip.View;
+﻿using ElipAdmin.Model;
+using ElipAdmin.View;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Elip
+namespace ElipAdmin
 {
     public partial class LoginForm : Form
     {

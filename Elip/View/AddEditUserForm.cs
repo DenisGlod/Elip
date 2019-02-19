@@ -1,9 +1,9 @@
-﻿using Elip.Model;
-using Elip.Model.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
 using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace Elip.View
+namespace ElipAdmin.View
 {
     public partial class AddEditUserForm : Form
     {
@@ -23,7 +23,6 @@ namespace Elip.View
 
         private void InitTextBox()
         {
-            TBId.Text = user.Id.ToString();
             TBLogin.Text = user.Login;
             TBPassword.Text = user.Password;
             TBLastName.Text = user.LastName;
@@ -57,7 +56,6 @@ namespace Elip.View
                     MiddleName = TBMiddleName.Text,
                     Role = CBRole.SelectedItem.ToString()
                 };
-                if (!TBId.Text.Trim().Equals("")) { user.Id = int.Parse(TBId.Text); }
                 if (!TBIdGroup.Text.Trim().Equals("")) { user.GroupId = int.Parse(TBIdGroup.Text); }
                 using (var dbContext = new ElipContext())
                 {
@@ -67,7 +65,6 @@ namespace Elip.View
             }
             else
             {
-                user.Id = int.Parse(TBId.Text);
                 if (!TBIdGroup.Text.Trim().Equals(""))
                 {
                     user.GroupId = int.Parse(TBIdGroup.Text);
@@ -75,9 +72,7 @@ namespace Elip.View
                 else
                 {
                     user.GroupId = null;
-                    user.Group = null;
                 }
-
                 user.Login = TBLogin.Text;
                 user.Password = TBPassword.Text;
                 user.LastName = TBLastName.Text;
@@ -95,17 +90,7 @@ namespace Elip.View
             adminForm.InitUserTable();
         }
 
-        private void TBIdGroup_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateKey(e);
-        }
-
-        private void TBId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateKey(e);
-        }
-
-        private void ValidateKey(KeyPressEventArgs e)
+        private void ValidateKey(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
             if (!char.IsDigit(number) && number != 8)
@@ -113,7 +98,6 @@ namespace Elip.View
                 e.Handled = true;
             }
         }
-
 
     }
 }

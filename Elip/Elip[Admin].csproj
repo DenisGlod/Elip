@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1E42BDB9-92B8-426E-A81A-44318B0C9CD1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Elip</RootNamespace>
-    <AssemblyName>Elip</AssemblyName>
+    <RootNamespace>ElipAdmin</RootNamespace>
+    <AssemblyName>Elip[Admin]</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

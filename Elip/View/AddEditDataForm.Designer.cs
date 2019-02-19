@@ -1,4 +1,4 @@
-﻿namespace Elip.View
+﻿namespace ElipAdmin.View
 {
     partial class AddEditDataForm
     {
@@ -77,7 +77,7 @@
             // BSave
             // 
             this.BSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BSave.Image = global::Elip.Properties.Resources.tick;
+            this.BSave.Image = global::ElipAdmin.Properties.Resources.tick;
             this.BSave.Location = new System.Drawing.Point(104, 235);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(96, 23);
@@ -122,6 +122,7 @@
             this.TBUserId.Name = "TBUserId";
             this.TBUserId.Size = new System.Drawing.Size(133, 20);
             this.TBUserId.TabIndex = 7;
+            this.TBUserId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateKey);
             // 
             // TBGroupId
             // 
@@ -130,6 +131,7 @@
             this.TBGroupId.Name = "TBGroupId";
             this.TBGroupId.Size = new System.Drawing.Size(136, 20);
             this.TBGroupId.TabIndex = 8;
+            this.TBGroupId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateKey);
             // 
             // label4
             // 

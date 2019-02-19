@@ -1,4 +1,4 @@
-﻿namespace Elip.View
+﻿namespace ElipAdmin.View
 {
     partial class DbSettingsForm
     {
@@ -35,7 +35,7 @@
             // 
             // BCreateDb
             // 
-            this.BCreateDb.Image = global::Elip.Properties.Resources.createdb;
+            this.BCreateDb.Image = global::ElipAdmin.Properties.Resources.createdb;
             this.BCreateDb.Location = new System.Drawing.Point(41, 12);
             this.BCreateDb.Name = "BCreateDb";
             this.BCreateDb.Size = new System.Drawing.Size(139, 46);
@@ -48,7 +48,7 @@
             // 
             // BDeleteDb
             // 
-            this.BDeleteDb.Image = global::Elip.Properties.Resources.deletedb;
+            this.BDeleteDb.Image = global::ElipAdmin.Properties.Resources.deletedb;
             this.BDeleteDb.Location = new System.Drawing.Point(41, 79);
             this.BDeleteDb.Name = "BDeleteDb";
             this.BDeleteDb.Size = new System.Drawing.Size(139, 46);

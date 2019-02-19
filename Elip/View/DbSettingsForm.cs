@@ -1,10 +1,10 @@
-﻿using Elip.Model;
-using Elip.Model.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
 using System;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Elip.View
+namespace ElipAdmin.View
 {
     public partial class DbSettingsForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Elip.View
+﻿namespace ElipAdmin.View
 {
     partial class AddEditGroupForm
     {
@@ -43,7 +43,7 @@
             // 
             // BSave
             // 
-            this.BSave.Image = global::Elip.Properties.Resources.tick;
+            this.BSave.Image = global::ElipAdmin.Properties.Resources.tick;
             this.BSave.Location = new System.Drawing.Point(107, 56);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(98, 28);

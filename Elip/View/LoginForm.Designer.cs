@@ -1,4 +1,4 @@
-﻿namespace Elip
+﻿namespace ElipAdmin
 {
     partial class LoginForm
     {
@@ -92,7 +92,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Elip.Properties.Resources.logo;
+            this.pictureBox1.Image = global::ElipAdmin.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(102, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(96, 96);
@@ -102,7 +102,7 @@
             // 
             // BDbSetting
             // 
-            this.BDbSetting.Image = global::Elip.Properties.Resources.settings;
+            this.BDbSetting.Image = global::ElipAdmin.Properties.Resources.settings;
             this.BDbSetting.Location = new System.Drawing.Point(244, 12);
             this.BDbSetting.Name = "BDbSetting";
             this.BDbSetting.Size = new System.Drawing.Size(38, 38);
@@ -113,7 +113,7 @@
             // BLogin
             // 
             this.BLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BLogin.Image = global::Elip.Properties.Resources.login;
+            this.BLogin.Image = global::ElipAdmin.Properties.Resources.login;
             this.BLogin.Location = new System.Drawing.Point(83, 223);
             this.BLogin.Name = "BLogin";
             this.BLogin.Size = new System.Drawing.Size(140, 31);

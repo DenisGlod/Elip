@@ -1,11 +1,11 @@
-﻿using Elip.Model;
-using Elip.Model.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Elip.View
+namespace ElipAdmin.View
 {
     public partial class AdminForm : Form
     {
@@ -42,7 +42,7 @@ namespace Elip.View
             }
         }
 
-        private void InitDataInGroupTable()
+        public void InitDataInGroupTable()
         {
             using (var dbContext = new ElipContext())
             {

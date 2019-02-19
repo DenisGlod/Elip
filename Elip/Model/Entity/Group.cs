@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Elip.Model.Entity
+namespace ElipAdmin.Model.Entity
 {
     class Group
     {
