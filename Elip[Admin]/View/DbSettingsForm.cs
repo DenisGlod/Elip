@@ -102,7 +102,7 @@ namespace ElipAdmin.View
                 }
                 else
                 {
-                    dbContext.Database.Delete();
+                    dbContext.DeleteDataBase();
                     MessageBox.Show("База данных удалена", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

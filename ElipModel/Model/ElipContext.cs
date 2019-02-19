@@ -11,5 +11,10 @@ namespace ElipAdmin.Model
         public DbSet<Group> Groups { get; set; }
         public DbSet<DataInGroup> DataInGroups { get; set; }
 
+        public void DeleteDataBase()
+        {
+            Database.Delete();
+        }
+
     }
 }
