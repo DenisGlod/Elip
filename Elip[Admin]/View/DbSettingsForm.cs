@@ -56,6 +56,16 @@ namespace ElipAdmin.View
                             GroupId = rnd.Next(1, 6)
                         };
                         dbContext.Users.Add(user);
+                        var teacher = new User
+                        {
+                            Login = "teacher" + i,
+                            Password = "teacher" + i,
+                            LastName = "teacher" + i,
+                            FirstName = "teacher" + i,
+                            MiddleName = "teacher" + i,
+                            Role = "Преподаватель",
+                        };
+                        dbContext.Users.Add(teacher);
                     }
                     dbContext.SaveChanges();
 

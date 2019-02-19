@@ -35,6 +35,9 @@
   <PropertyGroup>
     <StartupObject>ElipTeacher.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -96,6 +99,34 @@
       <Project>{f5652d38-c70c-4a69-ad86-a0145191feba}</Project>
       <Name>ElipModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\createdb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deletedb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+    <Content Include="Resources\lab.xml" />
+    <Content Include="Resources\test.xml" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\pencil.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
