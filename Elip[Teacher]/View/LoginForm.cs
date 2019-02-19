@@ -1,4 +1,5 @@
 ﻿using ElipAdmin.Model;
+using ElipTeacher.View;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,7 +30,7 @@ namespace ElipTeacher
                     }
                     else
                     {
-                        //new TeacherForm(user.First()).Show();
+                        new TeacherForm(user.First()).Show();
                         Hide();
                     }
                 }

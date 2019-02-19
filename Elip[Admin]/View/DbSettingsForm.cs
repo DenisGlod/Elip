@@ -56,6 +56,9 @@ namespace ElipAdmin.View
                             GroupId = rnd.Next(1, 6)
                         };
                         dbContext.Users.Add(user);
+                    }
+                    for (int i = 0; i < 4; i++)
+                    {
                         var teacher = new User
                         {
                             Login = "teacher" + i,

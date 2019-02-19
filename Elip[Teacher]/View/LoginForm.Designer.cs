@@ -66,7 +66,7 @@
             this.TBLogin.Name = "TBLogin";
             this.TBLogin.Size = new System.Drawing.Size(144, 22);
             this.TBLogin.TabIndex = 1;
-            this.TBLogin.Text = "Teacher1";
+            this.TBLogin.Text = "teacher1";
             // 
             // TBPassword
             // 
@@ -76,7 +76,7 @@
             this.TBPassword.PasswordChar = '*';
             this.TBPassword.Size = new System.Drawing.Size(144, 22);
             this.TBPassword.TabIndex = 2;
-            this.TBPassword.Text = "Teacher1";
+            this.TBPassword.Text = "teacher1";
             // 
             // label3
             // 

@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elip[Admin]", "Elip[Admin]\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElipModel", "ElipModel\ElipModel.csproj", "{F5652D38-C70C-4A69-AD86-A0145191FEBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elip[User]", "Elip[User]\Elip[User].csproj", "{D35C3949-CE56-416C-89EF-E40BAED5ED38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5652D38-C70C-4A69-AD86-A0145191FEBA} = {F5652D38-C70C-4A69-AD86-A0145191FEBA}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +32,10 @@ Global
 		{F5652D38-C70C-4A69-AD86-A0145191FEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5652D38-C70C-4A69-AD86-A0145191FEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5652D38-C70C-4A69-AD86-A0145191FEBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35C3949-CE56-416C-89EF-E40BAED5ED38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35C3949-CE56-416C-89EF-E40BAED5ED38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35C3949-CE56-416C-89EF-E40BAED5ED38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35C3949-CE56-416C-89EF-E40BAED5ED38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
