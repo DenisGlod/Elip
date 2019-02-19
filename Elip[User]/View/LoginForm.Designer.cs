@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BLogin = new System.Windows.Forms.Button();
+            this.BRegistration = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,9 +103,9 @@
             // 
             this.BLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BLogin.Image = global::ElipUser.Properties.Resources.login;
-            this.BLogin.Location = new System.Drawing.Point(83, 223);
+            this.BLogin.Location = new System.Drawing.Point(9, 228);
             this.BLogin.Name = "BLogin";
-            this.BLogin.Size = new System.Drawing.Size(140, 31);
+            this.BLogin.Size = new System.Drawing.Size(134, 31);
             this.BLogin.TabIndex = 3;
             this.BLogin.Text = "Авторизация";
             this.BLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -112,11 +113,25 @@
             this.BLogin.UseVisualStyleBackColor = true;
             this.BLogin.Click += new System.EventHandler(this.BLogin_Click);
             // 
+            // BRegistration
+            // 
+            this.BRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BRegistration.Image = global::ElipUser.Properties.Resources.signup;
+            this.BRegistration.Location = new System.Drawing.Point(149, 228);
+            this.BRegistration.Name = "BRegistration";
+            this.BRegistration.Size = new System.Drawing.Size(134, 31);
+            this.BRegistration.TabIndex = 8;
+            this.BRegistration.Text = "Регистрация";
+            this.BRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BRegistration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BRegistration.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 271);
+            this.Controls.Add(this.BRegistration);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.TBPassword);
@@ -146,6 +161,7 @@
         private System.Windows.Forms.TextBox TBPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BRegistration;
     }
 }
 

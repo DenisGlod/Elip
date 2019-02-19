@@ -185,6 +185,16 @@ namespace ElipUser.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap signup {
+            get {
+                object obj = ResourceManager.GetObject("signup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
         ///  &lt;test number=&quot;&quot; text=&quot;&quot;&gt;

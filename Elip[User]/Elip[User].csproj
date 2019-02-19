@@ -103,6 +103,7 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="Resources\lab.xml" />
+    <None Include="Resources\signup.png" />
     <Content Include="Resources\test.xml" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\tick.png" />
