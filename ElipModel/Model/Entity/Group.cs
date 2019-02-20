@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElipAdmin.Model.Entity
@@ -11,9 +12,14 @@ namespace ElipAdmin.Model.Entity
         [Required]
         public string NumberGroup { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
 
-        public ICollection<DataInGroup> DataInGroups { get; set; }
+        public virtual ICollection<DataInGroup> DataInGroups { get; set; }
 
+        public Group()
+        {
+            Users = new BindingList<User>();
+            DataInGroups = new BindingList<DataInGroup>();
+        }
     }
 }

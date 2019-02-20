@@ -51,7 +51,38 @@ namespace ElipTeacher.View
 
         private void TVGroup_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            using (var dbContext = new ElipContext())
+            {
+                if (TabControl.SelectedIndex == 0)
+                {
+                    var group = dbContext.Groups.Find(int.Parse(TVGroup.SelectedNode.Name));
+                    DGVUsers.DataSource = group.Users;
+                    DGVUsers.Columns["GroupId"].Visible = false;
+                    DGVUsers.Columns["Group"].Visible = false;
+                    DGVUsers.Columns["DataInGroups"].Visible = false;
+                    DGVUsers.Columns["Role"].Visible = false;
+                    DGVUsers.Columns["Login"].Visible = false;
+                    DGVUsers.Columns["Password"].Visible = false;
+                }
+                else
+                if (TabControl.SelectedIndex == 1)
+                {
+                    var group = dbContext.Groups.Find(int.Parse(TVGroup.SelectedNode.Name));
+                    DGVDataInGroup.DataSource = group.DataInGroups;
+                    DGVDataInGroup.Columns["Group"].Visible = false;
+                    DGVDataInGroup.Columns["User"].Visible = false;
+                }
+            }
+        }
 
+        private void BSettings_Click(object sender, System.EventArgs e)
+        {
+            new TeacherSettingsFrom().Show();
+        }
+
+        private void TabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            TVGroup_AfterSelect(TVGroup, null);
         }
     }
 }

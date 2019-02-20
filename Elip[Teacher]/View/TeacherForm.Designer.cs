@@ -30,25 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BSettings = new System.Windows.Forms.Button();
             this.LUserInfo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TVGroup = new System.Windows.Forms.TreeView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.TVGroup = new System.Windows.Forms.TreeView();
             this.DGVUsers = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DGVDataInGroup = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Khaki;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.BSettings);
             this.panel1.Controls.Add(this.LUserInfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -64,16 +64,17 @@
             this.panel1.Size = new System.Drawing.Size(611, 43);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // BSettings
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Image = global::ElipTeacher.Properties.Resources.settings20px;
-            this.button1.Location = new System.Drawing.Point(569, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BSettings.Image = global::ElipTeacher.Properties.Resources.settings20px;
+            this.BSettings.Location = new System.Drawing.Point(569, 6);
+            this.BSettings.Name = "BSettings";
+            this.BSettings.Size = new System.Drawing.Size(30, 30);
+            this.BSettings.TabIndex = 2;
+            this.BSettings.UseVisualStyleBackColor = true;
+            this.BSettings.Click += new System.EventHandler(this.BSettings_Click);
             // 
             // LUserInfo
             // 
@@ -97,6 +98,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Группы";
             // 
+            // TVGroup
+            // 
+            this.TVGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TVGroup.Location = new System.Drawing.Point(3, 16);
+            this.TVGroup.Name = "TVGroup";
+            this.TVGroup.Size = new System.Drawing.Size(174, 264);
+            this.TVGroup.TabIndex = 0;
+            this.TVGroup.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TVGroup_AfterSelect);
+            // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(180, 43);
@@ -115,6 +125,7 @@
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(428, 283);
             this.TabControl.TabIndex = 3;
+            this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
             // tabPage1
             // 
@@ -126,6 +137,20 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Пользователи";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // DGVUsers
+            // 
+            this.DGVUsers.AllowUserToAddRows = false;
+            this.DGVUsers.AllowUserToDeleteRows = false;
+            this.DGVUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVUsers.Location = new System.Drawing.Point(3, 3);
+            this.DGVUsers.Name = "DGVUsers";
+            this.DGVUsers.ReadOnly = true;
+            this.DGVUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVUsers.Size = new System.Drawing.Size(414, 251);
+            this.DGVUsers.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -139,30 +164,17 @@
             this.tabPage2.Text = "Данные";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // TVGroup
-            // 
-            this.TVGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TVGroup.Location = new System.Drawing.Point(3, 16);
-            this.TVGroup.Name = "TVGroup";
-            this.TVGroup.Size = new System.Drawing.Size(174, 264);
-            this.TVGroup.TabIndex = 0;
-            this.TVGroup.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TVGroup_AfterSelect);
-            // 
-            // DGVUsers
-            // 
-            this.DGVUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVUsers.Location = new System.Drawing.Point(3, 3);
-            this.DGVUsers.Name = "DGVUsers";
-            this.DGVUsers.Size = new System.Drawing.Size(414, 251);
-            this.DGVUsers.TabIndex = 0;
-            // 
             // DGVDataInGroup
             // 
+            this.DGVDataInGroup.AllowUserToAddRows = false;
+            this.DGVDataInGroup.AllowUserToDeleteRows = false;
+            this.DGVDataInGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVDataInGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVDataInGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVDataInGroup.Location = new System.Drawing.Point(3, 3);
             this.DGVDataInGroup.Name = "DGVDataInGroup";
+            this.DGVDataInGroup.ReadOnly = true;
+            this.DGVDataInGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVDataInGroup.Size = new System.Drawing.Size(414, 217);
             this.DGVDataInGroup.TabIndex = 0;
             // 
@@ -176,15 +188,6 @@
             this.panel2.Size = new System.Drawing.Size(414, 34);
             this.panel2.TabIndex = 1;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(14, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(324, 8);
@@ -193,6 +196,15 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(14, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // TeacherForm
             // 
@@ -213,8 +225,8 @@
             this.groupBox1.ResumeLayout(false);
             this.TabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -225,7 +237,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label LUserInfo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BSettings;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TreeView TVGroup;
         private System.Windows.Forms.Splitter splitter1;

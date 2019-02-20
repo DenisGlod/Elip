@@ -79,6 +79,12 @@
     <Compile Include="View\TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TeacherSettingsFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TeacherSettingsFrom.Designer.cs">
+      <DependentUpon>TeacherSettingsFrom.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TeacherForm.resx">
       <DependentUpon>TeacherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TeacherSettingsFrom.resx">
+      <DependentUpon>TeacherSettingsFrom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
