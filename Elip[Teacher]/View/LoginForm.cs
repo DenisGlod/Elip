@@ -42,5 +42,9 @@ namespace ElipTeacher
             Application.Exit();
         }
 
+        private void BRegistration_Click(object sender, EventArgs e)
+        {
+            new RegistrationForm().Show();
+        }
     }
 }
