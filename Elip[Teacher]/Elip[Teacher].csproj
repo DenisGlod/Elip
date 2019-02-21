@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\AddDataInGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddDataInGroupForm.Designer.cs">
+      <DependentUpon>AddDataInGroupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="View\TeacherSettingsFrom.Designer.cs">
       <DependentUpon>TeacherSettingsFrom.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AddDataInGroupForm.resx">
+      <DependentUpon>AddDataInGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,9 +155,11 @@
     <Content Include="logo.ico" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\eyehidden.png" />
+    <None Include="Resources\input.png" />
     <Content Include="Resources\lab.xml" />
     <None Include="Resources\signup.png" />
     <None Include="Resources\settings20px.png" />
+    <None Include="Resources\output.png" />
     <Content Include="Resources\test.xml" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\tick.png" />

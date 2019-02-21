@@ -131,6 +131,16 @@ namespace ElipTeacher.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap input {
+            get {
+                object obj = ResourceManager.GetObject("input", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
         ///  &lt;lab number=&quot;&quot; text=&quot;&quot;&gt;
@@ -160,6 +170,16 @@ namespace ElipTeacher.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap output {
+            get {
+                object obj = ResourceManager.GetObject("output", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

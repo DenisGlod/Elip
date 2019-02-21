@@ -34,9 +34,7 @@ namespace ElipAdmin.Model.Entity
 
         public virtual ICollection<DataInGroup> DataInGroups { get; set; }
 
-        public User() { }
-
-        public User(bool flagDataInGroup)
+        public User()
         {
             DataInGroups = new BindingList<DataInGroup>();
         }

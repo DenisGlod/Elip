@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.BSettings = new System.Windows.Forms.Button();
@@ -41,8 +42,15 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DGVDataInGroup = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BDeleteDataInGroup = new System.Windows.Forms.Button();
+            this.BAddDataInGroup = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.DGVMyLabAndTest = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.BDelete = new System.Windows.Forms.Button();
+            this.BEdit = new System.Windows.Forms.Button();
+            this.BAdd = new System.Windows.Forms.Button();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -51,6 +59,9 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).BeginInit();
             this.panel2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVMyLabAndTest)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -61,7 +72,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(611, 43);
+            this.panel1.Size = new System.Drawing.Size(659, 43);
             this.panel1.TabIndex = 0;
             // 
             // BSettings
@@ -69,7 +80,7 @@
             this.BSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BSettings.Image = global::ElipTeacher.Properties.Resources.settings20px;
-            this.BSettings.Location = new System.Drawing.Point(569, 6);
+            this.BSettings.Location = new System.Drawing.Point(617, 6);
             this.BSettings.Name = "BSettings";
             this.BSettings.Size = new System.Drawing.Size(30, 30);
             this.BSettings.TabIndex = 2;
@@ -105,6 +116,7 @@
             this.TVGroup.Name = "TVGroup";
             this.TVGroup.Size = new System.Drawing.Size(174, 264);
             this.TVGroup.TabIndex = 0;
+            this.TVGroup.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TVGroup_BeforeSelect);
             this.TVGroup.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TVGroup_AfterSelect);
             // 
             // splitter1
@@ -119,21 +131,23 @@
             // 
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
+            this.TabControl.Controls.Add(this.tabPage3);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControl.ImageList = this.ImageList;
             this.TabControl.Location = new System.Drawing.Point(183, 43);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(428, 283);
+            this.TabControl.Size = new System.Drawing.Size(476, 283);
             this.TabControl.TabIndex = 3;
             this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.DGVUsers);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(420, 257);
+            this.tabPage1.Size = new System.Drawing.Size(468, 256);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Пользователи";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -149,17 +163,17 @@
             this.DGVUsers.Name = "DGVUsers";
             this.DGVUsers.ReadOnly = true;
             this.DGVUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVUsers.Size = new System.Drawing.Size(414, 251);
+            this.DGVUsers.Size = new System.Drawing.Size(462, 250);
             this.DGVUsers.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.DGVDataInGroup);
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(420, 257);
+            this.tabPage2.Size = new System.Drawing.Size(468, 256);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Данные";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -175,42 +189,132 @@
             this.DGVDataInGroup.Name = "DGVDataInGroup";
             this.DGVDataInGroup.ReadOnly = true;
             this.DGVDataInGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVDataInGroup.Size = new System.Drawing.Size(414, 217);
+            this.DGVDataInGroup.Size = new System.Drawing.Size(462, 216);
             this.DGVDataInGroup.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.BDeleteDataInGroup);
+            this.panel2.Controls.Add(this.BAddDataInGroup);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 220);
+            this.panel2.Location = new System.Drawing.Point(3, 219);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(414, 34);
+            this.panel2.Size = new System.Drawing.Size(462, 34);
             this.panel2.TabIndex = 1;
             // 
-            // button3
+            // BDeleteDataInGroup
             // 
-            this.button3.Location = new System.Drawing.Point(324, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BDeleteDataInGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BDeleteDataInGroup.Image = global::ElipTeacher.Properties.Resources.output;
+            this.BDeleteDataInGroup.Location = new System.Drawing.Point(299, 5);
+            this.BDeleteDataInGroup.Name = "BDeleteDataInGroup";
+            this.BDeleteDataInGroup.Size = new System.Drawing.Size(149, 29);
+            this.BDeleteDataInGroup.TabIndex = 1;
+            this.BDeleteDataInGroup.Text = "Удалить из группы";
+            this.BDeleteDataInGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BDeleteDataInGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BDeleteDataInGroup.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BAddDataInGroup
             // 
-            this.button2.Location = new System.Drawing.Point(14, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BAddDataInGroup.Image = global::ElipTeacher.Properties.Resources.input;
+            this.BAddDataInGroup.Location = new System.Drawing.Point(13, 5);
+            this.BAddDataInGroup.Name = "BAddDataInGroup";
+            this.BAddDataInGroup.Size = new System.Drawing.Size(142, 29);
+            this.BAddDataInGroup.TabIndex = 0;
+            this.BAddDataInGroup.Text = "Добавить в группу";
+            this.BAddDataInGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAddDataInGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BAddDataInGroup.UseVisualStyleBackColor = true;
+            this.BAddDataInGroup.Click += new System.EventHandler(this.BAddDataInGroup_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.DGVMyLabAndTest);
+            this.tabPage3.Controls.Add(this.panel3);
+            this.tabPage3.ImageIndex = 0;
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(468, 256);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Мои лабораторные и тесты";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // DGVMyLabAndTest
+            // 
+            this.DGVMyLabAndTest.AllowUserToAddRows = false;
+            this.DGVMyLabAndTest.AllowUserToDeleteRows = false;
+            this.DGVMyLabAndTest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVMyLabAndTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVMyLabAndTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVMyLabAndTest.Location = new System.Drawing.Point(3, 3);
+            this.DGVMyLabAndTest.Name = "DGVMyLabAndTest";
+            this.DGVMyLabAndTest.ReadOnly = true;
+            this.DGVMyLabAndTest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVMyLabAndTest.Size = new System.Drawing.Size(462, 216);
+            this.DGVMyLabAndTest.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.BDelete);
+            this.panel3.Controls.Add(this.BEdit);
+            this.panel3.Controls.Add(this.BAdd);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(3, 219);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(462, 34);
+            this.panel3.TabIndex = 1;
+            // 
+            // BDelete
+            // 
+            this.BDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BDelete.Image = global::ElipTeacher.Properties.Resources.trash;
+            this.BDelete.Location = new System.Drawing.Point(363, 8);
+            this.BDelete.Name = "BDelete";
+            this.BDelete.Size = new System.Drawing.Size(87, 23);
+            this.BDelete.TabIndex = 2;
+            this.BDelete.Text = "Удалить";
+            this.BDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BDelete.UseVisualStyleBackColor = true;
+            // 
+            // BEdit
+            // 
+            this.BEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BEdit.Image = global::ElipTeacher.Properties.Resources.pencil;
+            this.BEdit.Location = new System.Drawing.Point(179, 8);
+            this.BEdit.Name = "BEdit";
+            this.BEdit.Size = new System.Drawing.Size(115, 23);
+            this.BEdit.TabIndex = 1;
+            this.BEdit.Text = "Редактировать";
+            this.BEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BEdit.UseVisualStyleBackColor = true;
+            // 
+            // BAdd
+            // 
+            this.BAdd.Image = global::ElipTeacher.Properties.Resources.plus;
+            this.BAdd.Location = new System.Drawing.Point(11, 8);
+            this.BAdd.Name = "BAdd";
+            this.BAdd.Size = new System.Drawing.Size(87, 23);
+            this.BAdd.TabIndex = 0;
+            this.BAdd.Text = "Добавить";
+            this.BAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BAdd.UseVisualStyleBackColor = true;
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageList.Images.SetKeyName(0, "user.png");
             // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 326);
+            this.ClientSize = new System.Drawing.Size(659, 326);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.groupBox1);
@@ -229,6 +333,9 @@
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGVMyLabAndTest)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -247,7 +354,14 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView DGVDataInGroup;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BAddDataInGroup;
+        private System.Windows.Forms.Button BDeleteDataInGroup;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView DGVMyLabAndTest;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button BDelete;
+        private System.Windows.Forms.Button BEdit;
+        private System.Windows.Forms.Button BAdd;
+        private System.Windows.Forms.ImageList ImageList;
     }
 }

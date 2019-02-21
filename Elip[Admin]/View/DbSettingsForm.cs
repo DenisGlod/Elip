@@ -94,7 +94,8 @@ namespace ElipAdmin.View
                             Text = "Лабораторная №" + i,
                             Data = xDoc.OuterXml,
                             DataType = DataType.Lab.ToString(),
-                            GroupId = rnd.Next(1, 6)
+                            GroupId = rnd.Next(1, 6),
+                            UserId = rnd.Next(10, 14)
                         };
                         dbContext.DataInGroups.Add(data);
                     }
