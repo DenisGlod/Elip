@@ -205,6 +205,7 @@
             // BDeleteDataInGroup
             // 
             this.BDeleteDataInGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BDeleteDataInGroup.Enabled = false;
             this.BDeleteDataInGroup.Image = global::ElipTeacher.Properties.Resources.output;
             this.BDeleteDataInGroup.Location = new System.Drawing.Point(299, 5);
             this.BDeleteDataInGroup.Name = "BDeleteDataInGroup";
@@ -214,9 +215,11 @@
             this.BDeleteDataInGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BDeleteDataInGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BDeleteDataInGroup.UseVisualStyleBackColor = true;
+            this.BDeleteDataInGroup.Click += new System.EventHandler(this.BDeleteDataInGroup_Click);
             // 
             // BAddDataInGroup
             // 
+            this.BAddDataInGroup.Enabled = false;
             this.BAddDataInGroup.Image = global::ElipTeacher.Properties.Resources.input;
             this.BAddDataInGroup.Location = new System.Drawing.Point(13, 5);
             this.BAddDataInGroup.Name = "BAddDataInGroup";
@@ -278,6 +281,7 @@
             this.BDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BDelete.UseVisualStyleBackColor = true;
+            this.BDelete.Click += new System.EventHandler(this.BDelete_Click);
             // 
             // BEdit
             // 
@@ -303,6 +307,7 @@
             this.BAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BAdd.UseVisualStyleBackColor = true;
+            this.BAdd.Click += new System.EventHandler(this.BAdd_Click);
             // 
             // ImageList
             // 

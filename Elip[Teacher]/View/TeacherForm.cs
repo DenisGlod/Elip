@@ -1,5 +1,6 @@
 ﻿using ElipAdmin.Model;
 using ElipAdmin.Model.Entity;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,9 +45,12 @@ namespace ElipTeacher.View
             }
         }
 
-        private void InitHeaderLabel()
+        public void InitHeaderLabel()
         {
-            LUserInfo.Text = new StringBuilder()
+            using (var dbContext = new ElipContext())
+            {
+                user = dbContext.Users.Find(user.Id);
+                LUserInfo.Text = new StringBuilder()
                 .Append("Id: ")
                 .Append(user.Id)
                 .Append(" | ")
@@ -57,6 +61,7 @@ namespace ElipTeacher.View
                 .Append(user.MiddleName)
                 .Append(" | Роль: ")
                 .Append(user.Role).ToString();
+            }
         }
 
         private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -66,6 +71,11 @@ namespace ElipTeacher.View
 
         private void TVGroup_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (!BAddDataInGroup.Enabled && !BDeleteDataInGroup.Enabled)
+            {
+                BAddDataInGroup.Enabled = true;
+                BDeleteDataInGroup.Enabled = true;
+            }
             TVGroup.SelectedNode.BackColor = SystemColors.Highlight;
             TVGroup.SelectedNode.ForeColor = Color.White;
             using (var dbContext = new ElipContext())
@@ -95,7 +105,7 @@ namespace ElipTeacher.View
 
         private void BSettings_Click(object sender, System.EventArgs e)
         {
-            new TeacherSettingsFrom().Show();
+            new TeacherSettingsFrom(this, user).Show();
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
@@ -109,10 +119,14 @@ namespace ElipTeacher.View
                 TVGroup_AfterSelect(TVGroup, null);
             }
         }
+        public void RefreshDGVDataInGroup()
+        {
+            TabControl_Selected(null, null);
+        }
 
         private void BAddDataInGroup_Click(object sender, System.EventArgs e)
         {
-            new AddDataInGroupForm(user).Show();
+            new AddDataInGroupForm(this, user, int.Parse(TVGroup.SelectedNode.Name)).Show();
         }
 
         private void TVGroup_BeforeSelect(object sender, TreeViewCancelEventArgs e)
@@ -122,6 +136,50 @@ namespace ElipTeacher.View
                 TVGroup.SelectedNode.BackColor = Color.Transparent;
                 TVGroup.SelectedNode.ForeColor = SystemColors.ControlText;
             }
+        }
+
+        private void BDeleteDataInGroup_Click(object sender, System.EventArgs e)
+        {
+            if (DGVDataInGroup.SelectedRows.Count == 0) { return; }
+            var result = MessageBox.Show("Подтверждаете удаление из группы?", "Вопрос", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                using (var dbContext = new ElipContext())
+                {
+                    foreach (DataGridViewRow item in DGVDataInGroup.SelectedRows)
+                    {
+                        var data = dbContext.DataInGroups.Find((int)item.Cells[0].Value);
+                        data.GroupId = null;
+                        dbContext.SaveChanges();
+                    }
+                }
+                RefreshDGVDataInGroup();
+            }
+        }
+
+        private void BDelete_Click(object sender, System.EventArgs e)
+        {
+            if (DGVMyLabAndTest.SelectedRows.Count == 0) { return; }
+            var result = MessageBox.Show("Подтверждаете полное удаление?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
+            if (result == DialogResult.OK)
+            {
+                using (var dbContext = new ElipContext())
+                {
+                    var removeList = new List<DataInGroup>();
+                    foreach (DataGridViewRow item in DGVMyLabAndTest.SelectedRows)
+                    {
+                        removeList.Add(dbContext.DataInGroups.Find((int)item.Cells[0].Value));
+                    }
+                    dbContext.DataInGroups.RemoveRange(removeList);
+                    dbContext.SaveChanges();
+                }
+                InitDGVMyLabAndTest();
+            }
+        }
+
+        private void BAdd_Click(object sender, System.EventArgs e)
+        {
+            new AddDataForm().Show();
         }
     }
 }

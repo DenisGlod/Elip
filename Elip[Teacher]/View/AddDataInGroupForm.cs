@@ -7,9 +7,13 @@ namespace ElipTeacher.View
     public partial class AddDataInGroupForm : Form
     {
         private User user;
-        public AddDataInGroupForm(object user)
+        private int groupId;
+        private TeacherForm teacherForm;
+        public AddDataInGroupForm(TeacherForm teacherForm, object user, int groupId)
         {
             this.user = (User)user;
+            this.groupId = groupId;
+            this.teacherForm = teacherForm;
             InitializeComponent();
             InitDGVMyData();
         }
@@ -18,7 +22,7 @@ namespace ElipTeacher.View
         {
             using (var dbContext = new ElipContext())
             {
-                var myDataList = dbContext.Users.Attach(user).DataInGroups;
+                var myDataList = dbContext.Users.Find(user.Id).DataInGroups;
                 DGVMyData.DataSource = myDataList;
                 DGVMyData.Columns["Group"].Visible = false;
                 DGVMyData.Columns["User"].Visible = false;
@@ -31,8 +35,13 @@ namespace ElipTeacher.View
             var key = (int)DGVMyData.SelectedCells[0].Value;
             using (var dbContext = new ElipContext())
             {
-
+                var data = dbContext.DataInGroups.Find(key);
+                data.GroupId = groupId;
+                dbContext.SaveChanges();
             }
+            Hide();
+            MessageBox.Show("Сохранено!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            teacherForm.RefreshDGVDataInGroup();
         }
     }
 }

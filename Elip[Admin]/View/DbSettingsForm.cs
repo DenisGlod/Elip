@@ -78,8 +78,7 @@ namespace ElipAdmin.View
                         xDoc.LoadXml(Properties.Resources.lab);
                         var root = xDoc.DocumentElement;
                         var lab = root.GetElementsByTagName("lab").Item(0);
-                        lab.Attributes.GetNamedItem("number").Value = i.ToString();
-                        lab.Attributes.GetNamedItem("text").Value = "Название лабораторной";
+                        lab.Attributes.GetNamedItem("text").Value = "Лабораторная работа № " + i.ToString();
                         var task = lab.FirstChild;
                         lab.RemoveChild(lab.FirstChild);
                         for (int j = 1; j < 6; j++)

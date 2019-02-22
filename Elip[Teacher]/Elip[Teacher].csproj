@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\AddDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddDataForm.Designer.cs">
+      <DependentUpon>AddDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddDataInGroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="View\TeacherSettingsFrom.Designer.cs">
       <DependentUpon>TeacherSettingsFrom.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AddDataForm.resx">
+      <DependentUpon>AddDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddDataInGroupForm.resx">
       <DependentUpon>AddDataInGroupForm.cs</DependentUpon>
     </EmbeddedResource>
