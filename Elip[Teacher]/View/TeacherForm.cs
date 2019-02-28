@@ -160,7 +160,7 @@ namespace ElipTeacher.View
         private void BDelete_Click(object sender, System.EventArgs e)
         {
             if (DGVMyLabAndTest.SelectedRows.Count == 0) { return; }
-            var result = MessageBox.Show("Подтверждаете полное удаление?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
+            var result = MessageBox.Show("Подтверждаете удаление?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
             if (result == DialogResult.OK)
             {
                 using (var dbContext = new ElipContext())
@@ -179,7 +179,7 @@ namespace ElipTeacher.View
 
         private void BAdd_Click(object sender, System.EventArgs e)
         {
-            new AddDataForm().Show();
+            new AddDataForm("Добавление").Show();
         }
     }
 }
