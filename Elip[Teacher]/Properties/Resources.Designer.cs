@@ -133,6 +133,16 @@ namespace ElipTeacher.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap floppy {
+            get {
+                object obj = ResourceManager.GetObject("floppy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap input {
             get {
                 object obj = ResourceManager.GetObject("input", resourceCulture);
@@ -143,7 +153,7 @@ namespace ElipTeacher.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
-        ///  &lt;lab number=&quot;&quot; text=&quot;&quot;&gt;
+        ///  &lt;lab text=&quot;&quot;&gt;
         ///    &lt;task number=&quot;&quot; text=&quot;&quot;/&gt;
         ///  &lt;/lab&gt;
         ///&lt;/data&gt;.
@@ -247,9 +257,9 @@ namespace ElipTeacher.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
-        ///  &lt;test number=&quot;&quot; text=&quot;&quot;&gt;
+        ///  &lt;test text=&quot;&quot;&gt;
         ///    &lt;question number=&quot;&quot; text=&quot;&quot;&gt;
-        ///      &lt;answer number=&quot;&quot; text=&quot;&quot;/&gt;
+        ///      &lt;answer number=&quot;&quot; text=&quot;&quot; right=&quot;&quot;/&gt;
         ///    &lt;/question&gt;
         ///  &lt;/test&gt;
         ///&lt;/data&gt;.

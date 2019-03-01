@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Lab.cs" />
+    <Compile Include="Entity\Test.cs" />
     <Compile Include="View\AddDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +167,7 @@
     <None Include="Resources\eye.png" />
     <None Include="Resources\eyehidden.png" />
     <None Include="Resources\input.png" />
+    <None Include="Resources\floppy.png" />
     <Content Include="Resources\lab.xml" />
     <None Include="Resources\signup.png" />
     <None Include="Resources\settings20px.png" />
