@@ -1,4 +1,5 @@
 ﻿using ElipAdmin.Model;
+using ElipUser.View;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace ElipUser
                 }
                 else
                 {
-                    var user = dbContext.Users.Where(u => u.Login.Equals(TBLogin.Text) && u.Password.Equals(TBPassword.Text) && u.Role.Equals("Преподаватель"));
+                    var user = dbContext.Users.Where(u => u.Login.Equals(TBLogin.Text) && u.Password.Equals(TBPassword.Text) && u.Role.Equals("Пользователь"));
                     if (user.Count() == 0)
                     {
                         MessageBox.Show("Неверный логин/пароль либо\r\nтакого пользователя не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

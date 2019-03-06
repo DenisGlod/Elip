@@ -77,7 +77,7 @@
             this.TBPassword.PasswordChar = '*';
             this.TBPassword.Size = new System.Drawing.Size(144, 22);
             this.TBPassword.TabIndex = 2;
-            this.TBPassword.Text = "user0";
+            this.TBPassword.Text = "user1";
             // 
             // label3
             // 

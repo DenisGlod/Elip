@@ -111,9 +111,49 @@ namespace ElipUser.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye {
+            get {
+                object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eyehidden {
+            get {
+                object obj = ResourceManager.GetObject("eyehidden", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap floppy {
+            get {
+                object obj = ResourceManager.GetObject("floppy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap input {
+            get {
+                object obj = ResourceManager.GetObject("input", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
-        ///  &lt;lab number=&quot;&quot; text=&quot;&quot;&gt;
+        ///  &lt;lab text=&quot;&quot;&gt;
         ///    &lt;task number=&quot;&quot; text=&quot;&quot;/&gt;
         ///  &lt;/lab&gt;
         ///&lt;/data&gt;.
@@ -121,6 +161,20 @@ namespace ElipUser.Properties {
         internal static string lab {
             get {
                 return ResourceManager.GetString("lab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;data&gt;
+        ///  &lt;lab text=&quot;&quot;&gt;
+        ///    &lt;task number=&quot;&quot; text=&quot;&quot;/&gt;
+        ///  &lt;/lab&gt;
+        ///&lt;/data&gt;.
+        /// </summary>
+        internal static string lab1 {
+            get {
+                return ResourceManager.GetString("lab1", resourceCulture);
             }
         }
         
@@ -140,6 +194,16 @@ namespace ElipUser.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap output {
+            get {
+                object obj = ResourceManager.GetObject("output", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -187,6 +251,16 @@ namespace ElipUser.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap settings20px {
+            get {
+                object obj = ResourceManager.GetObject("settings20px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap signup {
             get {
                 object obj = ResourceManager.GetObject("signup", resourceCulture);
@@ -197,9 +271,9 @@ namespace ElipUser.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;data&gt;
-        ///  &lt;test number=&quot;&quot; text=&quot;&quot;&gt;
+        ///  &lt;test text=&quot;&quot;&gt;
         ///    &lt;question number=&quot;&quot; text=&quot;&quot;&gt;
-        ///      &lt;answer number=&quot;&quot; text=&quot;&quot;/&gt;
+        ///      &lt;answer number=&quot;&quot; text=&quot;&quot; right=&quot;&quot;/&gt;
         ///    &lt;/question&gt;
         ///  &lt;/test&gt;
         ///&lt;/data&gt;.
@@ -207,6 +281,22 @@ namespace ElipUser.Properties {
         internal static string test {
             get {
                 return ResourceManager.GetString("test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;data&gt;
+        ///  &lt;test text=&quot;&quot;&gt;
+        ///    &lt;question number=&quot;&quot; text=&quot;&quot;&gt;
+        ///      &lt;answer number=&quot;&quot; text=&quot;&quot; right=&quot;&quot;/&gt;
+        ///    &lt;/question&gt;
+        ///  &lt;/test&gt;
+        ///&lt;/data&gt;.
+        /// </summary>
+        internal static string test1 {
+            get {
+                return ResourceManager.GetString("test1", resourceCulture);
             }
         }
         

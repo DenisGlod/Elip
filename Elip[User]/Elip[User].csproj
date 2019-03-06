@@ -103,16 +103,22 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="Resources\lab.xml" />
-    <None Include="Resources\signup.png" />
     <Content Include="Resources\test.xml" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\tick.png" />
+    <None Include="Resources\signup.png" />
+    <None Include="Resources\settings20px.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\plus.png" />
     <None Include="Resources\pencil.png" />
+    <None Include="Resources\output.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\login.png" />
+    <None Include="Resources\input.png" />
+    <None Include="Resources\floppy.png" />
+    <None Include="Resources\eyehidden.png" />
+    <None Include="Resources\eye.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\deletedb.png" />
     <None Include="Resources\delete.png" />
