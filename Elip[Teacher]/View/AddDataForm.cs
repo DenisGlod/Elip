@@ -9,13 +9,32 @@ namespace ElipTeacher.View
     {
         private Lab lab;
         private Test test;
-        public AddDataForm(string str)
+        private bool flag;
+        public AddDataForm(string str, TeacherForm form, object data, bool flag)
         {
-            lab = new Lab();
-            test = new Test();
             InitializeComponent();
             Text = str;
-            CBDataType.SelectedIndex = 0;
+            this.flag = flag;
+            if (this.flag)
+            {
+                lab = (Lab)data;
+                LCount.Text = "Количество заданий:";
+                GBList.Text = "Список заданий";
+                GBData.Text = "Текст задания";
+                GBAnswer.Visible = false;
+                BSave.Text = "Сохранить лабораторную";
+                BSaveOneObj.Text = "Сохранить задание";
+            }
+            else
+            {
+                test = (Test)data;
+                LCount.Text = "Количество вопросов:";
+                GBList.Text = "Список вопросов";
+                GBData.Text = "Текст вопроса";
+                GBAnswer.Visible = true;
+                BSave.Text = "Сохранить тест";
+                BSaveOneObj.Text = "Сохранить вопрос";
+            }
         }
 
         private void NUpDown_ValueChanged(object sender, EventArgs e)
@@ -27,100 +46,70 @@ namespace ElipTeacher.View
             }
         }
 
-        private void CBDataType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (CBDataType.SelectedIndex)
-            {
-                case 0:
-                    LCount.Text = "Количество вопросов:";
-                    GBList.Text = "Список вопросов";
-                    GBData.Text = "Текст вопроса";
-                    GBAnswer.Visible = true;
-                    BSave.Text = "Сохранить тест";
-                    BSaveOneObj.Text = "Сохранить вопрос";
-                    break;
-                case 1:
-                    LCount.Text = "Количество заданий:";
-                    GBList.Text = "Список заданий";
-                    GBData.Text = "Текст задания";
-                    GBAnswer.Visible = false;
-                    BSave.Text = "Сохранить лабораторную";
-                    BSaveOneObj.Text = "Сохранить задание";
-                    break;
-            }
-        }
-
         private void TVQuestions_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
-            switch (CBDataType.SelectedIndex)
+            if (flag)
             {
-                case 0:
-                    var tkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    TBNameTestOrLab.Text = test.TestName;
-                    test.QuestionsList.TryGetValue(tkey, out string value);
-                    RTBText.Text = value;
-                    test.AnswerList.TryGetValue(tkey, out var list);
-                    if (list != null)
+                var lkey = int.Parse(TVQuestions.SelectedNode.Name);
+                lab.TaskList.TryGetValue(lkey, out string str);
+                RTBText.Text = str;
+            }
+            else
+            {
+                var tkey = int.Parse(TVQuestions.SelectedNode.Name);
+                test.QuestionsList.TryGetValue(tkey, out string value);
+                RTBText.Text = value;
+                test.AnswerList.TryGetValue(tkey, out var list);
+                if (list != null)
+                {
+                    foreach (var item in list)
                     {
-                        foreach (var item in list)
+                        switch (item.Number)
                         {
-                            switch (item.Number)
-                            {
-                                case 1:
-                                    RTB1.Text = item.Text;
-                                    CB1.Checked = item.Flag;
-                                    break;
-                                case 2:
-                                    RTB2.Text = item.Text;
-                                    CB2.Checked = item.Flag;
-                                    break;
-                                case 3:
-                                    RTB3.Text = item.Text;
-                                    CB3.Checked = item.Flag;
-                                    break;
-                                case 4:
-                                    RTB4.Text = item.Text;
-                                    CB4.Checked = item.Flag;
-                                    break;
-                            }
+                            case 1:
+                                RTB1.Text = item.Text;
+                                CB1.Checked = item.Flag;
+                                break;
+                            case 2:
+                                RTB2.Text = item.Text;
+                                CB2.Checked = item.Flag;
+                                break;
+                            case 3:
+                                RTB3.Text = item.Text;
+                                CB3.Checked = item.Flag;
+                                break;
+                            case 4:
+                                RTB4.Text = item.Text;
+                                CB4.Checked = item.Flag;
+                                break;
                         }
                     }
-                    break;
-                case 1:
-                    TBNameTestOrLab.Text = lab.LabName;
-                    var lkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    lab.TaskList.TryGetValue(lkey, out string str);
-                    RTBText.Text = str;
-                    break;
+                }
             }
         }
 
         private void BSaveOneObj_Click(object sender, EventArgs e)
         {
-            switch (CBDataType.SelectedIndex)
+            if (flag)
             {
-                case 0:
-                    test.TestName = TBNameTestOrLab.Text;
-                    var tkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    var value = RTBText.Text;
-                    if (test.QuestionsList.ContainsKey(tkey)) { test.QuestionsList.Remove(tkey); }
-                    test.QuestionsList.Add(tkey, value);
-                    if (test.AnswerList.ContainsKey(tkey)) { test.AnswerList.Remove(tkey); }
-                    test.AnswerList.Add(tkey, new List<Answer>
+                var lkey = int.Parse(TVQuestions.SelectedNode.Name);
+                if (lab.TaskList.ContainsKey(lkey)) { lab.TaskList.Remove(lkey); }
+                lab.TaskList.Add(lkey, RTBText.Text);
+            }
+            else
+            {
+                var tkey = int.Parse(TVQuestions.SelectedNode.Name);
+                var value = RTBText.Text;
+                if (test.QuestionsList.ContainsKey(tkey)) { test.QuestionsList.Remove(tkey); }
+                test.QuestionsList.Add(tkey, value);
+                if (test.AnswerList.ContainsKey(tkey)) { test.AnswerList.Remove(tkey); }
+                test.AnswerList.Add(tkey, new List<Answer>
                     {
                         new Answer(1, RTB1.Text, CB1.Checked),
                         new Answer(2, RTB2.Text, CB2.Checked),
                         new Answer(3, RTB3.Text, CB3.Checked),
                         new Answer(4, RTB4.Text, CB4.Checked)
                     });
-                    break;
-                case 1:
-                    lab.LabName = TBNameTestOrLab.Text;
-                    var lkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    if (lab.TaskList.ContainsKey(lkey)) { lab.TaskList.Remove(lkey); }
-                    lab.TaskList.Add(lkey, RTBText.Text);
-                    break;
             }
         }
 

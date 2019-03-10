@@ -32,17 +32,12 @@
             this.LCount = new System.Windows.Forms.Label();
             this.NUpDown = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CBDataType = new System.Windows.Forms.ComboBox();
-            this.TBNameTestOrLab = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.BSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GBList = new System.Windows.Forms.GroupBox();
             this.TVQuestions = new System.Windows.Forms.TreeView();
             this.GBData = new System.Windows.Forms.GroupBox();
             this.RTBText = new System.Windows.Forms.RichTextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.BSaveOneObj = new System.Windows.Forms.Button();
             this.GBAnswer = new System.Windows.Forms.GroupBox();
             this.CB4 = new System.Windows.Forms.CheckBox();
@@ -58,7 +53,6 @@
             this.panel2.SuspendLayout();
             this.GBList.SuspendLayout();
             this.GBData.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.GBAnswer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +60,7 @@
             // 
             this.LCount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LCount.AutoSize = true;
-            this.LCount.Location = new System.Drawing.Point(189, 10);
+            this.LCount.Location = new System.Drawing.Point(22, 9);
             this.LCount.Name = "LCount";
             this.LCount.Size = new System.Drawing.Size(120, 13);
             this.LCount.TabIndex = 3;
@@ -75,7 +69,7 @@
             // NUpDown
             // 
             this.NUpDown.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.NUpDown.Location = new System.Drawing.Point(192, 27);
+            this.NUpDown.Location = new System.Drawing.Point(25, 26);
             this.NUpDown.Maximum = new decimal(new int[] {
             40,
             0,
@@ -88,10 +82,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.CBDataType);
-            this.panel1.Controls.Add(this.TBNameTestOrLab);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.BSaveOneObj);
             this.panel1.Controls.Add(this.NUpDown);
             this.panel1.Controls.Add(this.LCount);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -99,46 +90,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(560, 56);
             this.panel1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Тип работы:";
-            // 
-            // CBDataType
-            // 
-            this.CBDataType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBDataType.FormattingEnabled = true;
-            this.CBDataType.Items.AddRange(new object[] {
-            "Тест",
-            "Лабораторная"});
-            this.CBDataType.Location = new System.Drawing.Point(56, 26);
-            this.CBDataType.Name = "CBDataType";
-            this.CBDataType.Size = new System.Drawing.Size(121, 21);
-            this.CBDataType.TabIndex = 0;
-            this.CBDataType.SelectedIndexChanged += new System.EventHandler(this.CBDataType_SelectedIndexChanged);
-            // 
-            // TBNameTestOrLab
-            // 
-            this.TBNameTestOrLab.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TBNameTestOrLab.Location = new System.Drawing.Point(321, 27);
-            this.TBNameTestOrLab.Name = "TBNameTestOrLab";
-            this.TBNameTestOrLab.Size = new System.Drawing.Size(194, 20);
-            this.TBNameTestOrLab.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(318, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Наименование работы:";
             // 
             // BSave
             // 
@@ -189,7 +140,6 @@
             // GBData
             // 
             this.GBData.Controls.Add(this.RTBText);
-            this.GBData.Controls.Add(this.panel3);
             this.GBData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GBData.Location = new System.Drawing.Point(128, 56);
             this.GBData.Name = "GBData";
@@ -201,28 +151,18 @@
             // RTBText
             // 
             this.RTBText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RTBText.Location = new System.Drawing.Point(3, 45);
+            this.RTBText.Location = new System.Drawing.Point(3, 16);
             this.RTBText.Name = "RTBText";
-            this.RTBText.Size = new System.Drawing.Size(426, 115);
+            this.RTBText.Size = new System.Drawing.Size(426, 144);
             this.RTBText.TabIndex = 4;
             this.RTBText.Text = "";
-            // 
-            // panel3
-            // 
-            this.panel3.AutoScroll = true;
-            this.panel3.Controls.Add(this.BSaveOneObj);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 16);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(426, 29);
-            this.panel3.TabIndex = 5;
             // 
             // BSaveOneObj
             // 
             this.BSaveOneObj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BSaveOneObj.AutoSize = true;
             this.BSaveOneObj.Image = global::ElipTeacher.Properties.Resources.floppy;
-            this.BSaveOneObj.Location = new System.Drawing.Point(322, 3);
+            this.BSaveOneObj.Location = new System.Drawing.Point(453, 17);
             this.BSaveOneObj.Name = "BSaveOneObj";
             this.BSaveOneObj.Size = new System.Drawing.Size(95, 23);
             this.BSaveOneObj.TabIndex = 0;
@@ -343,8 +283,6 @@
             this.panel2.PerformLayout();
             this.GBList.ResumeLayout(false);
             this.GBData.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.GBAnswer.ResumeLayout(false);
             this.GBAnswer.PerformLayout();
             this.ResumeLayout(false);
@@ -356,9 +294,7 @@
         private System.Windows.Forms.NumericUpDown NUpDown;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BSave;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox TBNameTestOrLab;
         private System.Windows.Forms.GroupBox GBList;
         private System.Windows.Forms.GroupBox GBData;
         private System.Windows.Forms.RichTextBox RTBText;
@@ -371,10 +307,7 @@
         private System.Windows.Forms.RichTextBox RTB3;
         private System.Windows.Forms.RichTextBox RTB2;
         private System.Windows.Forms.RichTextBox RTB1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox CBDataType;
         private System.Windows.Forms.TreeView TVQuestions;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button BSaveOneObj;
     }
 }

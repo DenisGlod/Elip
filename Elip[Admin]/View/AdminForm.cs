@@ -25,6 +25,13 @@ namespace ElipAdmin.View
                 dbContext.Users.Load();
                 DGVUserTable.DataSource = null;
                 DGVUserTable.DataSource = dbContext.Users.Local.ToBindingList();
+                DGVUserTable.Columns["Login"].HeaderText = "Логин";
+                DGVUserTable.Columns["Password"].HeaderText = "Пароль";
+                DGVUserTable.Columns["LastName"].HeaderText = "Фамилия";
+                DGVUserTable.Columns["FirstName"].HeaderText = "Имя";
+                DGVUserTable.Columns["MiddleName"].HeaderText = "Отчество";
+                DGVUserTable.Columns["Role"].HeaderText = "Роль";
+                DGVUserTable.Columns["GroupId"].HeaderText = "Id Группы";
                 DGVUserTable.Columns["Group"].Visible = false;
                 DGVUserTable.Columns["DataInGroups"].Visible = false;
             }
@@ -37,6 +44,7 @@ namespace ElipAdmin.View
                 dbContext.Groups.Load();
                 DGVGroupTable.DataSource = null;
                 DGVGroupTable.DataSource = dbContext.Groups.Local.ToBindingList();
+                DGVGroupTable.Columns["NumberGroup"].HeaderText = "Номер группы";
                 DGVGroupTable.Columns["Users"].Visible = false;
                 DGVGroupTable.Columns["DataInGroups"].Visible = false;
             }
@@ -49,6 +57,11 @@ namespace ElipAdmin.View
                 dbContext.DataInGroups.Load();
                 DGVDataTable.DataSource = null;
                 DGVDataTable.DataSource = dbContext.DataInGroups.Local.ToBindingList();
+                DGVDataTable.Columns["Text"].HeaderText = "Название работы";
+                DGVDataTable.Columns["Data"].HeaderText = "Данные";
+                DGVDataTable.Columns["DataType"].HeaderText = "Тип работы";
+                DGVDataTable.Columns["GroupId"].HeaderText = "Id Группы";
+                DGVDataTable.Columns["UserId"].HeaderText = "Id Создателя работы";
                 DGVDataTable.Columns["Group"].Visible = false;
                 DGVDataTable.Columns["User"].Visible = false;
             }

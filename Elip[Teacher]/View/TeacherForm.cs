@@ -179,7 +179,7 @@ namespace ElipTeacher.View
 
         private void BAdd_Click(object sender, System.EventArgs e)
         {
-            new AddDataForm("Добавление").Show();
+            new BeforeForm(this).ShowDialog();
         }
     }
 }
