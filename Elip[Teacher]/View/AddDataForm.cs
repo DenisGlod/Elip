@@ -1,5 +1,5 @@
-﻿using ElipAdmin.Model;
-using ElipAdmin.Model.Entity;
+﻿using ElipModel.Model;
+using ElipModel.Model.Entity;
 using ElipModel.Entity;
 using System;
 using System.Collections.Generic;
@@ -13,13 +13,38 @@ namespace ElipTeacher.View
     {
         private Lab lab;
         private Test test;
-        private bool addFlag;
-        public AddDataForm(string str, TeacherForm form, object data, bool addFlag)
+        private bool flag;
+
+        public AddDataForm(string str, TeacherForm form, DataInGroup data, bool editFlag)
         {
             InitializeComponent();
             Text = str;
-            this.addFlag = addFlag;
-            if (this.addFlag)
+            if (data.DataType.Equals(DataType.Lab.ToString()))
+            {
+                LCount.Text = "Количество заданий:";
+                GBList.Text = "Список заданий";
+                GBData.Text = "Текст задания";
+                GBAnswer.Visible = false;
+                BSave.Text = "Сохранить лабораторную";
+                BSaveOneObj.Text = "Сохранить задание";
+            }
+            else
+            {
+                LCount.Text = "Количество вопросов:";
+                GBList.Text = "Список вопросов";
+                GBData.Text = "Текст вопроса";
+                GBAnswer.Visible = true;
+                BSave.Text = "Сохранить тест";
+                BSaveOneObj.Text = "Сохранить вопрос";
+            }
+        }
+
+        public AddDataForm(string str, TeacherForm form, object data, bool flag)
+        {
+            InitializeComponent();
+            Text = str;
+            this.flag = flag;
+            if (this.flag)
             {
                 lab = (Lab)data;
                 LCount.Text = "Количество заданий:";
@@ -52,7 +77,7 @@ namespace ElipTeacher.View
 
         private void TVQuestions_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (addFlag)
+            if (flag)
             {
                 var lkey = int.Parse(TVQuestions.SelectedNode.Name);
                 lab.TaskList.TryGetValue(lkey, out string str);
@@ -94,7 +119,7 @@ namespace ElipTeacher.View
 
         private void BSaveOneObj_Click(object sender, EventArgs e)
         {
-            if (addFlag)
+            if (flag)
             {
                 var lkey = int.Parse(TVQuestions.SelectedNode.Name);
                 if (lab.TaskList.ContainsKey(lkey)) { lab.TaskList.Remove(lkey); }
@@ -119,7 +144,7 @@ namespace ElipTeacher.View
 
         private void BSave_Click(object sender, EventArgs e)
         {
-            if (addFlag)
+            if (flag)
             {
                 var labData = new DataInGroup
                 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElipAdmin.Model.Entity
+namespace ElipModel.Model.Entity
 {
     public enum DataType
     {

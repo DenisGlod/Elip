@@ -1,5 +1,5 @@
-﻿using ElipAdmin.Model;
-using ElipAdmin.Model.Entity;
+﻿using ElipModel.Model;
+using ElipModel.Model.Entity;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

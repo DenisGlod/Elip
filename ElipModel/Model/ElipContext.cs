@@ -1,7 +1,7 @@
-﻿using ElipAdmin.Model.Entity;
+﻿using ElipModel.Model.Entity;
 using System.Data.Entity;
 
-namespace ElipAdmin.Model
+namespace ElipModel.Model
 {
     public class ElipContext : DbContext
     {

@@ -1,5 +1,5 @@
-﻿using ElipAdmin.Model;
-using ElipAdmin.Model.Entity;
+﻿using ElipModel.Model;
+using ElipModel.Model.Entity;
 using ElipModel.Entity;
 using System;
 using System.IO;

@@ -1,5 +1,5 @@
-﻿using ElipAdmin.Model;
-using ElipAdmin.Model.Entity;
+﻿using ElipModel.Model;
+using ElipModel.Model.Entity;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -191,7 +191,7 @@ namespace ElipTeacher.View
                 dataInGroup = dbContext.DataInGroups.Find((int)DGVMyLabAndTest.SelectedCells[0].Value);
             }
             Hide();
-            //new AddDataForm("Редактирование",this,).Show();
+            new AddDataForm("Редактирование", this, dataInGroup, true).Show();
         }
     }
 }

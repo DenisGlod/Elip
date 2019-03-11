@@ -1,4 +1,4 @@
-﻿using ElipAdmin.Model;
+﻿using ElipModel.Model;
 using ElipAdmin.View;
 using System;
 using System.Linq;

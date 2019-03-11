@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ElipAdmin.Model.Entity
+namespace ElipModel.Model.Entity
 {
     public class User
     {
