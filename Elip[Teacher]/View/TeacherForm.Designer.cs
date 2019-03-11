@@ -50,7 +50,6 @@
             this.BDelete = new System.Windows.Forms.Button();
             this.BEdit = new System.Windows.Forms.Button();
             this.BAdd = new System.Windows.Forms.Button();
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +57,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TabControl.SuspendLayout();
@@ -305,6 +305,7 @@
             this.BEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BEdit.UseVisualStyleBackColor = true;
+            this.BEdit.Click += new System.EventHandler(this.BEdit_Click);
             // 
             // BAdd
             // 
@@ -318,12 +319,6 @@
             this.BAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BAdd.UseVisualStyleBackColor = true;
             this.BAdd.Click += new System.EventHandler(this.BAdd_Click);
-            // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ImageList.Images.SetKeyName(0, "user.png");
             // 
             // tabPage4
             // 
@@ -377,6 +372,12 @@
             // 
             this.Column5.HeaderText = "Mark";
             this.Column5.Name = "Column5";
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImageList.Images.SetKeyName(0, "user.png");
             // 
             // TeacherForm
             // 

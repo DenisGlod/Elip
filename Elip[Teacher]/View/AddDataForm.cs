@@ -1,6 +1,10 @@
-﻿using ElipTeacher.Entity;
+﻿using ElipAdmin.Model;
+using ElipAdmin.Model.Entity;
+using ElipModel.Entity;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace ElipTeacher.View
@@ -9,13 +13,13 @@ namespace ElipTeacher.View
     {
         private Lab lab;
         private Test test;
-        private bool flag;
-        public AddDataForm(string str, TeacherForm form, object data, bool flag)
+        private bool addFlag;
+        public AddDataForm(string str, TeacherForm form, object data, bool addFlag)
         {
             InitializeComponent();
             Text = str;
-            this.flag = flag;
-            if (this.flag)
+            this.addFlag = addFlag;
+            if (this.addFlag)
             {
                 lab = (Lab)data;
                 LCount.Text = "Количество заданий:";
@@ -48,7 +52,7 @@ namespace ElipTeacher.View
 
         private void TVQuestions_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (flag)
+            if (addFlag)
             {
                 var lkey = int.Parse(TVQuestions.SelectedNode.Name);
                 lab.TaskList.TryGetValue(lkey, out string str);
@@ -90,7 +94,7 @@ namespace ElipTeacher.View
 
         private void BSaveOneObj_Click(object sender, EventArgs e)
         {
-            if (flag)
+            if (addFlag)
             {
                 var lkey = int.Parse(TVQuestions.SelectedNode.Name);
                 if (lab.TaskList.ContainsKey(lkey)) { lab.TaskList.Remove(lkey); }
@@ -115,8 +119,45 @@ namespace ElipTeacher.View
 
         private void BSave_Click(object sender, EventArgs e)
         {
-            var tempLab = lab;
-            var tempTest = test;
+            if (addFlag)
+            {
+                var labData = new DataInGroup
+                {
+                    DataType = DataType.Lab.ToString()
+                };
+                var bf = new BinaryFormatter();
+                using (var ms = new MemoryStream())
+                {
+                    bf.Serialize(ms, lab);
+                    labData.Data = ms.ToArray();
+                }
+                using (var dbContext = new ElipContext())
+                {
+                    dbContext.DataInGroups.Add(labData);
+                    dbContext.SaveChanges();
+                }
+            }
+            else
+            {
+                var testData = new DataInGroup
+                {
+                    DataType = DataType.Test.ToString()
+                };
+                var bf = new BinaryFormatter();
+                using (var ms = new MemoryStream())
+                {
+                    bf.Serialize(ms, test);
+                    testData.Data = ms.ToArray();
+                    testData.Data = ms.ToArray();
+                }
+                using (var dbContext = new ElipContext())
+                {
+                    dbContext.DataInGroups.Add(testData);
+                    dbContext.SaveChanges();
+                }
+            }
+            Hide();
+            MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TVQuestions_BeforeSelect(object sender, TreeViewCancelEventArgs e)

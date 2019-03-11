@@ -32,19 +32,19 @@ namespace ElipAdmin.View
                 CBDataType.SelectedIndex = 1;
             }
             TBText.Text = data.Text;
-            RTBData.Text = data.Data;
+            RTBData.Text = data.Data.ToString();
             TBGroupId.Text = data.GroupId.ToString();
             TBUserId.Text = data.UserId.ToString();
         }
 
         private void BSave_Click(object sender, System.EventArgs e)
         {
-            if (flag)
+            /*if (flag)
             {
                 DataInGroup saveData = new DataInGroup
                 {
                     Text = TBText.Text,
-                    Data = RTBData.Text,
+                    Data = RTBData.Text.,
                     DataType = CBDataType.SelectedItem.ToString()
                 };
                 ValidateUserAndGroupId(saveData);
@@ -65,7 +65,7 @@ namespace ElipAdmin.View
                     dbContext.Entry(data).State = EntityState.Modified;
                     dbContext.SaveChanges();
                 }
-            }
+            }*/
             Hide();
             MessageBox.Show("Сохранено!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
             adminForm.InitDataInGroupTable();

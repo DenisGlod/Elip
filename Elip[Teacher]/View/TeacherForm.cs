@@ -179,7 +179,19 @@ namespace ElipTeacher.View
 
         private void BAdd_Click(object sender, System.EventArgs e)
         {
-            new BeforeForm(this).ShowDialog();
+            new BeforeForm(this).Show();
+        }
+
+        private void BEdit_Click(object sender, System.EventArgs e)
+        {
+            if (DGVMyLabAndTest.SelectedRows.Count == 0) { return; }
+            DataInGroup dataInGroup;
+            using (var dbContext = new ElipContext())
+            {
+                dataInGroup = dbContext.DataInGroups.Find((int)DGVMyLabAndTest.SelectedCells[0].Value);
+            }
+            Hide();
+            //new AddDataForm("Редактирование",this,).Show();
         }
     }
 }

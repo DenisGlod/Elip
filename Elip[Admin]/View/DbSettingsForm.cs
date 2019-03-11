@@ -1,8 +1,10 @@
 ﻿using ElipAdmin.Model;
 using ElipAdmin.Model.Entity;
+using ElipModel.Entity;
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace ElipAdmin.View
 {
@@ -74,28 +76,28 @@ namespace ElipAdmin.View
 
                     for (int i = 1; i < 11; i++)
                     {
-                        var xDoc = new XmlDocument();
-                        xDoc.LoadXml(Properties.Resources.lab);
-                        var root = xDoc.DocumentElement;
-                        var lab = root.GetElementsByTagName("lab").Item(0);
-                        lab.Attributes.GetNamedItem("text").Value = "Лабораторная работа № " + i.ToString();
-                        var task = lab.FirstChild;
-                        lab.RemoveChild(lab.FirstChild);
-                        for (int j = 1; j < 6; j++)
-                        {
-                            var tempTask = task.Clone();
-                            tempTask.Attributes.GetNamedItem("number").Value = j.ToString();
-                            tempTask.Attributes.GetNamedItem("text").Value = "Текст задачи";
-                            lab.AppendChild(tempTask);
-                        }
                         var data = new DataInGroup
                         {
                             Text = "Лабораторная №" + i,
-                            Data = xDoc.OuterXml,
                             DataType = DataType.Lab.ToString(),
                             GroupId = rnd.Next(1, 6),
                             UserId = rnd.Next(10, 14)
                         };
+                        var lab = new Lab
+                        {
+                            LabName = "Лабораторная №" + i
+                        };
+                        lab.TaskList.Add(1, "Task 1");
+                        lab.TaskList.Add(2, "Task 2");
+                        lab.TaskList.Add(3, "Task 3");
+                        lab.TaskList.Add(4, "Task 4");
+                        using (var ms = new MemoryStream())
+                        {
+                            var bf = new BinaryFormatter();
+                            bf.Serialize(ms, lab);
+                            data.Data = ms.ToArray();
+                        }
+
                         dbContext.DataInGroups.Add(data);
                     }
                     dbContext.SaveChanges();

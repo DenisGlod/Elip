@@ -11,7 +11,7 @@ namespace ElipAdmin.Model.Entity
         public string Text { get; set; }
 
         [Required]
-        public string Data { get; set; }
+        public byte[] Data { get; set; }
 
         [Required]
         public string DataType { get; set; }

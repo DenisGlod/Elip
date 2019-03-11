@@ -58,7 +58,7 @@ namespace ElipAdmin.View
                 DGVDataTable.DataSource = null;
                 DGVDataTable.DataSource = dbContext.DataInGroups.Local.ToBindingList();
                 DGVDataTable.Columns["Text"].HeaderText = "Название работы";
-                DGVDataTable.Columns["Data"].HeaderText = "Данные";
+                DGVDataTable.Columns["Data"].Visible = false;
                 DGVDataTable.Columns["DataType"].HeaderText = "Тип работы";
                 DGVDataTable.Columns["GroupId"].HeaderText = "Id Группы";
                 DGVDataTable.Columns["UserId"].HeaderText = "Id Создателя работы";

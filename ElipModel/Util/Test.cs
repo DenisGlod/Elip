@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ElipTeacher.Entity
+namespace ElipModel.Entity
 {
     [Serializable]
-    class Test
+    public class Test
     {
         public string TestName { get; set; }
         public Dictionary<int, string> QuestionsList { get; set; }
@@ -18,7 +18,7 @@ namespace ElipTeacher.Entity
     }
 
     [Serializable]
-    class Answer
+    public class Answer
     {
         public int Number { get; set; }
         public string Text { get; set; }

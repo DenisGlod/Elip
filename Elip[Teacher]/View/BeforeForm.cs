@@ -1,4 +1,4 @@
-﻿using ElipTeacher.Entity;
+﻿using ElipModel.Entity;
 using System.Windows.Forms;
 
 namespace ElipTeacher.View
@@ -15,6 +15,11 @@ namespace ElipTeacher.View
 
         private void BOk_Click(object sender, System.EventArgs e)
         {
+            if (TBText.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Не неуказано название работы.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (RBLab.Checked)
             {
                 var lab = new Lab

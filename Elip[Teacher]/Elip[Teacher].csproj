@@ -59,8 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\Lab.cs" />
-    <Compile Include="Entity\Test.cs" />
     <Compile Include="View\AddDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
