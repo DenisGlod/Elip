@@ -1,4 +1,5 @@
-﻿using ElipModel.Entity;
+﻿using ElipModel.Model.Entity;
+using System;
 using System.Windows.Forms;
 
 namespace ElipTeacher.View
@@ -6,39 +7,25 @@ namespace ElipTeacher.View
     public partial class BeforeForm : Form
     {
         private TeacherForm teacherForm;
-        public BeforeForm(TeacherForm form)
+        public BeforeForm(TeacherForm teacherForm)
         {
-            teacherForm = form;
             InitializeComponent();
+            this.teacherForm = teacherForm;
             RBLab.Checked = true;
         }
 
-        private void BOk_Click(object sender, System.EventArgs e)
+        private void BOpenAddEditDataForm_Click(object sender, EventArgs e)
         {
-            if (TBText.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Не неуказано название работы.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (RBLab.Checked)
             {
-                var lab = new Lab
-                {
-                    LabName = TBText.Text
-                };
                 Hide();
-                new AddDataForm("Добавление лабораторной работы", teacherForm, lab, true).Show();
+                new AddEditDataForm(teacherForm, DataType.Lab, "Add", null).Show();
             }
-            else if (RBTest.Checked)
+            else
             {
-                var test = new Test
-                {
-                    TestName = TBText.Text
-                };
                 Hide();
-                new AddDataForm("Добавление теста", teacherForm, test, false).Show();
+                new AddEditDataForm(teacherForm, DataType.Test, "Add", null).Show();
             }
-
         }
     }
 }

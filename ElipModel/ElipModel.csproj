@@ -55,6 +55,7 @@
     <Compile Include="Model\Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Lab.cs" />
+    <Compile Include="Util\Util.cs" />
     <Compile Include="Util\Test.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,8 @@
-﻿using ElipModel.Model;
+﻿using ElipModel.Entity;
+using ElipModel.Model;
 using ElipModel.Model.Entity;
-using ElipModel.Entity;
+using ElipModel.Util;
 using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace ElipAdmin.View
@@ -76,13 +75,6 @@ namespace ElipAdmin.View
 
                     for (int i = 1; i < 11; i++)
                     {
-                        var data = new DataInGroup
-                        {
-                            Text = "Лабораторная №" + i,
-                            DataType = DataType.Lab.ToString(),
-                            GroupId = rnd.Next(1, 6),
-                            UserId = rnd.Next(10, 14)
-                        };
                         var lab = new Lab
                         {
                             LabName = "Лабораторная №" + i
@@ -91,13 +83,14 @@ namespace ElipAdmin.View
                         lab.TaskList.Add(2, "Task 2");
                         lab.TaskList.Add(3, "Task 3");
                         lab.TaskList.Add(4, "Task 4");
-                        using (var ms = new MemoryStream())
+                        var data = new DataInGroup
                         {
-                            var bf = new BinaryFormatter();
-                            bf.Serialize(ms, lab);
-                            data.Data = ms.ToArray();
-                        }
-
+                            Text = "Лабораторная №" + i,
+                            DataType = DataType.Lab.ToString(),
+                            GroupId = rnd.Next(1, 6),
+                            Data = Util.Serializatoin(lab),
+                            UserId = rnd.Next(10, 14)
+                        };
                         dbContext.DataInGroups.Add(data);
                     }
                     dbContext.SaveChanges();

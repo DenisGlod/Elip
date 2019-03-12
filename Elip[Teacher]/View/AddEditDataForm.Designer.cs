@@ -1,6 +1,6 @@
 ﻿namespace ElipTeacher.View
 {
-    partial class AddDataForm
+    partial class AddEditDataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDataForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditDataForm));
             this.LCount = new System.Windows.Forms.Label();
             this.NUpDown = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LNameProject = new System.Windows.Forms.Label();
+            this.TBNameProject = new System.Windows.Forms.TextBox();
+            this.BSaveOneObj = new System.Windows.Forms.Button();
             this.BSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.GBList = new System.Windows.Forms.GroupBox();
             this.TVQuestions = new System.Windows.Forms.TreeView();
             this.GBData = new System.Windows.Forms.GroupBox();
             this.RTBText = new System.Windows.Forms.RichTextBox();
-            this.BSaveOneObj = new System.Windows.Forms.Button();
             this.GBAnswer = new System.Windows.Forms.GroupBox();
             this.CB4 = new System.Windows.Forms.CheckBox();
             this.CB3 = new System.Windows.Forms.CheckBox();
@@ -82,6 +84,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LNameProject);
+            this.panel1.Controls.Add(this.TBNameProject);
             this.panel1.Controls.Add(this.BSaveOneObj);
             this.panel1.Controls.Add(this.NUpDown);
             this.panel1.Controls.Add(this.LCount);
@@ -90,6 +94,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(560, 56);
             this.panel1.TabIndex = 5;
+            // 
+            // LNameProject
+            // 
+            this.LNameProject.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LNameProject.AutoSize = true;
+            this.LNameProject.Location = new System.Drawing.Point(218, 9);
+            this.LNameProject.Name = "LNameProject";
+            this.LNameProject.Size = new System.Drawing.Size(100, 13);
+            this.LNameProject.TabIndex = 6;
+            this.LNameProject.Text = "Название работы:";
+            // 
+            // TBNameProject
+            // 
+            this.TBNameProject.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TBNameProject.Location = new System.Drawing.Point(221, 25);
+            this.TBNameProject.Name = "TBNameProject";
+            this.TBNameProject.Size = new System.Drawing.Size(158, 20);
+            this.TBNameProject.TabIndex = 5;
+            // 
+            // BSaveOneObj
+            // 
+            this.BSaveOneObj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BSaveOneObj.AutoSize = true;
+            this.BSaveOneObj.Image = global::ElipTeacher.Properties.Resources.floppy;
+            this.BSaveOneObj.Location = new System.Drawing.Point(453, 16);
+            this.BSaveOneObj.Name = "BSaveOneObj";
+            this.BSaveOneObj.Size = new System.Drawing.Size(95, 29);
+            this.BSaveOneObj.TabIndex = 0;
+            this.BSaveOneObj.Text = "Сохранить";
+            this.BSaveOneObj.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BSaveOneObj.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BSaveOneObj.UseVisualStyleBackColor = true;
+            this.BSaveOneObj.Click += new System.EventHandler(this.BSaveOneObj_Click);
             // 
             // BSave
             // 
@@ -156,21 +193,6 @@
             this.RTBText.Size = new System.Drawing.Size(426, 144);
             this.RTBText.TabIndex = 4;
             this.RTBText.Text = "";
-            // 
-            // BSaveOneObj
-            // 
-            this.BSaveOneObj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BSaveOneObj.AutoSize = true;
-            this.BSaveOneObj.Image = global::ElipTeacher.Properties.Resources.floppy;
-            this.BSaveOneObj.Location = new System.Drawing.Point(453, 17);
-            this.BSaveOneObj.Name = "BSaveOneObj";
-            this.BSaveOneObj.Size = new System.Drawing.Size(95, 23);
-            this.BSaveOneObj.TabIndex = 0;
-            this.BSaveOneObj.Text = "Сохранить";
-            this.BSaveOneObj.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BSaveOneObj.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BSaveOneObj.UseVisualStyleBackColor = true;
-            this.BSaveOneObj.Click += new System.EventHandler(this.BSaveOneObj_Click);
             // 
             // GBAnswer
             // 
@@ -262,7 +284,7 @@
             this.RTB1.TabIndex = 6;
             this.RTB1.Text = "";
             // 
-            // AddDataForm
+            // AddEditDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -273,7 +295,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddDataForm";
+            this.Name = "AddEditDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление/Редактирование";
             ((System.ComponentModel.ISupportInitialize)(this.NUpDown)).EndInit();
@@ -309,5 +331,7 @@
         private System.Windows.Forms.RichTextBox RTB1;
         private System.Windows.Forms.TreeView TVQuestions;
         private System.Windows.Forms.Button BSaveOneObj;
+        private System.Windows.Forms.Label LNameProject;
+        private System.Windows.Forms.TextBox TBNameProject;
     }
 }

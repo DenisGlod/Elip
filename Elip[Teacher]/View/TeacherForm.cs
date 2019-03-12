@@ -10,21 +10,21 @@ namespace ElipTeacher.View
 {
     public partial class TeacherForm : Form
     {
-        private User user;
+        public User User { get; set; }
         public TeacherForm(object user)
         {
-            this.user = (User)user;
+            User = (User)user;
             InitializeComponent();
             InitHeaderLabel();
             InitTVGroup();
             InitDGVMyLabAndTest();
         }
 
-        private void InitDGVMyLabAndTest()
+        public void InitDGVMyLabAndTest()
         {
             using (var dbContext = new ElipContext())
             {
-                var myDataList = dbContext.Users.Find(user.Id).DataInGroups;
+                var myDataList = dbContext.Users.Find(User.Id).DataInGroups;
                 DGVMyLabAndTest.DataSource = myDataList;
                 DGVMyLabAndTest.Columns["Group"].Visible = false;
                 DGVMyLabAndTest.Columns["User"].Visible = false;
@@ -49,18 +49,18 @@ namespace ElipTeacher.View
         {
             using (var dbContext = new ElipContext())
             {
-                user = dbContext.Users.Find(user.Id);
+                User = dbContext.Users.Find(User.Id);
                 LUserInfo.Text = new StringBuilder()
                 .Append("Id: ")
-                .Append(user.Id)
+                .Append(User.Id)
                 .Append(" | ")
-                .Append(user.LastName)
+                .Append(User.LastName)
                 .Append(" ")
-                .Append(user.FirstName)
+                .Append(User.FirstName)
                 .Append(" ")
-                .Append(user.MiddleName)
+                .Append(User.MiddleName)
                 .Append(" | Роль: ")
-                .Append(user.Role).ToString();
+                .Append(User.Role).ToString();
             }
         }
 
@@ -105,7 +105,7 @@ namespace ElipTeacher.View
 
         private void BSettings_Click(object sender, System.EventArgs e)
         {
-            new TeacherSettingsFrom(this, user).Show();
+            new TeacherSettingsFrom(this, User).Show();
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
@@ -126,7 +126,7 @@ namespace ElipTeacher.View
 
         private void BAddDataInGroup_Click(object sender, System.EventArgs e)
         {
-            new AddDataInGroupForm(this, user, int.Parse(TVGroup.SelectedNode.Name)).Show();
+            new AddDataInGroupForm(this, User, int.Parse(TVGroup.SelectedNode.Name)).Show();
         }
 
         private void TVGroup_BeforeSelect(object sender, TreeViewCancelEventArgs e)
@@ -190,8 +190,14 @@ namespace ElipTeacher.View
             {
                 dataInGroup = dbContext.DataInGroups.Find((int)DGVMyLabAndTest.SelectedCells[0].Value);
             }
-            Hide();
-            new AddDataForm("Редактирование", this, dataInGroup, true).Show();
+            if (dataInGroup.DataType.Equals(DataType.Lab.ToString()))
+            {
+                new AddEditDataForm(this, DataType.Lab, "Edit", dataInGroup).Show();
+            }
+            else
+            {
+                new AddEditDataForm(this, DataType.Test, "Edit", dataInGroup).Show();
+            }
         }
     }
 }
