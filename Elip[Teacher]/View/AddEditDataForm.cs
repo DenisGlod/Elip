@@ -4,6 +4,7 @@ using ElipModel.Model.Entity;
 using ElipModel.Util;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ElipTeacher.View
@@ -136,6 +137,11 @@ namespace ElipTeacher.View
                     }
                     break;
             }
+            if (TVQuestions.SelectedNode != null)
+            {
+                TVQuestions.SelectedNode.BackColor = SystemColors.Highlight;
+                TVQuestions.SelectedNode.ForeColor = Color.White;
+            }
         }
 
         private void BSaveOneObj_Click(object sender, EventArgs e)
@@ -213,6 +219,11 @@ namespace ElipTeacher.View
             RTB2.Clear();
             RTB3.Clear();
             RTB4.Clear();
+            if (TVQuestions.SelectedNode != null)
+            {
+                TVQuestions.SelectedNode.BackColor = Color.Transparent;
+                TVQuestions.SelectedNode.ForeColor = SystemColors.ControlText;
+            }
         }
     }
 }

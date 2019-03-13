@@ -1,8 +1,5 @@
 ﻿using ElipModel.Model;
 using ElipModel.Model.Entity;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,13 +13,14 @@ namespace ElipUser.View
             this.user = (User)user;
             InitializeComponent();
             InitHeaderLabel();
-            InitTVGroup();
-            InitDGVMyLabAndTest();
+            InitDGVMyResultLabAndTest();
+            InitUserInGroup();
+            InitLabAndTestInGroup();
         }
 
-        private void InitDGVMyLabAndTest()
+        private void InitDGVMyResultLabAndTest()
         {
-            using (var dbContext = new ElipContext())
+            /*using (var dbContext = new ElipContext())
             {
                 var myDataList = dbContext.Users.Find(user.Id).DataInGroups;
                 DGVMyLabAndTest.DataSource = myDataList;
@@ -30,18 +28,43 @@ namespace ElipUser.View
                 DGVMyLabAndTest.Columns["User"].Visible = false;
                 DGVMyLabAndTest.Columns["UserId"].Visible = false;
                 DGVMyLabAndTest.Columns["Data"].Visible = false;
-            }
+            }*/
         }
 
-        private void InitTVGroup()
+        private void InitLabAndTestInGroup()
         {
             using (var dbContext = new ElipContext())
             {
-                var groups = dbContext.Groups.ToList();
-                foreach (var item in groups)
-                {
-                    TVGroup.Nodes.Add(item.Id.ToString(), item.NumberGroup);
-                }
+                var group = dbContext.Groups.Find(user.GroupId);
+                var dataInGroup = group.DataInGroups;
+                DGVDataInGroup.DataSource = dataInGroup;
+                DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
+                DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
+                DGVDataInGroup.Columns["UserId"].Visible = false;
+                DGVDataInGroup.Columns["Group"].Visible = false;
+                DGVDataInGroup.Columns["GroupId"].Visible = false;
+                DGVDataInGroup.Columns["User"].Visible = false;
+                DGVDataInGroup.Columns["Data"].Visible = false;
+            }
+        }
+
+        private void InitUserInGroup()
+        {
+            using (var dbContext = new ElipContext())
+            {
+                dbContext.Users.Attach(user);
+                var userList = user.Group.Users;
+                DGVUsers.DataSource = userList;
+                DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
+                DGVUsers.Columns["FirstName"].HeaderText = "Имя";
+                DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
+                DGVUsers.Columns["Id"].Visible = false;
+                DGVUsers.Columns["GroupId"].Visible = false;
+                DGVUsers.Columns["Group"].Visible = false;
+                DGVUsers.Columns["DataInGroups"].Visible = false;
+                DGVUsers.Columns["Role"].Visible = false;
+                DGVUsers.Columns["Login"].Visible = false;
+                DGVUsers.Columns["Password"].Visible = false;
             }
         }
 
@@ -61,6 +84,7 @@ namespace ElipUser.View
                 .Append(user.MiddleName)
                 .Append(" | Роль: ")
                 .Append(user.Role).ToString();
+                LNumberGroup.Text = "Группа № " + user.Group.NumberGroup;
             }
         }
 
@@ -69,55 +93,21 @@ namespace ElipUser.View
             new LoginForm().Show();
         }
 
-        private void TVGroup_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (!BAddDataInGroup.Enabled && !BDeleteDataInGroup.Enabled)
-            {
-                BAddDataInGroup.Enabled = true;
-                BDeleteDataInGroup.Enabled = true;
-            }
-            TVGroup.SelectedNode.BackColor = SystemColors.Highlight;
-            TVGroup.SelectedNode.ForeColor = Color.White;
-            using (var dbContext = new ElipContext())
-            {
-                var group = dbContext.Groups.Find(int.Parse(TVGroup.SelectedNode.Name));
-                switch (TabControl.SelectedIndex)
-                {
-                    case 0:
-                        DGVUsers.DataSource = group.Users;
-                        DGVUsers.Columns["GroupId"].Visible = false;
-                        DGVUsers.Columns["Group"].Visible = false;
-                        DGVUsers.Columns["DataInGroups"].Visible = false;
-                        DGVUsers.Columns["Role"].Visible = false;
-                        DGVUsers.Columns["Login"].Visible = false;
-                        DGVUsers.Columns["Password"].Visible = false;
-                        break;
-                    case 1:
-                        DGVDataInGroup.DataSource = group.DataInGroups;
-                        DGVDataInGroup.Columns["Group"].Visible = false;
-                        DGVDataInGroup.Columns["GroupId"].Visible = false;
-                        DGVDataInGroup.Columns["User"].Visible = false;
-                        DGVDataInGroup.Columns["Data"].Visible = false;
-                        break;
-                }
-            }
-        }
-
         private void BSettings_Click(object sender, System.EventArgs e)
         {
-            //new TeacherSettingsFrom(this, user).Show();
+            new UserSettingsFrom(this, user).Show();
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            if (TabControl.SelectedIndex == 2)
+            /*if (TabControl.SelectedIndex == 2)
             {
                 InitDGVMyLabAndTest();
             }
             if (TVGroup.SelectedNode != null)
             {
                 TVGroup_AfterSelect(TVGroup, null);
-            }
+            }*/
         }
         public void RefreshDGVDataInGroup()
         {
@@ -127,64 +117,6 @@ namespace ElipUser.View
         private void BAddDataInGroup_Click(object sender, System.EventArgs e)
         {
             //new AddDataInGroupForm(this, user, int.Parse(TVGroup.SelectedNode.Name)).Show();
-        }
-
-        private void TVGroup_BeforeSelect(object sender, TreeViewCancelEventArgs e)
-        {
-            if (TVGroup.SelectedNode != null)
-            {
-                TVGroup.SelectedNode.BackColor = Color.Transparent;
-                TVGroup.SelectedNode.ForeColor = SystemColors.ControlText;
-            }
-        }
-
-        private void BDeleteDataInGroup_Click(object sender, System.EventArgs e)
-        {
-            if (DGVDataInGroup.SelectedRows.Count == 0) { return; }
-            var result = MessageBox.Show("Подтверждаете удаление из группы?", "Вопрос", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
-            {
-                using (var dbContext = new ElipContext())
-                {
-                    foreach (DataGridViewRow item in DGVDataInGroup.SelectedRows)
-                    {
-                        var data = dbContext.DataInGroups.Find((int)item.Cells[0].Value);
-                        data.GroupId = null;
-                        dbContext.SaveChanges();
-                    }
-                }
-                RefreshDGVDataInGroup();
-            }
-        }
-
-        private void BDelete_Click(object sender, System.EventArgs e)
-        {
-            if (DGVMyLabAndTest.SelectedRows.Count == 0) { return; }
-            var result = MessageBox.Show("Подтверждаете удаление?", "Удаление", MessageBoxButtons.OKCancel, MessageBoxIcon.Hand);
-            if (result == DialogResult.OK)
-            {
-                using (var dbContext = new ElipContext())
-                {
-                    var removeList = new List<DataInGroup>();
-                    foreach (DataGridViewRow item in DGVMyLabAndTest.SelectedRows)
-                    {
-                        removeList.Add(dbContext.DataInGroups.Find((int)item.Cells[0].Value));
-                    }
-                    dbContext.DataInGroups.RemoveRange(removeList);
-                    dbContext.SaveChanges();
-                }
-                InitDGVMyLabAndTest();
-            }
-        }
-
-        private void BAdd_Click(object sender, System.EventArgs e)
-        {
-            //new AddDataForm("Добавление").Show();
-        }
-
-        private void UserForm_Load(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

@@ -125,6 +125,7 @@
             this.BRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BRegistration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BRegistration.UseVisualStyleBackColor = true;
+            this.BRegistration.Click += new System.EventHandler(this.BRegistration_Click);
             // 
             // LoginForm
             // 

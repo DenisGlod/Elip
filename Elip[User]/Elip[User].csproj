@@ -56,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserSettingsFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserSettingsFrom.Designer.cs">
+      <DependentUpon>UserSettingsFrom.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +82,12 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserSettingsFrom.resx">
+      <DependentUpon>UserSettingsFrom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
