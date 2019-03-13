@@ -105,7 +105,7 @@ namespace ElipAdmin.View
                     new AddEditGroupForm(this, null, true).Show();
                     break;
                 case 2:
-                    new AddEditDataForm(this, null, true).Show();
+                    new BeforeForm(this, user).Show();
                     break;
             }
         }
@@ -126,7 +126,14 @@ namespace ElipAdmin.View
                         break;
                     case 2:
                         var data = dbContext.DataInGroups.Find((int)DGVDataTable.SelectedCells[0].Value);
-                        new AddEditDataForm(this, data, false).Show();
+                        if (data.DataType.Equals(DataType.Lab.ToString()))
+                        {
+                            new AddEditDataForm(this, DataType.Lab, "Edit", data, this.user).Show();
+                        }
+                        else
+                        {
+                            new AddEditDataForm(this, DataType.Test, "Edit", data, this.user).Show();
+                        }
                         break;
                 }
             }

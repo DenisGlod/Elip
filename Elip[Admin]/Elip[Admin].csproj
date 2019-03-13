@@ -100,6 +100,12 @@
     <Compile Include="View\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\BeforeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BeforeForm.Designer.cs">
+      <DependentUpon>BeforeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DbSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BeforeForm.resx">
+      <DependentUpon>BeforeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DbSettingsForm.resx">
       <DependentUpon>DbSettingsForm.cs</DependentUpon>
@@ -157,9 +166,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\lab.xml" />
+    <None Include="Resources\floppy.png" />
     <Content Include="logo.ico" />
-    <Content Include="Resources\test.xml" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\settings.png" />

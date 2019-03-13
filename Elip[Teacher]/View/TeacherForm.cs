@@ -26,6 +26,9 @@ namespace ElipTeacher.View
             {
                 var myDataList = dbContext.Users.Find(User.Id).DataInGroups;
                 DGVMyLabAndTest.DataSource = myDataList;
+                DGVMyLabAndTest.Columns["Text"].HeaderText = "Название работы";
+                DGVMyLabAndTest.Columns["DataType"].HeaderText = "Тип работы";
+                DGVMyLabAndTest.Columns["GroupId"].HeaderText = "Id Группы";
                 DGVMyLabAndTest.Columns["Group"].Visible = false;
                 DGVMyLabAndTest.Columns["User"].Visible = false;
                 DGVMyLabAndTest.Columns["UserId"].Visible = false;
@@ -40,7 +43,7 @@ namespace ElipTeacher.View
                 var groups = dbContext.Groups.ToList();
                 foreach (var item in groups)
                 {
-                    TVGroup.Nodes.Add(item.Id.ToString(), item.NumberGroup);
+                    TVGroup.Nodes.Add(item.Id.ToString(), "Id:" + item.Id + "| № " + item.NumberGroup);
                 }
             }
         }
@@ -85,6 +88,9 @@ namespace ElipTeacher.View
                 {
                     case 0:
                         DGVUsers.DataSource = group.Users;
+                        DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
+                        DGVUsers.Columns["FirstName"].HeaderText = "Имя";
+                        DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
                         DGVUsers.Columns["GroupId"].Visible = false;
                         DGVUsers.Columns["Group"].Visible = false;
                         DGVUsers.Columns["DataInGroups"].Visible = false;
@@ -94,6 +100,9 @@ namespace ElipTeacher.View
                         break;
                     case 1:
                         DGVDataInGroup.DataSource = group.DataInGroups;
+                        DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
+                        DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
+                        DGVDataInGroup.Columns["UserId"].HeaderText = "Id Автора работы";
                         DGVDataInGroup.Columns["Group"].Visible = false;
                         DGVDataInGroup.Columns["GroupId"].Visible = false;
                         DGVDataInGroup.Columns["User"].Visible = false;
