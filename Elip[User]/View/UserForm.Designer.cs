@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LNumberGroup = new System.Windows.Forms.Label();
             this.BSettings = new System.Windows.Forms.Button();
             this.LUserInfo = new System.Windows.Forms.Label();
             this.TabControl = new System.Windows.Forms.TabControl();
@@ -43,7 +44,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.DGVMyLabAndTest = new System.Windows.Forms.DataGridView();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
-            this.LNumberGroup = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -66,6 +66,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 43);
             this.panel1.TabIndex = 0;
+            // 
+            // LNumberGroup
+            // 
+            this.LNumberGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LNumberGroup.AutoSize = true;
+            this.LNumberGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LNumberGroup.Location = new System.Drawing.Point(408, 13);
+            this.LNumberGroup.Name = "LNumberGroup";
+            this.LNumberGroup.Size = new System.Drawing.Size(108, 16);
+            this.LNumberGroup.TabIndex = 3;
+            this.LNumberGroup.Text = "Группа № 000";
+            this.LNumberGroup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BSettings
             // 
@@ -177,7 +189,6 @@
             this.BStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BStart.UseVisualStyleBackColor = true;
-            this.BStart.Click += new System.EventHandler(this.BAddDataInGroup_Click);
             // 
             // tabPage3
             // 
@@ -210,18 +221,6 @@
             this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
             this.ImageList.TransparentColor = System.Drawing.Color.Transparent;
             this.ImageList.Images.SetKeyName(0, "user.png");
-            // 
-            // LNumberGroup
-            // 
-            this.LNumberGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LNumberGroup.AutoSize = true;
-            this.LNumberGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LNumberGroup.Location = new System.Drawing.Point(408, 13);
-            this.LNumberGroup.Name = "LNumberGroup";
-            this.LNumberGroup.Size = new System.Drawing.Size(108, 16);
-            this.LNumberGroup.TabIndex = 3;
-            this.LNumberGroup.Text = "Группа № 000";
-            this.LNumberGroup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserForm
             // 

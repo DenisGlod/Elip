@@ -109,14 +109,5 @@ namespace ElipUser.View
                 TVGroup_AfterSelect(TVGroup, null);
             }*/
         }
-        public void RefreshDGVDataInGroup()
-        {
-            TabControl_Selected(null, null);
-        }
-
-        private void BAddDataInGroup_Click(object sender, System.EventArgs e)
-        {
-            //new AddDataInGroupForm(this, user, int.Parse(TVGroup.SelectedNode.Name)).Show();
-        }
     }
 }
