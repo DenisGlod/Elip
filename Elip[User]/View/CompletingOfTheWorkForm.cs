@@ -14,14 +14,40 @@ namespace ElipUser.View
         private Lab lab;
         private Test test;
         private UserForm userForm;
-        private string method;
-        private DataType dataType;
-
         private DataInGroup dataInGroup;
+        private DataType dataType;
+        private User user;
 
-        public CompletingOfTheWorkForm()
+        public CompletingOfTheWorkForm(UserForm userForm, DataType dataType, DataInGroup dataInGroup, User user)
         {
             InitializeComponent();
+            this.userForm = userForm;
+            this.dataType = dataType;
+            this.dataInGroup = dataInGroup;
+            this.user = user;
+
+            Text = dataInGroup.Text;
+            switch (dataType)
+            {
+                case DataType.Lab:
+                    lab = (Lab)Util.Deserialization(dataInGroup.Data);
+                    foreach (var item in lab.TaskList)
+                    {
+                        TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
+                    }
+                    PAnswerLab.Visible = true;
+                    GBAnswerTest.Visible = false;
+                    break;
+                case DataType.Test:
+                    test = (Test)Util.Deserialization(dataInGroup.Data);
+                    foreach (var item in test.QuestionsList)
+                    {
+                        TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
+                    }
+                    PAnswerLab.Visible = false;
+                    GBAnswerTest.Visible = true;
+                    break;
+            }
         }
 
         private void TVQuestions_AfterSelect(object sender, TreeViewEventArgs e)
@@ -99,7 +125,7 @@ namespace ElipUser.View
 
         private void BSave_Click(object sender, EventArgs e)
         {
-            using (var dbContext = new ElipContext())
+            /*using (var dbContext = new ElipContext())
             {
                 switch (method)
                 {
@@ -129,13 +155,13 @@ namespace ElipUser.View
                         }
                         break;
                 }
-                //dataInGroup.Text = TBNameProject.Text;
-                //dataInGroup.UserId = userForm.User.Id;
+                dataInGroup.Text = TBNameProject.Text;
+                dataInGroup.UserId = userForm.User.Id;
                 dbContext.SaveChanges();
             }
             Hide();
             MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //userForm.InitDGVMyLabAndTest();
+            userForm.InitDGVMyLabAndTest();*/
         }
 
         private void TVQuestions_BeforeSelect(object sender, TreeViewCancelEventArgs e)

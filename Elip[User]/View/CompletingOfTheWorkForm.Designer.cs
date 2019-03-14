@@ -46,8 +46,8 @@
             this.RTB2 = new System.Windows.Forms.RichTextBox();
             this.RTB1 = new System.Windows.Forms.RichTextBox();
             this.PAnswerLab = new System.Windows.Forms.Panel();
-            this.BSaveAnswerLab = new System.Windows.Forms.Button();
             this.RTBAnswerText = new System.Windows.Forms.RichTextBox();
+            this.BSaveAnswerLab = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.GBList.SuspendLayout();
             this.GBData.SuspendLayout();
@@ -155,6 +155,7 @@
             this.GBAnswerTest.TabIndex = 10;
             this.GBAnswerTest.TabStop = false;
             this.GBAnswerTest.Text = "Варианты ответов";
+            this.GBAnswerTest.Visible = false;
             // 
             // CB4
             // 
@@ -241,13 +242,23 @@
             this.PAnswerLab.Name = "PAnswerLab";
             this.PAnswerLab.Size = new System.Drawing.Size(436, 187);
             this.PAnswerLab.TabIndex = 11;
+            this.PAnswerLab.Visible = false;
+            // 
+            // RTBAnswerText
+            // 
+            this.RTBAnswerText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RTBAnswerText.Location = new System.Drawing.Point(0, 0);
+            this.RTBAnswerText.Name = "RTBAnswerText";
+            this.RTBAnswerText.Size = new System.Drawing.Size(436, 146);
+            this.RTBAnswerText.TabIndex = 2;
+            this.RTBAnswerText.Text = "";
             // 
             // BSaveAnswerLab
             // 
             this.BSaveAnswerLab.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BSaveAnswerLab.AutoSize = true;
             this.BSaveAnswerLab.Image = global::ElipUser.Properties.Resources.floppy;
-            this.BSaveAnswerLab.Location = new System.Drawing.Point(153, 152);
+            this.BSaveAnswerLab.Location = new System.Drawing.Point(144, 152);
             this.BSaveAnswerLab.Name = "BSaveAnswerLab";
             this.BSaveAnswerLab.Size = new System.Drawing.Size(130, 29);
             this.BSaveAnswerLab.TabIndex = 1;
@@ -255,14 +266,6 @@
             this.BSaveAnswerLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSaveAnswerLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSaveAnswerLab.UseVisualStyleBackColor = true;
-            // 
-            // RTBAnswerText
-            // 
-            this.RTBAnswerText.Location = new System.Drawing.Point(25, 12);
-            this.RTBAnswerText.Name = "RTBAnswerText";
-            this.RTBAnswerText.Size = new System.Drawing.Size(387, 134);
-            this.RTBAnswerText.TabIndex = 2;
-            this.RTBAnswerText.Text = "";
             // 
             // CompletingOfTheWorkForm
             // 

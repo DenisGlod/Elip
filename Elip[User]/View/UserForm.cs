@@ -1,5 +1,6 @@
 ﻿using ElipModel.Model;
 using ElipModel.Model.Entity;
+using ElipModel.Util;
 using System.Text;
 using System.Windows.Forms;
 
@@ -20,15 +21,7 @@ namespace ElipUser.View
 
         private void InitDGVMyResultLabAndTest()
         {
-            /*using (var dbContext = new ElipContext())
-            {
-                var myDataList = dbContext.Users.Find(user.Id).DataInGroups;
-                DGVMyLabAndTest.DataSource = myDataList;
-                DGVMyLabAndTest.Columns["Group"].Visible = false;
-                DGVMyLabAndTest.Columns["User"].Visible = false;
-                DGVMyLabAndTest.Columns["UserId"].Visible = false;
-                DGVMyLabAndTest.Columns["Data"].Visible = false;
-            }*/
+            
         }
 
         private void InitLabAndTestInGroup()
@@ -37,14 +30,14 @@ namespace ElipUser.View
             {
                 var group = dbContext.Groups.Find(user.GroupId);
                 var dataInGroup = group.DataInGroups;
-                DGVDataInGroup.DataSource = dataInGroup;
-                DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
-                DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
-                DGVDataInGroup.Columns["UserId"].Visible = false;
-                DGVDataInGroup.Columns["Group"].Visible = false;
-                DGVDataInGroup.Columns["GroupId"].Visible = false;
-                DGVDataInGroup.Columns["User"].Visible = false;
-                DGVDataInGroup.Columns["Data"].Visible = false;
+                DGVLabAndTest.DataSource = dataInGroup;
+                DGVLabAndTest.Columns["Text"].HeaderText = "Название работы";
+                DGVLabAndTest.Columns["DataType"].HeaderText = "Тип работы";
+                DGVLabAndTest.Columns["UserId"].Visible = false;
+                DGVLabAndTest.Columns["Group"].Visible = false;
+                DGVLabAndTest.Columns["GroupId"].Visible = false;
+                DGVLabAndTest.Columns["User"].Visible = false;
+                DGVLabAndTest.Columns["Data"].Visible = false;
             }
         }
 
@@ -100,19 +93,25 @@ namespace ElipUser.View
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            /*if (TabControl.SelectedIndex == 2)
-            {
-                InitDGVMyLabAndTest();
-            }
-            if (TVGroup.SelectedNode != null)
-            {
-                TVGroup_AfterSelect(TVGroup, null);
-            }*/
+            
         }
 
         private void BStart_Click(object sender, System.EventArgs e)
         {
-            new CompletingOfTheWorkForm().Show();
+            DataInGroup dataInGroup;
+            using (var dbContext = new ElipContext())
+            {
+                dataInGroup = dbContext.DataInGroups.Find((int)DGVLabAndTest.SelectedCells[0].Value);
+            }
+            if (dataInGroup.DataType.Equals(DataType.Lab.ToString()))
+            {
+                new CompletingOfTheWorkForm(this, DataType.Lab, dataInGroup, user).Show();
+            }
+            else
+            {
+                new CompletingOfTheWorkForm(this, DataType.Test, dataInGroup, user).Show();
+            }
+
         }
     }
 }

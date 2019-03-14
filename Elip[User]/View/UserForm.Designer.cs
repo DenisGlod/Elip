@@ -38,21 +38,21 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DGVUsers = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.DGVDataInGroup = new System.Windows.Forms.DataGridView();
+            this.DGVLabAndTest = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BStart = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.DGVMyLabAndTest = new System.Windows.Forms.DataGridView();
+            this.DGVResultLabAndTest = new System.Windows.Forms.DataGridView();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVLabAndTest)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVMyLabAndTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResultLabAndTest)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -144,7 +144,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.DGVDataInGroup);
+            this.tabPage2.Controls.Add(this.DGVLabAndTest);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
@@ -154,19 +154,19 @@
             this.tabPage2.Text = "Лабораторные и тесты";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // DGVDataInGroup
+            // DGVLabAndTest
             // 
-            this.DGVDataInGroup.AllowUserToAddRows = false;
-            this.DGVDataInGroup.AllowUserToDeleteRows = false;
-            this.DGVDataInGroup.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVDataInGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVDataInGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVDataInGroup.Location = new System.Drawing.Point(3, 3);
-            this.DGVDataInGroup.Name = "DGVDataInGroup";
-            this.DGVDataInGroup.ReadOnly = true;
-            this.DGVDataInGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVDataInGroup.Size = new System.Drawing.Size(576, 216);
-            this.DGVDataInGroup.TabIndex = 0;
+            this.DGVLabAndTest.AllowUserToAddRows = false;
+            this.DGVLabAndTest.AllowUserToDeleteRows = false;
+            this.DGVLabAndTest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVLabAndTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVLabAndTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVLabAndTest.Location = new System.Drawing.Point(3, 3);
+            this.DGVLabAndTest.Name = "DGVLabAndTest";
+            this.DGVLabAndTest.ReadOnly = true;
+            this.DGVLabAndTest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVLabAndTest.Size = new System.Drawing.Size(576, 216);
+            this.DGVLabAndTest.TabIndex = 0;
             // 
             // panel2
             // 
@@ -193,7 +193,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.DGVMyLabAndTest);
+            this.tabPage3.Controls.Add(this.DGVResultLabAndTest);
             this.tabPage3.ImageIndex = 0;
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
@@ -203,19 +203,19 @@
             this.tabPage3.Text = "Мои результаты лабораторных и тестов";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // DGVMyLabAndTest
+            // DGVResultLabAndTest
             // 
-            this.DGVMyLabAndTest.AllowUserToAddRows = false;
-            this.DGVMyLabAndTest.AllowUserToDeleteRows = false;
-            this.DGVMyLabAndTest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVMyLabAndTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVMyLabAndTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGVMyLabAndTest.Location = new System.Drawing.Point(3, 3);
-            this.DGVMyLabAndTest.Name = "DGVMyLabAndTest";
-            this.DGVMyLabAndTest.ReadOnly = true;
-            this.DGVMyLabAndTest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVMyLabAndTest.Size = new System.Drawing.Size(576, 250);
-            this.DGVMyLabAndTest.TabIndex = 0;
+            this.DGVResultLabAndTest.AllowUserToAddRows = false;
+            this.DGVResultLabAndTest.AllowUserToDeleteRows = false;
+            this.DGVResultLabAndTest.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVResultLabAndTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVResultLabAndTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVResultLabAndTest.Location = new System.Drawing.Point(3, 3);
+            this.DGVResultLabAndTest.Name = "DGVResultLabAndTest";
+            this.DGVResultLabAndTest.ReadOnly = true;
+            this.DGVResultLabAndTest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVResultLabAndTest.Size = new System.Drawing.Size(576, 250);
+            this.DGVResultLabAndTest.TabIndex = 0;
             // 
             // ImageList
             // 
@@ -241,10 +241,10 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVUsers)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVDataInGroup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVLabAndTest)).EndInit();
             this.panel2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVMyLabAndTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResultLabAndTest)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,11 +258,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView DGVUsers;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView DGVDataInGroup;
+        private System.Windows.Forms.DataGridView DGVLabAndTest;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BStart;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView DGVMyLabAndTest;
+        private System.Windows.Forms.DataGridView DGVResultLabAndTest;
         private System.Windows.Forms.ImageList ImageList;
         private System.Windows.Forms.Label LNumberGroup;
     }
