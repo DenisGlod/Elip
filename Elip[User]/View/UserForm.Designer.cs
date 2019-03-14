@@ -189,6 +189,7 @@
             this.BStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BStart.UseVisualStyleBackColor = true;
+            this.BStart.Click += new System.EventHandler(this.BStart_Click);
             // 
             // tabPage3
             // 

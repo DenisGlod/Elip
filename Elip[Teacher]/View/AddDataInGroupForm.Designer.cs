@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDataInGroupForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DGVMyData = new System.Windows.Forms.DataGridView();
             this.BAdd = new System.Windows.Forms.Button();
+            this.DGVMyData = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMyData)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +44,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(381, 37);
             this.panel1.TabIndex = 0;
+            // 
+            // BAdd
+            // 
+            this.BAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BAdd.Image = global::ElipTeacher.Properties.Resources.input;
+            this.BAdd.Location = new System.Drawing.Point(152, 5);
+            this.BAdd.Name = "BAdd";
+            this.BAdd.Size = new System.Drawing.Size(91, 28);
+            this.BAdd.TabIndex = 0;
+            this.BAdd.Text = "Добавить";
+            this.BAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BAdd.UseVisualStyleBackColor = true;
+            this.BAdd.Click += new System.EventHandler(this.BAdd_Click);
             // 
             // DGVMyData
             // 
@@ -58,17 +72,6 @@
             this.DGVMyData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVMyData.Size = new System.Drawing.Size(381, 165);
             this.DGVMyData.TabIndex = 1;
-            // 
-            // BAdd
-            // 
-            this.BAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BAdd.Location = new System.Drawing.Point(152, 8);
-            this.BAdd.Name = "BAdd";
-            this.BAdd.Size = new System.Drawing.Size(75, 23);
-            this.BAdd.TabIndex = 0;
-            this.BAdd.Text = "Добавить";
-            this.BAdd.UseVisualStyleBackColor = true;
-            this.BAdd.Click += new System.EventHandler(this.BAdd_Click);
             // 
             // AddDataInGroupForm
             // 

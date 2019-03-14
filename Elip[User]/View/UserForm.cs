@@ -109,5 +109,10 @@ namespace ElipUser.View
                 TVGroup_AfterSelect(TVGroup, null);
             }*/
         }
+
+        private void BStart_Click(object sender, System.EventArgs e)
+        {
+            new CompletingOfTheWorkForm().Show();
+        }
     }
 }

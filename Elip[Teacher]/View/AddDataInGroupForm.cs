@@ -24,8 +24,12 @@ namespace ElipTeacher.View
             {
                 var myDataList = dbContext.Users.Find(user.Id).DataInGroups;
                 DGVMyData.DataSource = myDataList;
+                DGVMyData.Columns["Text"].HeaderText = "Название работы";
+                DGVMyData.Columns["DataType"].HeaderText = "Тип работы";
+                DGVMyData.Columns["GroupId"].HeaderText = "Id Группы";
                 DGVMyData.Columns["Group"].Visible = false;
                 DGVMyData.Columns["User"].Visible = false;
+                DGVMyData.Columns["UserId"].Visible = false;
                 DGVMyData.Columns["Data"].Visible = false;
             }
         }

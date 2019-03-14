@@ -12,6 +12,19 @@ namespace ElipUser.View
         public RegistrationForm()
         {
             InitializeComponent();
+            InitCBNGroup();
+        }
+
+        private void InitCBNGroup()
+        {
+            using (var dbContext = new ElipContext())
+            {
+                var groupList = dbContext.Groups.ToList();
+                foreach (var item in groupList)
+                {
+                    CBNGroup.Items.Add(item.NumberGroup);
+                }
+            }
         }
 
         private void BRegistration_Click(object sender, EventArgs e)
@@ -31,16 +44,16 @@ namespace ElipUser.View
                 {
                     using (var dbContext = new ElipContext())
                     {
-                        var saveTeacher = new User
+                        var saveUser = new User
                         {
                             Login = TBLogin.Text,
                             Password = TBPassword.Text,
                             LastName = TBLastName.Text,
                             FirstName = TBFirstName.Text,
                             MiddleName = TBMiddleName.Text,
-                            Role = "Преподаватель"
+                            Role = "Пользователь"
                         };
-                        dbContext.Users.Add(saveTeacher);
+                        dbContext.Users.Add(saveUser);
                         dbContext.SaveChanges();
                     }
                     Hide();

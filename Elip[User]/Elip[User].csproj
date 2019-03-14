@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\CompletingOfTheWorkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CompletingOfTheWorkForm.Designer.cs">
+      <DependentUpon>CompletingOfTheWorkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\CompletingOfTheWorkForm.resx">
+      <DependentUpon>CompletingOfTheWorkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
