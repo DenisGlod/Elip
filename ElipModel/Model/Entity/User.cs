@@ -33,10 +33,13 @@ namespace ElipModel.Model.Entity
         public virtual Group Group { get; set; }
 
         public virtual ICollection<DataInGroup> DataInGroups { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
+
 
         public User()
         {
             DataInGroups = new BindingList<DataInGroup>();
+            Results = new BindingList<Result>();
         }
     }
 }

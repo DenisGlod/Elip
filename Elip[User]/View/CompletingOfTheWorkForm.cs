@@ -11,8 +11,8 @@ namespace ElipUser.View
 {
     public partial class CompletingOfTheWorkForm : Form
     {
-        private Lab lab;
-        private Test test;
+        private Lab lab, resultLab;
+        private Test test, resultTest;
         private UserForm userForm;
         private DataInGroup dataInGroup;
         private DataType dataType;
@@ -25,11 +25,12 @@ namespace ElipUser.View
             this.dataType = dataType;
             this.dataInGroup = dataInGroup;
             this.user = user;
-
             Text = dataInGroup.Text;
+
             switch (dataType)
             {
                 case DataType.Lab:
+                    resultLab = new Lab();
                     lab = (Lab)Util.Deserialization(dataInGroup.Data);
                     foreach (var item in lab.TaskList)
                     {
@@ -39,6 +40,7 @@ namespace ElipUser.View
                     GBAnswerTest.Visible = false;
                     break;
                 case DataType.Test:
+                    resultTest = new Test();
                     test = (Test)Util.Deserialization(dataInGroup.Data);
                     foreach (var item in test.QuestionsList)
                     {
@@ -71,19 +73,15 @@ namespace ElipUser.View
                             {
                                 case 1:
                                     RTB1.Text = item.Text;
-                                    CB1.Checked = item.Flag;
                                     break;
                                 case 2:
                                     RTB2.Text = item.Text;
-                                    CB2.Checked = item.Flag;
                                     break;
                                 case 3:
                                     RTB3.Text = item.Text;
-                                    CB3.Checked = item.Flag;
                                     break;
                                 case 4:
                                     RTB4.Text = item.Text;
-                                    CB4.Checked = item.Flag;
                                     break;
                             }
                         }
@@ -97,71 +95,46 @@ namespace ElipUser.View
             }
         }
 
-        private void BSaveOneObj_Click(object sender, EventArgs e)
-        {
-            switch (dataType)
-            {
-                case DataType.Lab:
-                    var lkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    if (lab.TaskList.ContainsKey(lkey)) { lab.TaskList.Remove(lkey); }
-                    lab.TaskList.Add(lkey, RTBQuestion.Text);
-                    break;
-                case DataType.Test:
-                    var tkey = int.Parse(TVQuestions.SelectedNode.Name);
-                    var value = RTBQuestion.Text;
-                    if (test.QuestionsList.ContainsKey(tkey)) { test.QuestionsList.Remove(tkey); }
-                    test.QuestionsList.Add(tkey, value);
-                    if (test.AnswerList.ContainsKey(tkey)) { test.AnswerList.Remove(tkey); }
-                    test.AnswerList.Add(tkey, new List<Answer>
-                    {
-                        new Answer(1, RTB1.Text, CB1.Checked),
-                        new Answer(2, RTB2.Text, CB2.Checked),
-                        new Answer(3, RTB3.Text, CB3.Checked),
-                        new Answer(4, RTB4.Text, CB4.Checked)
-                    });
-                    break;
-            }
-        }
-
         private void BSave_Click(object sender, EventArgs e)
         {
-            /*using (var dbContext = new ElipContext())
+            using (var dbContext = new ElipContext())
             {
-                switch (method)
+                var result = new Result
                 {
-                    case "Add":
-                        if (dataType == DataType.Lab)
-                        {
-                            dataInGroup.DataType = DataType.Lab.ToString();
-                            dataInGroup.Data = Util.Serializatoin(lab);
-                        }
-                        else
-                        {
-                            dataInGroup.DataType = DataType.Test.ToString();
-                            dataInGroup.Data = Util.Serializatoin(test);
-                        }
-                        dbContext.DataInGroups.Add(dataInGroup);
-                        break;
-                    case "Edit":
-                        if (dataType == DataType.Lab)
-                        {
-                            dbContext.DataInGroups.Attach(dataInGroup);
-                            dataInGroup.Data = Util.Serializatoin(lab);
-                        }
-                        else
-                        {
-                            dbContext.DataInGroups.Attach(dataInGroup);
-                            dataInGroup.Data = Util.Serializatoin(test);
-                        }
-                        break;
+                    UserId = user.Id,
+                    DateTimeResult = DateTime.Now,
+                    DataInGroupId = dataInGroup.Id
+                };
+                if (dataType == DataType.Lab)
+                {
+                    result.AnswerData = Util.Serializatoin(resultLab);
                 }
-                dataInGroup.Text = TBNameProject.Text;
-                dataInGroup.UserId = userForm.User.Id;
+                else
+                {
+                    result.AnswerData = Util.Serializatoin(resultTest);
+                    var tempR = resultTest.AnswerList;
+                    var temp = test.AnswerList;
+                    int mark = 0;
+                    for (int i = 1; i <= temp.Count; i++)
+                    {
+                        temp.TryGetValue(i, out var tempAnswer);
+                        tempR.TryGetValue(i, out var tempRAnswer);
+                        if (tempAnswer[0].Flag == tempRAnswer[0].Flag &&
+                            tempAnswer[1].Flag == tempRAnswer[1].Flag &&
+                            tempAnswer[2].Flag == tempRAnswer[2].Flag &&
+                            tempAnswer[3].Flag == tempRAnswer[3].Flag)
+                        {
+                            mark += 1;
+                        }
+                    }
+                    result.Mark = 10 * mark / temp.Count;
+                }
+                dbContext.Results.Add(result);
                 dbContext.SaveChanges();
             }
             Hide();
             MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            userForm.InitDGVMyLabAndTest();*/
+            userForm.InitDGVResultLabAndTest();
         }
 
         private void TVQuestions_BeforeSelect(object sender, TreeViewCancelEventArgs e)
@@ -177,6 +150,31 @@ namespace ElipUser.View
                 TVQuestions.SelectedNode.BackColor = Color.Transparent;
                 TVQuestions.SelectedNode.ForeColor = SystemColors.ControlText;
             }
+        }
+
+        private void BSaveAnswerLab_Click(object sender, EventArgs e)
+        {
+            var lkey = int.Parse(TVQuestions.SelectedNode.Name);
+            if (resultLab.TaskList.ContainsKey(lkey)) { resultLab.TaskList.Remove(lkey); }
+            resultLab.TaskList.Add(lkey, RTBQuestion.Text);
+            if (resultLab.AnswerTaskList.ContainsKey(lkey)) { resultLab.AnswerTaskList.Remove(lkey); }
+            resultLab.AnswerTaskList.Add(lkey, RTBAnswerText.Text);
+        }
+
+        private void BSaveAnswerTest_Click(object sender, EventArgs e)
+        {
+            var tkey = int.Parse(TVQuestions.SelectedNode.Name);
+            var value = RTBQuestion.Text;
+            if (resultTest.QuestionsList.ContainsKey(tkey)) { resultTest.QuestionsList.Remove(tkey); }
+            resultTest.QuestionsList.Add(tkey, value);
+            if (resultTest.AnswerList.ContainsKey(tkey)) { resultTest.AnswerList.Remove(tkey); }
+            resultTest.AnswerList.Add(tkey, new List<Answer>
+            {
+                new Answer(1, RTB1.Text, CB1.Checked),
+                new Answer(2, RTB2.Text, CB2.Checked),
+                new Answer(3, RTB3.Text, CB3.Checked),
+                new Answer(4, RTB4.Text, CB4.Checked)
+            });
         }
     }
 }

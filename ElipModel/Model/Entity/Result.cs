@@ -14,6 +14,9 @@ namespace ElipModel.Model.Entity
         [Required]
         public DateTime DateTimeResult { get; set; }
 
+        [Required]
+        public byte[] AnswerData { get; set; }
+
         public int? UserId { get; set; }
         public virtual User User { get; set; }
 

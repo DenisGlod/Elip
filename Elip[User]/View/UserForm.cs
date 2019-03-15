@@ -14,17 +14,28 @@ namespace ElipUser.View
             this.user = (User)user;
             InitializeComponent();
             InitHeaderLabel();
-            InitDGVMyResultLabAndTest();
-            InitUserInGroup();
-            InitLabAndTestInGroup();
+            InitDGVResultLabAndTest();
+            InitDGVUserInGroup();
+            InitDGVLabAndTest();
         }
 
-        private void InitDGVMyResultLabAndTest()
+        public void InitDGVResultLabAndTest()
         {
-            
+            using (var dbContext = new ElipContext())
+            {
+                var dataResult = dbContext.Users.Attach(user).Results;
+                DGVResultLabAndTest.DataSource = dataResult;
+                DGVResultLabAndTest.Columns["AnswerData"].Visible = false;
+                DGVResultLabAndTest.Columns["UserId"].Visible = false;
+                DGVResultLabAndTest.Columns["User"].Visible = false;
+                DGVResultLabAndTest.Columns["DataInGroupId"].Visible = false;
+                DGVResultLabAndTest.Columns["DataInGroup"].Visible = false;
+                DGVResultLabAndTest.Columns["DateTimeResult"].HeaderText = "Дата и время решения";
+                DGVResultLabAndTest.Columns["Mark"].HeaderText = "Оценка";
+            }
         }
 
-        private void InitLabAndTestInGroup()
+        private void InitDGVLabAndTest()
         {
             using (var dbContext = new ElipContext())
             {
@@ -41,7 +52,7 @@ namespace ElipUser.View
             }
         }
 
-        private void InitUserInGroup()
+        private void InitDGVUserInGroup()
         {
             using (var dbContext = new ElipContext())
             {

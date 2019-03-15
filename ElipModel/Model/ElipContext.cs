@@ -10,6 +10,7 @@ namespace ElipModel.Model
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<DataInGroup> DataInGroups { get; set; }
+        public DbSet<Result> Results { get; set; }
 
         public void DeleteDataBase()
         {

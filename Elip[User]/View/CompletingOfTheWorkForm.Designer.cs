@@ -68,7 +68,7 @@
             this.BSaveAnswerTest.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSaveAnswerTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSaveAnswerTest.UseVisualStyleBackColor = true;
-            this.BSaveAnswerTest.Click += new System.EventHandler(this.BSaveOneObj_Click);
+            this.BSaveAnswerTest.Click += new System.EventHandler(this.BSaveAnswerTest_Click);
             // 
             // BSave
             // 
@@ -266,14 +266,15 @@
             this.BSaveAnswerLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BSaveAnswerLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BSaveAnswerLab.UseVisualStyleBackColor = true;
+            this.BSaveAnswerLab.Click += new System.EventHandler(this.BSaveAnswerLab_Click);
             // 
             // CompletingOfTheWorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 403);
-            this.Controls.Add(this.PAnswerLab);
             this.Controls.Add(this.GBAnswerTest);
+            this.Controls.Add(this.PAnswerLab);
             this.Controls.Add(this.GBData);
             this.Controls.Add(this.GBList);
             this.Controls.Add(this.panel2);

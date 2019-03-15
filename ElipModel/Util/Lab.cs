@@ -8,10 +8,12 @@ namespace ElipModel.Entity
     {
         public string LabName { get; set; }
         public Dictionary<int, string> TaskList { get; set; }
+        public Dictionary<int, string> AnswerTaskList { get; set; }
 
         public Lab()
         {
             TaskList = new Dictionary<int, string>();
+            AnswerTaskList = new Dictionary<int, string>();
         }
     }
 }
