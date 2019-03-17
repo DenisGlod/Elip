@@ -42,6 +42,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.DGVUserTable = new System.Windows.Forms.DataGridView();
             this.TabControl = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.DGVResults = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -51,6 +53,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVUserTable)).BeginInit();
             this.TabControl.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResults)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -206,6 +210,7 @@
             this.TabControl.Controls.Add(this.tabPage1);
             this.TabControl.Controls.Add(this.tabPage2);
             this.TabControl.Controls.Add(this.tabPage3);
+            this.TabControl.Controls.Add(this.tabPage4);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControl.Location = new System.Drawing.Point(0, 48);
             this.TabControl.Name = "TabControl";
@@ -213,6 +218,30 @@
             this.TabControl.Size = new System.Drawing.Size(821, 391);
             this.TabControl.TabIndex = 1;
             this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.DGVResults);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(813, 365);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "Решенные работы";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // DGVResults
+            // 
+            this.DGVResults.AllowUserToAddRows = false;
+            this.DGVResults.AllowUserToDeleteRows = false;
+            this.DGVResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGVResults.Location = new System.Drawing.Point(3, 3);
+            this.DGVResults.Name = "DGVResults";
+            this.DGVResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVResults.Size = new System.Drawing.Size(807, 359);
+            this.DGVResults.TabIndex = 0;
             // 
             // AdminForm
             // 
@@ -237,6 +266,8 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVUserTable)).EndInit();
             this.TabControl.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGVResults)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,5 +287,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView DGVUserTable;
         private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView DGVResults;
     }
 }

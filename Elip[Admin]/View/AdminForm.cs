@@ -1,6 +1,5 @@
 ﻿using ElipModel.Model;
 using ElipModel.Model.Entity;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -22,18 +21,29 @@ namespace ElipAdmin.View
         {
             using (var dbContext = new ElipContext())
             {
-                dbContext.Users.Load();
                 DGVUserTable.DataSource = null;
-                DGVUserTable.DataSource = dbContext.Users.Local.ToBindingList();
-                DGVUserTable.Columns["Login"].HeaderText = "Логин";
-                DGVUserTable.Columns["Password"].HeaderText = "Пароль";
-                DGVUserTable.Columns["LastName"].HeaderText = "Фамилия";
-                DGVUserTable.Columns["FirstName"].HeaderText = "Имя";
-                DGVUserTable.Columns["MiddleName"].HeaderText = "Отчество";
-                DGVUserTable.Columns["Role"].HeaderText = "Роль";
-                DGVUserTable.Columns["GroupId"].HeaderText = "Id Группы";
-                DGVUserTable.Columns["Group"].Visible = false;
-                DGVUserTable.Columns["DataInGroups"].Visible = false;
+                var list = dbContext.Users.Select(u => new
+                {
+                    u.Id,
+                    u.Login,
+                    u.Password,
+                    u.LastName,
+                    u.FirstName,
+                    u.MiddleName,
+                    u.Role,
+                    u.Group.NumberGroup
+                }).ToList();
+                if (list.Count > 0)
+                {
+                    DGVUserTable.DataSource = list;
+                    DGVUserTable.Columns["Login"].HeaderText = "Логин";
+                    DGVUserTable.Columns["Password"].HeaderText = "Пароль";
+                    DGVUserTable.Columns["LastName"].HeaderText = "Фамилия";
+                    DGVUserTable.Columns["FirstName"].HeaderText = "Имя";
+                    DGVUserTable.Columns["MiddleName"].HeaderText = "Отчество";
+                    DGVUserTable.Columns["Role"].HeaderText = "Роль";
+                    DGVUserTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                }
             }
         }
 
@@ -41,12 +51,17 @@ namespace ElipAdmin.View
         {
             using (var dbContext = new ElipContext())
             {
-                dbContext.Groups.Load();
                 DGVGroupTable.DataSource = null;
-                DGVGroupTable.DataSource = dbContext.Groups.Local.ToBindingList();
-                DGVGroupTable.Columns["NumberGroup"].HeaderText = "Номер группы";
-                DGVGroupTable.Columns["Users"].Visible = false;
-                DGVGroupTable.Columns["DataInGroups"].Visible = false;
+                var list = dbContext.Groups.Select(g => new
+                {
+                    g.Id,
+                    g.NumberGroup
+                }).ToList();
+                if (list.Count > 0)
+                {
+                    DGVGroupTable.DataSource = list;
+                    DGVGroupTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                }
             }
         }
 
@@ -54,16 +69,54 @@ namespace ElipAdmin.View
         {
             using (var dbContext = new ElipContext())
             {
-                dbContext.DataInGroups.Load();
                 DGVDataTable.DataSource = null;
-                DGVDataTable.DataSource = dbContext.DataInGroups.Local.ToBindingList();
-                DGVDataTable.Columns["Text"].HeaderText = "Название работы";
-                DGVDataTable.Columns["Data"].Visible = false;
-                DGVDataTable.Columns["DataType"].HeaderText = "Тип работы";
-                DGVDataTable.Columns["GroupId"].HeaderText = "Id Группы";
-                DGVDataTable.Columns["UserId"].HeaderText = "Id Создателя работы";
-                DGVDataTable.Columns["Group"].Visible = false;
-                DGVDataTable.Columns["User"].Visible = false;
+                var list = dbContext.DataInGroups.Select(dig => new
+                {
+                    dig.Id,
+                    dig.Text,
+                    dig.DataType,
+                    dig.Group.NumberGroup,
+                    author = dig.User.LastName + " " + dig.User.FirstName + " " + dig.User.MiddleName,
+                }).ToList();
+                if (list.Count > 0)
+                {
+                    DGVDataTable.DataSource = list;
+                    DGVDataTable.Columns["Text"].HeaderText = "Название работы";
+                    DGVDataTable.Columns["DataType"].HeaderText = "Тип работы";
+                    DGVDataTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVDataTable.Columns["author"].HeaderText = "Автор работы";
+                }
+
+            }
+        }
+
+        public void InitResultTable()
+        {
+            using (var dbContext = new ElipContext())
+            {
+                DGVResults.DataSource = null;
+                var list = dbContext.Results.Select(r => new
+                {
+                    r.Id,
+                    r.DataInGroup.Text,
+                    r.DataInGroup.DataType,
+                    r.DateTimeResult,
+                    r.Mark,
+                    r.DataInGroup.Group.NumberGroup,
+                    user = r.User.LastName + " " + r.User.FirstName + " " + r.User.MiddleName,
+                    author = r.DataInGroup.User.LastName + " " + r.DataInGroup.User.FirstName + " " + r.DataInGroup.User.MiddleName,
+                }).ToList();
+                if (list.Count > 0)
+                {
+                    DGVResults.DataSource = list;
+                    DGVResults.Columns["Text"].HeaderText = "Название работы";
+                    DGVResults.Columns["DataType"].HeaderText = "Тип работы";
+                    DGVResults.Columns["DateTimeResult"].HeaderText = "Дата и время решения";
+                    DGVResults.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVResults.Columns["Mark"].HeaderText = "Оценка";
+                    DGVResults.Columns["user"].HeaderText = "Исполнитель работы";
+                    DGVResults.Columns["author"].HeaderText = "Автор работы";
+                }
             }
         }
 
@@ -89,6 +142,9 @@ namespace ElipAdmin.View
                     break;
                 case 2:
                     InitDataInGroupTable();
+                    break;
+                case 3:
+                    InitResultTable();
                     break;
             }
 
@@ -152,6 +208,8 @@ namespace ElipAdmin.View
                             foreach (DataGridViewRow row in DGVUserTable.SelectedRows)
                             {
                                 var delUser = dbContext.Users.Find((int)row.Cells[0].Value);
+                                delUser.Results.Clear();
+                                delUser.DataInGroups.Clear();
                                 dbContext.Users.Remove(delUser);
                                 dbContext.SaveChanges();
                             }
@@ -161,12 +219,8 @@ namespace ElipAdmin.View
                             foreach (DataGridViewRow row in DGVGroupTable.SelectedRows)
                             {
                                 var delGroup = dbContext.Groups.Find((int)row.Cells[0].Value);
-                                dbContext.Entry(delGroup).Collection("Users").Load();
-                                delGroup.Users.ToList().ForEach(u => { u.Group = null; u.GroupId = null; });
-                                dbContext.SaveChanges();
-                                dbContext.Entry(delGroup).Collection("DataInGroups").Load();
-                                delGroup.DataInGroups.ToList().ForEach(dg => { dg.Group = null; dg.GroupId = null; });
-                                dbContext.SaveChanges();
+                                delGroup.Users.Clear();
+                                delGroup.DataInGroups.Clear();
                                 dbContext.Groups.Remove(delGroup);
                                 dbContext.SaveChanges();
                             }
@@ -180,6 +234,14 @@ namespace ElipAdmin.View
                                 dbContext.SaveChanges();
                             }
                             InitDataInGroupTable();
+                            break;
+                        case 3:
+                            foreach (DataGridViewRow row in DGVResults.SelectedRows)
+                            {
+                                var delData = dbContext.Results.Find((int)row.Cells[0].Value);
+                                dbContext.Results.Remove(delData);
+                                dbContext.SaveChanges();
+                            }
                             break;
                     }
                 }

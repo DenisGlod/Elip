@@ -24,15 +24,20 @@ namespace ElipTeacher.View
         {
             using (var dbContext = new ElipContext())
             {
-                var myDataList = dbContext.Users.Find(User.Id).DataInGroups;
-                DGVMyLabAndTest.DataSource = myDataList;
-                DGVMyLabAndTest.Columns["Text"].HeaderText = "Название работы";
-                DGVMyLabAndTest.Columns["DataType"].HeaderText = "Тип работы";
-                DGVMyLabAndTest.Columns["GroupId"].HeaderText = "Id Группы";
-                DGVMyLabAndTest.Columns["Group"].Visible = false;
-                DGVMyLabAndTest.Columns["User"].Visible = false;
-                DGVMyLabAndTest.Columns["UserId"].Visible = false;
-                DGVMyLabAndTest.Columns["Data"].Visible = false;
+                var list = dbContext.DataInGroups.Where(dig => dig.UserId == User.Id).Select(s => new
+                {
+                    s.Id,
+                    s.Text,
+                    s.DataType,
+                    s.Group.NumberGroup
+                }).ToList();
+                if (list.Count > 0)
+                {
+                    DGVMyLabAndTest.DataSource = list;
+                    DGVMyLabAndTest.Columns["Text"].HeaderText = "Название работы";
+                    DGVMyLabAndTest.Columns["DataType"].HeaderText = "Тип работы";
+                    DGVMyLabAndTest.Columns["NumberGroup"].HeaderText = "№ группы";
+                }
             }
         }
 
@@ -87,26 +92,36 @@ namespace ElipTeacher.View
                 switch (TabControl.SelectedIndex)
                 {
                     case 0:
-                        DGVUsers.DataSource = group.Users;
-                        DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
-                        DGVUsers.Columns["FirstName"].HeaderText = "Имя";
-                        DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
-                        DGVUsers.Columns["GroupId"].Visible = false;
-                        DGVUsers.Columns["Group"].Visible = false;
-                        DGVUsers.Columns["DataInGroups"].Visible = false;
-                        DGVUsers.Columns["Role"].Visible = false;
-                        DGVUsers.Columns["Login"].Visible = false;
-                        DGVUsers.Columns["Password"].Visible = false;
+                        var ulist = group.Users.Select(u => new
+                        {
+                            u.Id,
+                            u.LastName,
+                            u.FirstName,
+                            u.MiddleName
+                        }).ToList();
+                        if (ulist.Count > 0)
+                        {
+                            DGVUsers.DataSource = ulist;
+                            DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
+                            DGVUsers.Columns["FirstName"].HeaderText = "Имя";
+                            DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
+                        }
                         break;
                     case 1:
-                        DGVDataInGroup.DataSource = group.DataInGroups;
-                        DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
-                        DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
-                        DGVDataInGroup.Columns["UserId"].HeaderText = "Id Автора работы";
-                        DGVDataInGroup.Columns["Group"].Visible = false;
-                        DGVDataInGroup.Columns["GroupId"].Visible = false;
-                        DGVDataInGroup.Columns["User"].Visible = false;
-                        DGVDataInGroup.Columns["Data"].Visible = false;
+                        var diglist = group.DataInGroups.Select(dig => new
+                        {
+                            dig.Id,
+                            dig.Text,
+                            dig.DataType,
+                            author = dig.User.LastName + " " + dig.User.FirstName + " " + dig.User.MiddleName,
+                        }).ToList();
+                        if (diglist.Count > 0)
+                        {
+                            DGVDataInGroup.DataSource = diglist;
+                            DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
+                            DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
+                            DGVDataInGroup.Columns["author"].HeaderText = "Автор работы";
+                        }
                         break;
                 }
             }

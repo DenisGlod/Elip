@@ -1,6 +1,6 @@
 ﻿using ElipModel.Model;
 using ElipModel.Model.Entity;
-using ElipModel.Util;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -57,18 +57,20 @@ namespace ElipUser.View
             using (var dbContext = new ElipContext())
             {
                 dbContext.Users.Attach(user);
-                var userList = user.Group.Users;
-                DGVUsers.DataSource = userList;
-                DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
-                DGVUsers.Columns["FirstName"].HeaderText = "Имя";
-                DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
-                DGVUsers.Columns["Id"].Visible = false;
-                DGVUsers.Columns["GroupId"].Visible = false;
-                DGVUsers.Columns["Group"].Visible = false;
-                DGVUsers.Columns["DataInGroups"].Visible = false;
-                DGVUsers.Columns["Role"].Visible = false;
-                DGVUsers.Columns["Login"].Visible = false;
-                DGVUsers.Columns["Password"].Visible = false;
+                var ulist = user.Group.Users.Select(u => new
+                {
+                    u.Id,
+                    u.LastName,
+                    u.FirstName,
+                    u.MiddleName
+                }).ToList();
+                if (ulist.Count > 0)
+                {
+                    DGVUsers.DataSource = ulist;
+                    DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
+                    DGVUsers.Columns["FirstName"].HeaderText = "Имя";
+                    DGVUsers.Columns["MiddleName"].HeaderText = "Отчество";
+                }
             }
         }
 
@@ -104,7 +106,7 @@ namespace ElipUser.View
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            
+
         }
 
         private void BStart_Click(object sender, System.EventArgs e)
