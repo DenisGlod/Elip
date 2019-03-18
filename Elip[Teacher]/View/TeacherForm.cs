@@ -36,7 +36,7 @@ namespace ElipTeacher.View
                     DGVMyLabAndTest.DataSource = list;
                     DGVMyLabAndTest.Columns["Text"].HeaderText = "Название работы";
                     DGVMyLabAndTest.Columns["DataType"].HeaderText = "Тип работы";
-                    DGVMyLabAndTest.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVMyLabAndTest.Columns["NumberGroup"].HeaderText = "№ класса";
                 }
             }
         }
@@ -165,7 +165,7 @@ namespace ElipTeacher.View
         private void BDeleteDataInGroup_Click(object sender, System.EventArgs e)
         {
             if (DGVDataInGroup.SelectedRows.Count == 0) { return; }
-            var result = MessageBox.Show("Подтверждаете удаление из группы?", "Вопрос", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var result = MessageBox.Show("Подтверждаете удаление данных из класса?", "Вопрос", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 using (var dbContext = new ElipContext())

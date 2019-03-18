@@ -162,7 +162,7 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(813, 365);
             this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "Группы";
+            this.tabPage2.Text = "Классы";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // DGVGroupTable

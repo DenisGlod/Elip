@@ -90,7 +90,7 @@ namespace ElipUser.View
                 .Append(user.MiddleName)
                 .Append(" | Роль: ")
                 .Append(user.Role).ToString();
-                LNumberGroup.Text = "Группа № " + user.Group.NumberGroup;
+                LNumberGroup.Text = "Класс № " + user.Group.NumberGroup;
             }
         }
 

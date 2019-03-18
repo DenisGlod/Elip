@@ -47,23 +47,32 @@ namespace ElipTeacher.View
             switch (method)
             {
                 case "Add":
-                    Text = "Добавление";
+
                     this.dataInGroup = new DataInGroup();
-                    if (DataType.Lab == dataType) lab = new Lab();
-                    else test = new Test();
+                    if (DataType.Lab == dataType)
+                    {
+                        Text = "Добавление лабораторной работы";
+                        lab = new Lab();
+                    }
+                    else
+                    {
+                        Text = "Добавление теста";
+                        test = new Test();
+                    }
                     break;
                 case "Edit":
-                    Text = "Редактирование";
                     this.dataInGroup = dataInGroup;
                     TBNameProject.Text = dataInGroup.Text;
                     if (dataInGroup.DataType.Equals(DataType.Lab.ToString()))
                     {
+                        Text = "Редактирование лабораторной работы";
                         this.dataType = DataType.Lab;
                         lab = (Lab)Util.Deserialization(dataInGroup.Data);
                         NUpDown.Value = lab.TaskList.Count;
                     }
                     else
                     {
+                        Text = "Редактирование теста";
                         this.dataType = DataType.Test;
                         test = (Test)Util.Deserialization(dataInGroup.Data);
                         NUpDown.Value = test.QuestionsList.Count;

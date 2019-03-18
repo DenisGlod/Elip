@@ -116,7 +116,7 @@
             this.groupBox1.Size = new System.Drawing.Size(180, 283);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Группы";
+            this.groupBox1.Text = "Классы";
             // 
             // TVGroup
             // 
@@ -217,11 +217,11 @@
             this.BDeleteDataInGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BDeleteDataInGroup.Enabled = false;
             this.BDeleteDataInGroup.Image = global::ElipTeacher.Properties.Resources.output;
-            this.BDeleteDataInGroup.Location = new System.Drawing.Point(299, 5);
+            this.BDeleteDataInGroup.Location = new System.Drawing.Point(343, 5);
             this.BDeleteDataInGroup.Name = "BDeleteDataInGroup";
-            this.BDeleteDataInGroup.Size = new System.Drawing.Size(149, 29);
+            this.BDeleteDataInGroup.Size = new System.Drawing.Size(105, 29);
             this.BDeleteDataInGroup.TabIndex = 1;
-            this.BDeleteDataInGroup.Text = "Удалить из группы";
+            this.BDeleteDataInGroup.Text = "Удалить";
             this.BDeleteDataInGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BDeleteDataInGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BDeleteDataInGroup.UseVisualStyleBackColor = true;
@@ -233,9 +233,9 @@
             this.BAddDataInGroup.Image = global::ElipTeacher.Properties.Resources.input;
             this.BAddDataInGroup.Location = new System.Drawing.Point(13, 5);
             this.BAddDataInGroup.Name = "BAddDataInGroup";
-            this.BAddDataInGroup.Size = new System.Drawing.Size(142, 29);
+            this.BAddDataInGroup.Size = new System.Drawing.Size(104, 29);
             this.BAddDataInGroup.TabIndex = 0;
-            this.BAddDataInGroup.Text = "Добавить в группу";
+            this.BAddDataInGroup.Text = "Добавить";
             this.BAddDataInGroup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BAddDataInGroup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BAddDataInGroup.UseVisualStyleBackColor = true;

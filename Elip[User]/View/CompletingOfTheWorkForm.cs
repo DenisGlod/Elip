@@ -36,7 +36,7 @@ namespace ElipUser.View
                     {
                         TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
                     }
-                    PAnswerLab.Visible = true;
+                    GBAnswerLab.Visible = true;
                     GBAnswerTest.Visible = false;
                     break;
                 case DataType.Test:
@@ -46,7 +46,7 @@ namespace ElipUser.View
                     {
                         TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
                     }
-                    PAnswerLab.Visible = false;
+                    GBAnswerLab.Visible = false;
                     GBAnswerTest.Visible = true;
                     break;
             }

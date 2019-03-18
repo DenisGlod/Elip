@@ -45,14 +45,14 @@
             this.RTB3 = new System.Windows.Forms.RichTextBox();
             this.RTB2 = new System.Windows.Forms.RichTextBox();
             this.RTB1 = new System.Windows.Forms.RichTextBox();
-            this.PAnswerLab = new System.Windows.Forms.Panel();
             this.RTBAnswerText = new System.Windows.Forms.RichTextBox();
             this.BSaveAnswerLab = new System.Windows.Forms.Button();
+            this.GBAnswerLab = new System.Windows.Forms.GroupBox();
             this.panel2.SuspendLayout();
             this.GBList.SuspendLayout();
             this.GBData.SuspendLayout();
             this.GBAnswerTest.SuspendLayout();
-            this.PAnswerLab.SuspendLayout();
+            this.GBAnswerLab.SuspendLayout();
             this.SuspendLayout();
             // 
             // BSaveAnswerTest
@@ -233,23 +233,12 @@
             this.RTB1.TabIndex = 6;
             this.RTB1.Text = "";
             // 
-            // PAnswerLab
-            // 
-            this.PAnswerLab.Controls.Add(this.RTBAnswerText);
-            this.PAnswerLab.Controls.Add(this.BSaveAnswerLab);
-            this.PAnswerLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PAnswerLab.Location = new System.Drawing.Point(128, 182);
-            this.PAnswerLab.Name = "PAnswerLab";
-            this.PAnswerLab.Size = new System.Drawing.Size(436, 187);
-            this.PAnswerLab.TabIndex = 11;
-            this.PAnswerLab.Visible = false;
-            // 
             // RTBAnswerText
             // 
             this.RTBAnswerText.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RTBAnswerText.Location = new System.Drawing.Point(0, 0);
+            this.RTBAnswerText.Location = new System.Drawing.Point(3, 16);
             this.RTBAnswerText.Name = "RTBAnswerText";
-            this.RTBAnswerText.Size = new System.Drawing.Size(436, 146);
+            this.RTBAnswerText.Size = new System.Drawing.Size(430, 128);
             this.RTBAnswerText.TabIndex = 2;
             this.RTBAnswerText.Text = "";
             // 
@@ -260,7 +249,7 @@
             this.BSaveAnswerLab.Image = global::ElipUser.Properties.Resources.floppy;
             this.BSaveAnswerLab.Location = new System.Drawing.Point(144, 152);
             this.BSaveAnswerLab.Name = "BSaveAnswerLab";
-            this.BSaveAnswerLab.Size = new System.Drawing.Size(130, 29);
+            this.BSaveAnswerLab.Size = new System.Drawing.Size(130, 28);
             this.BSaveAnswerLab.TabIndex = 1;
             this.BSaveAnswerLab.Text = "Подтвердить ответ";
             this.BSaveAnswerLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -268,13 +257,25 @@
             this.BSaveAnswerLab.UseVisualStyleBackColor = true;
             this.BSaveAnswerLab.Click += new System.EventHandler(this.BSaveAnswerLab_Click);
             // 
+            // GBAnswerLab
+            // 
+            this.GBAnswerLab.Controls.Add(this.RTBAnswerText);
+            this.GBAnswerLab.Controls.Add(this.BSaveAnswerLab);
+            this.GBAnswerLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GBAnswerLab.Location = new System.Drawing.Point(128, 182);
+            this.GBAnswerLab.Name = "GBAnswerLab";
+            this.GBAnswerLab.Size = new System.Drawing.Size(436, 187);
+            this.GBAnswerLab.TabIndex = 5;
+            this.GBAnswerLab.TabStop = false;
+            this.GBAnswerLab.Text = "Ответ";
+            // 
             // CompletingOfTheWorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 403);
+            this.Controls.Add(this.GBAnswerLab);
             this.Controls.Add(this.GBAnswerTest);
-            this.Controls.Add(this.PAnswerLab);
             this.Controls.Add(this.GBData);
             this.Controls.Add(this.GBList);
             this.Controls.Add(this.panel2);
@@ -290,8 +291,8 @@
             this.GBData.ResumeLayout(false);
             this.GBAnswerTest.ResumeLayout(false);
             this.GBAnswerTest.PerformLayout();
-            this.PAnswerLab.ResumeLayout(false);
-            this.PAnswerLab.PerformLayout();
+            this.GBAnswerLab.ResumeLayout(false);
+            this.GBAnswerLab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,8 +314,8 @@
         private System.Windows.Forms.RichTextBox RTB1;
         private System.Windows.Forms.TreeView TVQuestions;
         private System.Windows.Forms.Button BSaveAnswerTest;
-        private System.Windows.Forms.Panel PAnswerLab;
         private System.Windows.Forms.RichTextBox RTBAnswerText;
         private System.Windows.Forms.Button BSaveAnswerLab;
+        private System.Windows.Forms.GroupBox GBAnswerLab;
     }
 }

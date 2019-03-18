@@ -42,7 +42,7 @@ namespace ElipAdmin.View
                     DGVUserTable.Columns["FirstName"].HeaderText = "Имя";
                     DGVUserTable.Columns["MiddleName"].HeaderText = "Отчество";
                     DGVUserTable.Columns["Role"].HeaderText = "Роль";
-                    DGVUserTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVUserTable.Columns["NumberGroup"].HeaderText = "№ класса";
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace ElipAdmin.View
                 if (list.Count > 0)
                 {
                     DGVGroupTable.DataSource = list;
-                    DGVGroupTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVGroupTable.Columns["NumberGroup"].HeaderText = "№ класса";
                 }
             }
         }
@@ -83,7 +83,7 @@ namespace ElipAdmin.View
                     DGVDataTable.DataSource = list;
                     DGVDataTable.Columns["Text"].HeaderText = "Название работы";
                     DGVDataTable.Columns["DataType"].HeaderText = "Тип работы";
-                    DGVDataTable.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVDataTable.Columns["NumberGroup"].HeaderText = "№ класса";
                     DGVDataTable.Columns["author"].HeaderText = "Автор работы";
                 }
 
@@ -112,7 +112,7 @@ namespace ElipAdmin.View
                     DGVResults.Columns["Text"].HeaderText = "Название работы";
                     DGVResults.Columns["DataType"].HeaderText = "Тип работы";
                     DGVResults.Columns["DateTimeResult"].HeaderText = "Дата и время решения";
-                    DGVResults.Columns["NumberGroup"].HeaderText = "№ группы";
+                    DGVResults.Columns["NumberGroup"].HeaderText = "№ класса";
                     DGVResults.Columns["Mark"].HeaderText = "Оценка";
                     DGVResults.Columns["user"].HeaderText = "Исполнитель работы";
                     DGVResults.Columns["author"].HeaderText = "Автор работы";
