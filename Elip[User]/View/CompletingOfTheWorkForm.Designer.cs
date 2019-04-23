@@ -129,6 +129,7 @@
             // 
             // RTBQuestion
             // 
+            this.RTBQuestion.BackColor = System.Drawing.SystemColors.Window;
             this.RTBQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RTBQuestion.Location = new System.Drawing.Point(3, 16);
             this.RTBQuestion.Name = "RTBQuestion";
@@ -199,6 +200,7 @@
             // 
             // RTB4
             // 
+            this.RTB4.BackColor = System.Drawing.SystemColors.Window;
             this.RTB4.Location = new System.Drawing.Point(325, 48);
             this.RTB4.Name = "RTB4";
             this.RTB4.ReadOnly = true;
@@ -208,6 +210,7 @@
             // 
             // RTB3
             // 
+            this.RTB3.BackColor = System.Drawing.SystemColors.Window;
             this.RTB3.Location = new System.Drawing.Point(219, 48);
             this.RTB3.Name = "RTB3";
             this.RTB3.ReadOnly = true;
@@ -217,6 +220,7 @@
             // 
             // RTB2
             // 
+            this.RTB2.BackColor = System.Drawing.SystemColors.Window;
             this.RTB2.Location = new System.Drawing.Point(113, 48);
             this.RTB2.Name = "RTB2";
             this.RTB2.ReadOnly = true;
@@ -226,6 +230,7 @@
             // 
             // RTB1
             // 
+            this.RTB1.BackColor = System.Drawing.SystemColors.Window;
             this.RTB1.Location = new System.Drawing.Point(7, 48);
             this.RTB1.Name = "RTB1";
             this.RTB1.ReadOnly = true;

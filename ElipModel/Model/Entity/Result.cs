@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElipModel.Model.Entity
@@ -17,10 +18,17 @@ namespace ElipModel.Model.Entity
         [Required]
         public byte[] AnswerData { get; set; }
 
+        [Required]
+        [DefaultValue("Не проверено")]
+        public string Status { get; set; }
+
         public int? UserId { get; set; }
         public virtual User User { get; set; }
 
         public int? DataInGroupId { get; set; }
         public virtual DataInGroup DataInGroup { get; set; }
+
+        public int? GroupId { get; set; }
+        public virtual Group Group { get; set; }
     }
 }

@@ -50,19 +50,31 @@
             this.RTB3 = new System.Windows.Forms.RichTextBox();
             this.RTB2 = new System.Windows.Forms.RichTextBox();
             this.RTB1 = new System.Windows.Forms.RichTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.NUDMark = new System.Windows.Forms.NumericUpDown();
+            this.CBStatus = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TBNameLab = new System.Windows.Forms.TextBox();
+            this.GBAnswerLab = new System.Windows.Forms.GroupBox();
+            this.RTBAnswerText = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NUpDown)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.GBList.SuspendLayout();
             this.GBData.SuspendLayout();
             this.GBAnswer.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDMark)).BeginInit();
+            this.GBAnswerLab.SuspendLayout();
             this.SuspendLayout();
             // 
             // LCount
             // 
             this.LCount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LCount.AutoSize = true;
-            this.LCount.Location = new System.Drawing.Point(22, 9);
+            this.LCount.Location = new System.Drawing.Point(23, 9);
             this.LCount.Name = "LCount";
             this.LCount.Size = new System.Drawing.Size(120, 13);
             this.LCount.TabIndex = 3;
@@ -71,7 +83,7 @@
             // NUpDown
             // 
             this.NUpDown.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.NUpDown.Location = new System.Drawing.Point(25, 26);
+            this.NUpDown.Location = new System.Drawing.Point(26, 26);
             this.NUpDown.Maximum = new decimal(new int[] {
             40,
             0,
@@ -92,14 +104,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(560, 56);
+            this.panel1.Size = new System.Drawing.Size(563, 56);
             this.panel1.TabIndex = 5;
             // 
             // LNameProject
             // 
             this.LNameProject.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LNameProject.AutoSize = true;
-            this.LNameProject.Location = new System.Drawing.Point(218, 9);
+            this.LNameProject.Location = new System.Drawing.Point(214, 9);
             this.LNameProject.Name = "LNameProject";
             this.LNameProject.Size = new System.Drawing.Size(100, 13);
             this.LNameProject.TabIndex = 6;
@@ -108,7 +120,7 @@
             // TBNameProject
             // 
             this.TBNameProject.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TBNameProject.Location = new System.Drawing.Point(221, 25);
+            this.TBNameProject.Location = new System.Drawing.Point(217, 25);
             this.TBNameProject.Name = "TBNameProject";
             this.TBNameProject.Size = new System.Drawing.Size(158, 20);
             this.TBNameProject.TabIndex = 5;
@@ -118,7 +130,7 @@
             this.BSaveOneObj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BSaveOneObj.AutoSize = true;
             this.BSaveOneObj.Image = global::ElipTeacher.Properties.Resources.floppy;
-            this.BSaveOneObj.Location = new System.Drawing.Point(453, 16);
+            this.BSaveOneObj.Location = new System.Drawing.Point(456, 16);
             this.BSaveOneObj.Name = "BSaveOneObj";
             this.BSaveOneObj.Size = new System.Drawing.Size(95, 29);
             this.BSaveOneObj.TabIndex = 0;
@@ -134,7 +146,7 @@
             this.BSave.AutoSize = true;
             this.BSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BSave.Image = global::ElipTeacher.Properties.Resources.tick;
-            this.BSave.Location = new System.Drawing.Point(235, 6);
+            this.BSave.Location = new System.Drawing.Point(236, 5);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(86, 23);
             this.BSave.TabIndex = 13;
@@ -148,18 +160,18 @@
             // 
             this.panel2.Controls.Add(this.BSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 369);
+            this.panel2.Location = new System.Drawing.Point(0, 549);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(560, 34);
+            this.panel2.Size = new System.Drawing.Size(563, 34);
             this.panel2.TabIndex = 7;
             // 
             // GBList
             // 
             this.GBList.Controls.Add(this.TVQuestions);
             this.GBList.Dock = System.Windows.Forms.DockStyle.Left;
-            this.GBList.Location = new System.Drawing.Point(0, 56);
+            this.GBList.Location = new System.Drawing.Point(0, 106);
             this.GBList.Name = "GBList";
-            this.GBList.Size = new System.Drawing.Size(128, 313);
+            this.GBList.Size = new System.Drawing.Size(128, 443);
             this.GBList.TabIndex = 8;
             this.GBList.TabStop = false;
             this.GBList.Text = "Список вопросов";
@@ -169,7 +181,7 @@
             this.TVQuestions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TVQuestions.Location = new System.Drawing.Point(3, 16);
             this.TVQuestions.Name = "TVQuestions";
-            this.TVQuestions.Size = new System.Drawing.Size(122, 294);
+            this.TVQuestions.Size = new System.Drawing.Size(122, 424);
             this.TVQuestions.TabIndex = 4;
             this.TVQuestions.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.TVQuestions_BeforeSelect);
             this.TVQuestions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TVQuestions_AfterSelect);
@@ -178,9 +190,9 @@
             // 
             this.GBData.Controls.Add(this.RTBText);
             this.GBData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GBData.Location = new System.Drawing.Point(128, 56);
+            this.GBData.Location = new System.Drawing.Point(128, 106);
             this.GBData.Name = "GBData";
-            this.GBData.Size = new System.Drawing.Size(432, 163);
+            this.GBData.Size = new System.Drawing.Size(435, 106);
             this.GBData.TabIndex = 9;
             this.GBData.TabStop = false;
             this.GBData.Text = "Текст вопроса";
@@ -190,7 +202,7 @@
             this.RTBText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RTBText.Location = new System.Drawing.Point(3, 16);
             this.RTBText.Name = "RTBText";
-            this.RTBText.Size = new System.Drawing.Size(426, 144);
+            this.RTBText.Size = new System.Drawing.Size(429, 87);
             this.RTBText.TabIndex = 4;
             this.RTBText.Text = "";
             // 
@@ -205,9 +217,9 @@
             this.GBAnswer.Controls.Add(this.RTB2);
             this.GBAnswer.Controls.Add(this.RTB1);
             this.GBAnswer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.GBAnswer.Location = new System.Drawing.Point(128, 219);
+            this.GBAnswer.Location = new System.Drawing.Point(128, 212);
             this.GBAnswer.Name = "GBAnswer";
-            this.GBAnswer.Size = new System.Drawing.Size(432, 150);
+            this.GBAnswer.Size = new System.Drawing.Size(435, 150);
             this.GBAnswer.TabIndex = 10;
             this.GBAnswer.TabStop = false;
             this.GBAnswer.Text = "Варианты ответов";
@@ -284,15 +296,111 @@
             this.RTB1.TabIndex = 6;
             this.RTB1.Text = "";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.NUDMark);
+            this.panel3.Controls.Add(this.CBStatus);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.TBNameLab);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 56);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(563, 50);
+            this.panel3.TabIndex = 14;
+            this.panel3.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(424, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Статус проверки:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(232, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Оценка:";
+            // 
+            // NUDMark
+            // 
+            this.NUDMark.Location = new System.Drawing.Point(235, 24);
+            this.NUDMark.Name = "NUDMark";
+            this.NUDMark.Size = new System.Drawing.Size(120, 20);
+            this.NUDMark.TabIndex = 10;
+            // 
+            // CBStatus
+            // 
+            this.CBStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBStatus.FormattingEnabled = true;
+            this.CBStatus.Items.AddRange(new object[] {
+            "Не проверено",
+            "Проверено"});
+            this.CBStatus.Location = new System.Drawing.Point(427, 23);
+            this.CBStatus.Name = "CBStatus";
+            this.CBStatus.Size = new System.Drawing.Size(121, 21);
+            this.CBStatus.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Название работы:";
+            // 
+            // TBNameLab
+            // 
+            this.TBNameLab.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TBNameLab.Location = new System.Drawing.Point(26, 24);
+            this.TBNameLab.Name = "TBNameLab";
+            this.TBNameLab.ReadOnly = true;
+            this.TBNameLab.Size = new System.Drawing.Size(158, 20);
+            this.TBNameLab.TabIndex = 7;
+            // 
+            // GBAnswerLab
+            // 
+            this.GBAnswerLab.Controls.Add(this.RTBAnswerText);
+            this.GBAnswerLab.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.GBAnswerLab.Location = new System.Drawing.Point(128, 362);
+            this.GBAnswerLab.Name = "GBAnswerLab";
+            this.GBAnswerLab.Size = new System.Drawing.Size(435, 187);
+            this.GBAnswerLab.TabIndex = 15;
+            this.GBAnswerLab.TabStop = false;
+            this.GBAnswerLab.Text = "Ответ";
+            this.GBAnswerLab.Visible = false;
+            // 
+            // RTBAnswerText
+            // 
+            this.RTBAnswerText.BackColor = System.Drawing.SystemColors.Window;
+            this.RTBAnswerText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RTBAnswerText.Location = new System.Drawing.Point(3, 16);
+            this.RTBAnswerText.Name = "RTBAnswerText";
+            this.RTBAnswerText.ReadOnly = true;
+            this.RTBAnswerText.Size = new System.Drawing.Size(429, 168);
+            this.RTBAnswerText.TabIndex = 2;
+            this.RTBAnswerText.Text = "";
+            // 
             // AddEditDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 403);
+            this.ClientSize = new System.Drawing.Size(563, 583);
             this.Controls.Add(this.GBData);
             this.Controls.Add(this.GBAnswer);
+            this.Controls.Add(this.GBAnswerLab);
             this.Controls.Add(this.GBList);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditDataForm";
@@ -307,6 +415,10 @@
             this.GBData.ResumeLayout(false);
             this.GBAnswer.ResumeLayout(false);
             this.GBAnswer.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUDMark)).EndInit();
+            this.GBAnswerLab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -333,5 +445,14 @@
         private System.Windows.Forms.Button BSaveOneObj;
         private System.Windows.Forms.Label LNameProject;
         private System.Windows.Forms.TextBox TBNameProject;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox CBStatus;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TBNameLab;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown NUDMark;
+        private System.Windows.Forms.GroupBox GBAnswerLab;
+        private System.Windows.Forms.RichTextBox RTBAnswerText;
     }
 }

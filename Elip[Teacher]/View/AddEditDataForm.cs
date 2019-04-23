@@ -19,6 +19,38 @@ namespace ElipTeacher.View
 
         private DataInGroup dataInGroup;
 
+        private Result result;
+        public AddEditDataForm(TeacherForm teacherForm, string method, Result result, string labName)
+        {
+            InitializeComponent();
+            this.method = method;
+            this.teacherForm = teacherForm;
+            this.result = result;
+            panel1.Visible = false;
+            panel3.Visible = true;
+            GBAnswer.Visible = false;
+            GBAnswerLab.Visible = true;
+            LCount.Text = "Количество заданий:";
+            GBList.Text = "Список заданий";
+            GBData.Text = "Текст задания";
+            BSave.Text = "Сохранить";
+            Text = "Проверка лабораторной работы";
+            NUDMark.Value = (int)result.Mark;
+
+            lab = (Lab)Util.Deserialization(result.AnswerData);
+            NUpDown.Value = lab.TaskList.Count;
+            TBNameLab.Text = labName;
+            switch (result.Status)
+            {
+                case "Проверено":
+                    CBStatus.SelectedIndex = 1;
+                    break;
+                case "Не проверено":
+                    CBStatus.SelectedIndex = 0;
+                    break;
+            }
+        }
+
         public AddEditDataForm(TeacherForm form, DataType dataType, string method, DataInGroup dataInGroup)
         {
             InitializeComponent();
@@ -28,18 +60,22 @@ namespace ElipTeacher.View
             switch (dataType)
             {
                 case DataType.Lab:
+                    panel1.Visible = true;
+                    panel3.Visible = false;
+                    GBAnswer.Visible = false;
                     LCount.Text = "Количество заданий:";
                     GBList.Text = "Список заданий";
                     GBData.Text = "Текст задания";
-                    GBAnswer.Visible = false;
                     BSave.Text = "Сохранить лабораторную";
                     BSaveOneObj.Text = "Сохранить задание";
                     break;
                 case DataType.Test:
+                    panel1.Visible = true;
+                    panel3.Visible = false;
+                    GBAnswer.Visible = true;
                     LCount.Text = "Количество вопросов:";
                     GBList.Text = "Список вопросов";
                     GBData.Text = "Текст вопроса";
-                    GBAnswer.Visible = true;
                     BSave.Text = "Сохранить тест";
                     BSaveOneObj.Text = "Сохранить вопрос";
                     break;
@@ -114,6 +150,11 @@ namespace ElipTeacher.View
                 case DataType.Lab:
                     lab.TaskList.TryGetValue(key, out string str);
                     RTBText.Text = str;
+                    if (method.Equals("Check"))
+                    {
+                        lab.AnswerTaskList.TryGetValue(key, out string strATL);
+                        RTBAnswerText.Text = strATL;
+                    }
                     break;
                 case DataType.Test:
                     test.QuestionsList.TryGetValue(key, out string value);
@@ -197,6 +238,8 @@ namespace ElipTeacher.View
                             dataInGroup.Data = Util.Serializatoin(test);
                         }
                         dbContext.DataInGroups.Add(dataInGroup);
+                        dataInGroup.Text = TBNameProject.Text;
+                        dataInGroup.UserId = teacherForm.User.Id;
                         break;
                     case "Edit":
                         if (dataType == DataType.Lab)
@@ -209,10 +252,15 @@ namespace ElipTeacher.View
                             dbContext.DataInGroups.Attach(dataInGroup);
                             dataInGroup.Data = Util.Serializatoin(test);
                         }
+                        dataInGroup.Text = TBNameProject.Text;
+                        dataInGroup.UserId = teacherForm.User.Id;
+                        break;
+                    case "Check":
+                        var saveResult = dbContext.Results.Find(result.Id);
+                        saveResult.Mark = (int)NUDMark.Value;
+                        saveResult.Status = CBStatus.SelectedItem.ToString();
                         break;
                 }
-                dataInGroup.Text = TBNameProject.Text;
-                dataInGroup.UserId = teacherForm.User.Id;
                 dbContext.SaveChanges();
             }
             Hide();

@@ -31,7 +31,7 @@ namespace ElipTeacher.View
                     s.DataType,
                     s.Group.NumberGroup
                 }).ToList();
-                if (list.Count > 0)
+                if (list.Count >= 0)
                 {
                     DGVMyLabAndTest.DataSource = list;
                     DGVMyLabAndTest.Columns["Text"].HeaderText = "Название работы";
@@ -99,7 +99,7 @@ namespace ElipTeacher.View
                             u.FirstName,
                             u.MiddleName
                         }).ToList();
-                        if (ulist.Count > 0)
+                        if (ulist.Count >= 0)
                         {
                             DGVUsers.DataSource = ulist;
                             DGVUsers.Columns["LastName"].HeaderText = "Фамилия";
@@ -113,14 +113,36 @@ namespace ElipTeacher.View
                             dig.Id,
                             dig.Text,
                             dig.DataType,
-                            author = dig.User.LastName + " " + dig.User.FirstName + " " + dig.User.MiddleName,
+                            author = dig.User.LastName + " " + dig.User.FirstName + " " + dig.User.MiddleName
                         }).ToList();
-                        if (diglist.Count > 0)
+                        if (diglist.Count >= 0)
                         {
                             DGVDataInGroup.DataSource = diglist;
                             DGVDataInGroup.Columns["Text"].HeaderText = "Название работы";
                             DGVDataInGroup.Columns["DataType"].HeaderText = "Тип работы";
                             DGVDataInGroup.Columns["author"].HeaderText = "Автор работы";
+                        }
+                        break;
+                    case 3:
+                        var resList = group.Results.Select(r => new
+                        {
+                            r.Id,
+                            dataType = r.DataInGroup.DataType,
+                            text = r.DataInGroup.Text,
+                            r.DateTimeResult,
+                            user = r.User.LastName + " " + r.User.FirstName + " " + r.User.MiddleName,
+                            r.Mark,
+                            r.Status
+                        }).ToList();
+                        if (resList.Count >= 0)
+                        {
+                            DGVResultData.DataSource = resList;
+                            DGVResultData.Columns["dataType"].HeaderText = "Тип работы";
+                            DGVResultData.Columns["text"].HeaderText = "Название работы";
+                            DGVResultData.Columns["DateTimeResult"].HeaderText = "Дата/время";
+                            DGVResultData.Columns["user"].HeaderText = "Пользователь";
+                            DGVResultData.Columns["Mark"].HeaderText = "Оценка";
+                            DGVResultData.Columns["Status"].HeaderText = "Статус проверки";
                         }
                         break;
                 }
@@ -137,6 +159,7 @@ namespace ElipTeacher.View
             if (TabControl.SelectedIndex == 2)
             {
                 InitDGVMyLabAndTest();
+                return;
             }
             if (TVGroup.SelectedNode != null)
             {
@@ -221,6 +244,19 @@ namespace ElipTeacher.View
             else
             {
                 new AddEditDataForm(this, DataType.Test, "Edit", dataInGroup).Show();
+            }
+        }
+
+        private void DGVResultData_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DGVResultData.SelectedCells[1].Value.Equals("Lab"))
+            {
+                using (var dbContext = new ElipContext())
+                {
+                    var resultData = dbContext.Results.Find(DGVResultData.SelectedCells[0].Value);
+                    var labName = DGVResultData.SelectedCells[2].Value.ToString();
+                    new AddEditDataForm(this, "Check", resultData, labName).Show();
+                }
             }
         }
     }

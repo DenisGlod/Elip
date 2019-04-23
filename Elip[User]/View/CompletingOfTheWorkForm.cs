@@ -34,7 +34,7 @@ namespace ElipUser.View
                     lab = (Lab)Util.Deserialization(dataInGroup.Data);
                     foreach (var item in lab.TaskList)
                     {
-                        TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
+                        TVQuestions.Nodes.Add(item.Key.ToString(), "№ " + item.Key); //item.Value
                     }
                     GBAnswerLab.Visible = true;
                     GBAnswerTest.Visible = false;
@@ -44,7 +44,7 @@ namespace ElipUser.View
                     test = (Test)Util.Deserialization(dataInGroup.Data);
                     foreach (var item in test.QuestionsList)
                     {
-                        TVQuestions.Nodes.Add(item.Key.ToString(), item.Value);
+                        TVQuestions.Nodes.Add(item.Key.ToString(), "№ " + item.Key);
                     }
                     GBAnswerLab.Visible = false;
                     GBAnswerTest.Visible = true;
@@ -60,6 +60,8 @@ namespace ElipUser.View
                 case DataType.Lab:
                     lab.TaskList.TryGetValue(key, out string str);
                     RTBQuestion.Text = str;
+                    resultLab.AnswerTaskList.TryGetValue(key, out string ansStr);
+                    RTBAnswerText.Text = ansStr;
                     break;
                 case DataType.Test:
                     test.QuestionsList.TryGetValue(key, out string value);
@@ -86,6 +88,28 @@ namespace ElipUser.View
                             }
                         }
                     }
+                    resultTest.AnswerList.TryGetValue(key, out var rlist);
+                    if (rlist != null)
+                    {
+                        foreach (var item in rlist)
+                        {
+                            switch (item.Number)
+                            {
+                                case 1:
+                                    CB1.Checked = item.Flag;
+                                    break;
+                                case 2:
+                                    CB2.Checked = item.Flag;
+                                    break;
+                                case 3:
+                                    CB3.Checked = item.Flag;
+                                    break;
+                                case 4:
+                                    CB4.Checked = item.Flag;
+                                    break;
+                            }
+                        }
+                    }
                     break;
             }
             if (TVQuestions.SelectedNode != null)
@@ -103,31 +127,35 @@ namespace ElipUser.View
                 {
                     UserId = user.Id,
                     DateTimeResult = DateTime.Now,
-                    DataInGroupId = dataInGroup.Id
+                    DataInGroupId = dataInGroup.Id,
+                    GroupId = user.GroupId,
                 };
-                if (dataType == DataType.Lab)
+                switch (dataType)
                 {
-                    result.AnswerData = Util.Serializatoin(resultLab);
-                }
-                else
-                {
-                    result.AnswerData = Util.Serializatoin(resultTest);
-                    var tempR = resultTest.AnswerList;
-                    var temp = test.AnswerList;
-                    int mark = 0;
-                    for (int i = 1; i <= temp.Count; i++)
-                    {
-                        temp.TryGetValue(i, out var tempAnswer);
-                        tempR.TryGetValue(i, out var tempRAnswer);
-                        if (tempAnswer[0].Flag == tempRAnswer[0].Flag &&
-                            tempAnswer[1].Flag == tempRAnswer[1].Flag &&
-                            tempAnswer[2].Flag == tempRAnswer[2].Flag &&
-                            tempAnswer[3].Flag == tempRAnswer[3].Flag)
+                    case DataType.Lab:
+                        result.AnswerData = Util.Serializatoin(resultLab);
+                        result.Status = "Не проверено";
+                        break;
+                    case DataType.Test:
+                        result.AnswerData = Util.Serializatoin(resultTest);
+                        result.Status = "Проверено";
+                        var tempR = resultTest.AnswerList;
+                        var temp = test.AnswerList;
+                        int mark = 0;
+                        for (int i = 1; i <= temp.Count; i++)
                         {
-                            mark += 1;
+                            temp.TryGetValue(i, out var tempAnswer);
+                            tempR.TryGetValue(i, out var tempRAnswer);
+                            if (tempAnswer[0].Flag == tempRAnswer[0].Flag &&
+                                tempAnswer[1].Flag == tempRAnswer[1].Flag &&
+                                tempAnswer[2].Flag == tempRAnswer[2].Flag &&
+                                tempAnswer[3].Flag == tempRAnswer[3].Flag)
+                            {
+                                mark += 1;
+                            }
                         }
-                    }
-                    result.Mark = 10 * mark / temp.Count;
+                        result.Mark = 10 * mark / temp.Count;
+                        break;
                 }
                 dbContext.Results.Add(result);
                 dbContext.SaveChanges();
@@ -145,6 +173,7 @@ namespace ElipUser.View
             RTB2.Clear();
             RTB3.Clear();
             RTB4.Clear();
+            RTBAnswerText.Clear();
             if (TVQuestions.SelectedNode != null)
             {
                 TVQuestions.SelectedNode.BackColor = Color.Transparent;
@@ -154,27 +183,41 @@ namespace ElipUser.View
 
         private void BSaveAnswerLab_Click(object sender, EventArgs e)
         {
-            var lkey = int.Parse(TVQuestions.SelectedNode.Name);
-            if (resultLab.TaskList.ContainsKey(lkey)) { resultLab.TaskList.Remove(lkey); }
-            resultLab.TaskList.Add(lkey, RTBQuestion.Text);
-            if (resultLab.AnswerTaskList.ContainsKey(lkey)) { resultLab.AnswerTaskList.Remove(lkey); }
-            resultLab.AnswerTaskList.Add(lkey, RTBAnswerText.Text);
+            if (TVQuestions.SelectedNode == null)
+            {
+                MessageBox.Show("Ошибка, не выбран вопрос из списка вопросов!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var lkey = int.Parse(TVQuestions.SelectedNode.Name);
+                if (resultLab.TaskList.ContainsKey(lkey)) { resultLab.TaskList.Remove(lkey); }
+                resultLab.TaskList.Add(lkey, RTBQuestion.Text);
+                if (resultLab.AnswerTaskList.ContainsKey(lkey)) { resultLab.AnswerTaskList.Remove(lkey); }
+                resultLab.AnswerTaskList.Add(lkey, RTBAnswerText.Text);
+            }
         }
 
         private void BSaveAnswerTest_Click(object sender, EventArgs e)
         {
-            var tkey = int.Parse(TVQuestions.SelectedNode.Name);
-            var value = RTBQuestion.Text;
-            if (resultTest.QuestionsList.ContainsKey(tkey)) { resultTest.QuestionsList.Remove(tkey); }
-            resultTest.QuestionsList.Add(tkey, value);
-            if (resultTest.AnswerList.ContainsKey(tkey)) { resultTest.AnswerList.Remove(tkey); }
-            resultTest.AnswerList.Add(tkey, new List<Answer>
+            if (TVQuestions.SelectedNode == null)
             {
-                new Answer(1, RTB1.Text, CB1.Checked),
-                new Answer(2, RTB2.Text, CB2.Checked),
-                new Answer(3, RTB3.Text, CB3.Checked),
-                new Answer(4, RTB4.Text, CB4.Checked)
-            });
+                MessageBox.Show("Ошибка, не выбран вопрос из списка вопросов!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                var tkey = int.Parse(TVQuestions.SelectedNode.Name);
+                var value = RTBQuestion.Text;
+                if (resultTest.QuestionsList.ContainsKey(tkey)) { resultTest.QuestionsList.Remove(tkey); }
+                resultTest.QuestionsList.Add(tkey, value);
+                if (resultTest.AnswerList.ContainsKey(tkey)) { resultTest.AnswerList.Remove(tkey); }
+                resultTest.AnswerList.Add(tkey, new List<Answer>
+                {
+                    new Answer(1, RTB1.Text, CB1.Checked),
+                    new Answer(2, RTB2.Text, CB2.Checked),
+                    new Answer(3, RTB3.Text, CB3.Checked),
+                    new Answer(4, RTB4.Text, CB4.Checked)
+                });
+            }
         }
     }
 }

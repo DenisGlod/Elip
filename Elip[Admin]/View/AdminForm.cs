@@ -33,7 +33,7 @@ namespace ElipAdmin.View
                     u.Role,
                     u.Group.NumberGroup
                 }).ToList();
-                if (list.Count > 0)
+                if (list.Count >= 0)
                 {
                     DGVUserTable.DataSource = list;
                     DGVUserTable.Columns["Login"].HeaderText = "Логин";
@@ -57,7 +57,7 @@ namespace ElipAdmin.View
                     g.Id,
                     g.NumberGroup
                 }).ToList();
-                if (list.Count > 0)
+                if (list.Count >= 0)
                 {
                     DGVGroupTable.DataSource = list;
                     DGVGroupTable.Columns["NumberGroup"].HeaderText = "№ класса";
@@ -78,7 +78,7 @@ namespace ElipAdmin.View
                     dig.Group.NumberGroup,
                     author = dig.User.LastName + " " + dig.User.FirstName + " " + dig.User.MiddleName,
                 }).ToList();
-                if (list.Count > 0)
+                if (list.Count >= 0)
                 {
                     DGVDataTable.DataSource = list;
                     DGVDataTable.Columns["Text"].HeaderText = "Название работы";
@@ -103,10 +103,11 @@ namespace ElipAdmin.View
                     r.DateTimeResult,
                     r.Mark,
                     r.DataInGroup.Group.NumberGroup,
+                    r.Status,
                     user = r.User.LastName + " " + r.User.FirstName + " " + r.User.MiddleName,
                     author = r.DataInGroup.User.LastName + " " + r.DataInGroup.User.FirstName + " " + r.DataInGroup.User.MiddleName,
                 }).ToList();
-                if (list.Count > 0)
+                if (list.Count >= 0)
                 {
                     DGVResults.DataSource = list;
                     DGVResults.Columns["Text"].HeaderText = "Название работы";
@@ -114,6 +115,7 @@ namespace ElipAdmin.View
                     DGVResults.Columns["DateTimeResult"].HeaderText = "Дата и время решения";
                     DGVResults.Columns["NumberGroup"].HeaderText = "№ класса";
                     DGVResults.Columns["Mark"].HeaderText = "Оценка";
+                    DGVResults.Columns["Status"].HeaderText = "Статус проверки";
                     DGVResults.Columns["user"].HeaderText = "Исполнитель работы";
                     DGVResults.Columns["author"].HeaderText = "Автор работы";
                 }
@@ -136,15 +138,19 @@ namespace ElipAdmin.View
             {
                 case 0:
                     InitUserTable();
+                    panel2.Visible = true;
                     break;
                 case 1:
                     InitGroupTable();
+                    panel2.Visible = true;
                     break;
                 case 2:
                     InitDataInGroupTable();
+                    panel2.Visible = true;
                     break;
                 case 3:
                     InitResultTable();
+                    panel2.Visible = false;
                     break;
             }
 

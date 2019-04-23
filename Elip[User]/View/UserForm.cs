@@ -14,24 +14,31 @@ namespace ElipUser.View
             this.user = (User)user;
             InitializeComponent();
             InitHeaderLabel();
-            InitDGVResultLabAndTest();
             InitDGVUserInGroup();
-            InitDGVLabAndTest();
         }
 
         public void InitDGVResultLabAndTest()
         {
             using (var dbContext = new ElipContext())
             {
-                var dataResult = dbContext.Users.Attach(user).Results;
-                DGVResultLabAndTest.DataSource = dataResult;
-                DGVResultLabAndTest.Columns["AnswerData"].Visible = false;
-                DGVResultLabAndTest.Columns["UserId"].Visible = false;
-                DGVResultLabAndTest.Columns["User"].Visible = false;
-                DGVResultLabAndTest.Columns["DataInGroupId"].Visible = false;
-                DGVResultLabAndTest.Columns["DataInGroup"].Visible = false;
-                DGVResultLabAndTest.Columns["DateTimeResult"].HeaderText = "Дата и время решения";
-                DGVResultLabAndTest.Columns["Mark"].HeaderText = "Оценка";
+                var resList = dbContext.Users.Find(user.Id).Results.Select(r => new
+                {
+                    r.Id,
+                    text = r.DataInGroup.Text,
+                    dataType = r.DataInGroup.DataType,
+                    r.DateTimeResult,
+                    r.Mark,
+                    r.Status
+                }).ToList();
+                if (resList.Count >= 0)
+                {
+                    DGVResultLabAndTest.DataSource = resList;
+                    DGVResultLabAndTest.Columns["text"].HeaderText = "Название работы";
+                    DGVResultLabAndTest.Columns["dataType"].HeaderText = "Тип работы";
+                    DGVResultLabAndTest.Columns["DateTimeResult"].HeaderText = "Дата/время";
+                    DGVResultLabAndTest.Columns["Mark"].HeaderText = "Оценка";
+                    DGVResultLabAndTest.Columns["Status"].HeaderText = "Статус проверки";
+                }
             }
         }
 
@@ -106,7 +113,18 @@ namespace ElipUser.View
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-
+            switch (TabControl.SelectedIndex)
+            {
+                case 0:
+                    InitDGVUserInGroup();
+                    break;
+                case 1:
+                    InitDGVLabAndTest();
+                    break;
+                case 2:
+                    InitDGVResultLabAndTest();
+                    break;
+            }
         }
 
         private void BStart_Click(object sender, System.EventArgs e)
