@@ -11,15 +11,15 @@ namespace ElipTeacher.View
 {
     public partial class AddEditDataForm : Form
     {
-        private Lab lab;
-        private Test test;
-        private TeacherForm teacherForm;
-        private string method;
-        private DataType dataType;
+        private readonly Lab lab;
+        private readonly Test test;
+        private readonly TeacherForm teacherForm;
+        private readonly string method;
+        private readonly DataType dataType;
 
-        private DataInGroup dataInGroup;
+        private readonly DataInGroup dataInGroup;
 
-        private Result result;
+        private readonly Result result;
         public AddEditDataForm(TeacherForm teacherForm, string method, Result result, string labName)
         {
             InitializeComponent();
@@ -73,6 +73,7 @@ namespace ElipTeacher.View
                     panel1.Visible = true;
                     panel3.Visible = false;
                     GBAnswer.Visible = true;
+                    BAttachFiles.Visible = false;
                     LCount.Text = "Количество вопросов:";
                     GBList.Text = "Список вопросов";
                     GBData.Text = "Текст вопроса";
@@ -281,6 +282,11 @@ namespace ElipTeacher.View
                 TVQuestions.SelectedNode.BackColor = Color.Transparent;
                 TVQuestions.SelectedNode.ForeColor = SystemColors.ControlText;
             }
+        }
+
+        private void BAttachFiles_Click(object sender, EventArgs e)
+        {
+            new AttachFilesForm(lab, method).Show();
         }
     }
 }

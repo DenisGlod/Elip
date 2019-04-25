@@ -32,6 +32,7 @@
             this.BSaveAnswerTest = new System.Windows.Forms.Button();
             this.BSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.BAttachFiles = new System.Windows.Forms.Button();
             this.GBList = new System.Windows.Forms.GroupBox();
             this.TVQuestions = new System.Windows.Forms.TreeView();
             this.GBData = new System.Windows.Forms.GroupBox();
@@ -72,11 +73,11 @@
             // 
             // BSave
             // 
-            this.BSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BSave.AutoSize = true;
             this.BSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BSave.Image = global::ElipUser.Properties.Resources.tick;
-            this.BSave.Location = new System.Drawing.Point(237, 6);
+            this.BSave.Location = new System.Drawing.Point(466, 6);
             this.BSave.Name = "BSave";
             this.BSave.Size = new System.Drawing.Size(86, 23);
             this.BSave.TabIndex = 13;
@@ -88,12 +89,27 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.BAttachFiles);
             this.panel2.Controls.Add(this.BSave);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 369);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(564, 34);
             this.panel2.TabIndex = 7;
+            // 
+            // BAttachFiles
+            // 
+            this.BAttachFiles.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BAttachFiles.Image = global::ElipUser.Properties.Resources.iconfinder_folder_416376;
+            this.BAttachFiles.Location = new System.Drawing.Point(12, 6);
+            this.BAttachFiles.Name = "BAttachFiles";
+            this.BAttachFiles.Size = new System.Drawing.Size(167, 23);
+            this.BAttachFiles.TabIndex = 15;
+            this.BAttachFiles.Text = "Прикрепленные файлы";
+            this.BAttachFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BAttachFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BAttachFiles.UseVisualStyleBackColor = false;
+            this.BAttachFiles.Click += new System.EventHandler(this.BAttachFiles_Click);
             // 
             // GBList
             // 
@@ -322,5 +338,6 @@
         private System.Windows.Forms.RichTextBox RTBAnswerText;
         private System.Windows.Forms.Button BSaveAnswerLab;
         private System.Windows.Forms.GroupBox GBAnswerLab;
+        private System.Windows.Forms.Button BAttachFiles;
     }
 }

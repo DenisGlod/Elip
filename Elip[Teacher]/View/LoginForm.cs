@@ -17,22 +17,23 @@ namespace ElipTeacher
         {
             using (ElipContext dbContext = new ElipContext())
             {
-                if (!dbContext.Database.Exists())
+                switch (dbContext.Database.Exists())
                 {
-                    MessageBox.Show("База данных не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    var user = dbContext.Users.Where(u => u.Login.Equals(TBLogin.Text) && u.Password.Equals(TBPassword.Text) && u.Role.Equals("Преподаватель"));
-                    if (user.Count() == 0)
-                    {
-                        MessageBox.Show("Неверный логин/пароль либо\r\nтакого пользователя не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        new TeacherForm(user.First()).Show();
-                        Hide();
-                    }
+                    case true:
+                        var user = dbContext.Users.Where(u => u.Login.Equals(TBLogin.Text) && u.Password.Equals(TBPassword.Text) && u.Role.Equals("Преподаватель"));
+                        if (user.Count() == 0)
+                        {
+                            MessageBox.Show("Неверный логин/пароль либо\r\nтакого пользователя не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            new TeacherForm(user.First()).Show();
+                            Hide();
+                        }
+                        break;
+                    case false:
+                        MessageBox.Show("База данных не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
             }
         }

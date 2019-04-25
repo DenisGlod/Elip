@@ -4,7 +4,9 @@ using ElipModel.Model.Entity;
 using ElipModel.Util;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ElipUser.View
@@ -178,6 +180,16 @@ namespace ElipUser.View
             {
                 TVQuestions.SelectedNode.BackColor = Color.Transparent;
                 TVQuestions.SelectedNode.ForeColor = SystemColors.ControlText;
+            }
+        }
+
+        private void BAttachFiles_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lab.FileNameList.Count; i++)
+            {
+                var dirInf = Directory.CreateDirectory(Application.StartupPath + @"\Temp\" + user.Id);
+                File.WriteAllBytes(dirInf.FullName + @"\" + lab.FileNameList[i], lab.FileList[i]);
+                Process.Start(dirInf.FullName);
             }
         }
 

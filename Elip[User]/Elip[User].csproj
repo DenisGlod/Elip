@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\iconfinder_folder_416376.png" />
     <Content Include="Resources\lab.xml" />
     <Content Include="Resources\test.xml" />
     <None Include="Resources\trash.png" />

@@ -71,6 +71,12 @@
     <Compile Include="View\AddDataInGroupForm.Designer.cs">
       <DependentUpon>AddDataInGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AttachFilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AttachFilesForm.Designer.cs">
+      <DependentUpon>AttachFilesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BeforeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AddDataInGroupForm.resx">
       <DependentUpon>AddDataInGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AttachFilesForm.resx">
+      <DependentUpon>AttachFilesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BeforeForm.resx">
       <DependentUpon>BeforeForm.cs</DependentUpon>
@@ -171,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\iconfinder_folder_416376.png" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\eyehidden.png" />
     <None Include="Resources\input.png" />

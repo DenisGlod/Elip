@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElipModel.Model.Entity
 {
@@ -11,6 +12,7 @@ namespace ElipModel.Model.Entity
         public string Text { get; set; }
 
         [Required]
+        [Column(TypeName = "varbinary(max)")]
         public byte[] Data { get; set; }
 
         [Required]

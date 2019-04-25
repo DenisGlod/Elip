@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElipModel.Model.Entity
 {
@@ -16,6 +17,7 @@ namespace ElipModel.Model.Entity
         public DateTime DateTimeResult { get; set; }
 
         [Required]
+        [Column(TypeName = "varbinary(max)")]
         public byte[] AnswerData { get; set; }
 
         [Required]
